@@ -198,11 +198,10 @@ module Onotole
 
     def setup_gitignore
       unless options[:skip_git]
-   say 'Replace .gitignore'
+        say 'Replace .gitignore'
         invoke :setup_gitignore
-end
-end
-
+      end
+    end
 
     def git_first_commit
       invoke :git_init_commit unless options[:skip_git]

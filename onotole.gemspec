@@ -5,12 +5,12 @@ require 'date'
 
 Gem::Specification.new do |s|
   s.required_ruby_version = ">= #{Onotole::RUBY_VERSION}"
-  s.authors = ['kvokka','thoughtbot']
+  s.authors = %w(kvokka thoughtbot)
   s.date = Date.today.strftime('%Y-%m-%d')
 
   s.description = <<-HERE
 Onotole is a base Rails project that you can upgrade. Use Onotole if you're in a
-rush to build something amazing, Onotole knows what to do!
+rush to build something amazing, Onotole knows what to do and gives Intellect +1!
   HERE
 
   s.email = 'root_p@mail.ru'
