@@ -1,0 +1,44 @@
+Style/AlignHash:
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle: table
+  AutoCorrect: true
+Style/IndentationConsistency:
+  EnforcedStyle: rails
+Style/StringLiterals:
+  ConsistentQuotesInMultiline: true
+Metrics/ClassLength:
+  CountComments: false
+  Max: 500
+Metrics/ModuleLength:
+  CountComments: false
+  Max: 500
+Lint/EndAlignment:
+  AutoCorrect: true
+Lint/DefEndAlignment:
+  AutoCorrect: true
+Rails:
+  Enabled: true
+Style/AutoResourceCleanup:
+  Description: 'Suggests the usage of an auto resource cleanup version of a method (if available).'
+  Enabled: true
+Metrics/MethodLength:
+  CountComments: false  # count full line comments?
+  Max: 40
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: single_quotes
+NumericLiterals:
+  Enabled: false
+Metrics/LineLength:
+  Max: 160
+Documentation:
+  Enabled: false
+Lint/Debugger:        # Easy deletion of all debugger breakpoints. false for debug
+  Enabled: true
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+  TargetRubyVersion: 2.3
+Metrics/AbcSize:
+  Max: 25

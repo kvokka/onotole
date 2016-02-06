@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+require 'pathname'
+
+source_path = (Pathname.new(__FILE__).dirname + '../lib').expand_path
+$LOAD_PATH << source_path
+
+require 'onotole'
+GEMPROCLIST = Onotole::AppBuilder.public_instance_methods.map(&:to_s)
+                                 .grep(/_gem$/)
+                                 .grep(/^add_/)
+                                 .map { |a| a[4..-5].to_sym }
+                                 .sort
+
+DEFAULT_GEMSET = [:slim, :faker, :guard, :rubocop, :meta_request, :clean_comments, :responders].freeze
+
+if ['-v', '--version'].include? ARGV[0]
+  puts Onotole::VERSION
+  exit 0
+elsif ['--gems'].include? ARGV[0]
+  puts 'You can manually can add gems from the list like options'
+  puts "Onotole app_path  [--gem1_name --gem2_name ...]\n\n"
+
+  GEMPROCLIST.map { |a| "--#{a}" }.each_with_index do |g, i|
+    puts  if i % 4 == 0 && i > 1
+    print g.ljust(20)
+  end
+  puts
+  exit 0
+end
+
+templates_root = File.expand_path(File.join('..', 'templates'), File.dirname(__FILE__))
+Onotole::AppGenerator.source_root templates_root
+Onotole::AppGenerator.source_paths << Rails::Generators::AppGenerator.source_root << templates_root
+
+Onotole::AppGenerator.start
