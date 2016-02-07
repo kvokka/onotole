@@ -16,8 +16,11 @@ configured from the box. Cut `Bitters` as default choice.
 
 As default uses the latest Ruby version and Rails '~> 4.2.0' 
 
-This user gem pack are available for installation and some other goodies from
-the box
+This user gem pack are available for custom installation (you will choose only
+what you need) all of this will be available in customization menu with `-c` 
+flag usage (no default selected gems will be installed). Gems with `*` mark 
+will be installed as addition like default, if start `onotole` with out `-c`
+flag. 
 
  * [Airbrake](https://github.com/airbrake/airbrake) for exception notification
  * [bootstrap3](https://github.com/seyhunak/twitter-bootstrap-rails) Bootstrap
@@ -25,24 +28,24 @@ the box
  * [bootstrap3_sass](https://github.com/twbs/bootstrap-sass) Bootstrap sass
  * [bundler_audit](https://github.com/rubysec/bundler-audit) Patch-level
  verification for Bundler
- * [faker](https://github.com/stympy/faker) A library for generating fake data
+ * `*`[faker](https://github.com/stympy/faker) A library for generating fake data
  such as names, addresses, and phone numbers.
- * [guard](https://github.com/guard/guard) Guard is a command line tool to
+ * `*`[guard](https://github.com/guard/guard) Guard is a command line tool to
  easily handle events on file system modifications. http://guardgem.org
  * [guard_rubocop](https://github.com/yujinakayama/guard-rubocop) Guard plugin
  for RuboCop
- * [slim](https://github.com/slim-template/slim) Slim is a template language
+ * `*`[slim](https://github.com/slim-template/slim) Slim is a template language
  whose goal is reduce the syntax to the essential parts without becoming
  cryptic. http://slim-lang.com
  * [html2slim](https://github.com/slim-template/html2slim) HTML2SLIM utility,
   installs with slim
  * [haml](https://github.com/haml/haml) HTML Abstraction Markup Language - A
  Markup Haiku http://haml.info
- * [meta_request](https://github.com/dejan/rails_panel/tree/master/meta_request)
+ * `*`[meta_request](https://github.com/dejan/rails_panel/tree/master/meta_request)
  Supporting gem for Rails Panel (Google Chrome extension for Rails development).
  * [rails_db](https://github.com/igorkasyanchuk/rails_db) Rails Database Viewer
  and SQL Query Runner https://youtu.be/TYsRxXRFp1g
- * [rubocop](https://github.com/bbatsov/rubocop) A Ruby static code analyzer,
+ * `*`[rubocop](https://github.com/bbatsov/rubocop) A Ruby static code analyzer,
  based on the community Ruby style guide.
  * [devise](https://github.com/plataformatec/devise) Flexible authentication
  solution for Rails with Warden. http://blog.plataformatec.com.br/tag/devise/
@@ -51,7 +54,7 @@ the box
  for Rails, Sinatra, Merb, DataMapper
  * [will_paginate-bootstrap](https://github.com/bootstrap-ruby/will_paginate-bootstrap)
  Integrates the Twitter Bootstrap pagination component with will_paginate
- * [responders](https://github.com/plataformatec/responders) A set of responders
+ * `*`[responders](https://github.com/plataformatec/responders) A set of responders
  modules to dry up your Rails 4.2+ app.
  * [hirb-unicode](https://github.com/miaout17/hirb-unicode) Unicode support
  for hirb
@@ -59,9 +62,10 @@ the box
  quick variables export to heroku
  * [tinymce-rails](https://github.com/spohlenz/tinymce-rails) Integration of 
  TinyMCE with the Rails asset pipeline
- * [annotate](https://github.com/ctran/annotate_models) Annotate Rails classes 
+ * `*`[annotate](https://github.com/ctran/annotate_models) Annotate Rails classes 
  with schema and routes info
 
+Mandatory installation gem list you will find in `Gemfile` section
 
 ## Installation
 
@@ -69,7 +73,7 @@ First install the onotole gem add this in `Gemfile` and `bundle`
 
 ```
     group :development do
-      gem 'onotole'
+      gem 'onotole', require: false
     end
 ```
 
@@ -83,15 +87,15 @@ Create gemset if you need it.
 
 Then run:
 
-    onotole projectname [ -c ] [ * rails_genetator_flags ]
+    `onotole projectname [ -c ] [ * rails_genetator_flags ]`
 
 This will create a Rails app in `projectname` using the latest version of Rails.
 
-    onotole projectname -c
+    `onotole projectname -c`
 
 And command like this will add some magic
 
-    onotole app  * github organization/project * heroku true
+    `onotole app  * github organization/project * heroku true`
 
 This will provide a dialog, where you can select needed gems, also you can add
 it with gemname flag, after app_name, like `onotole projectname --slim`.
