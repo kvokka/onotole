@@ -543,8 +543,7 @@ end
     def show_goodbye_message
       say_color BOLDGREEN, "Congratulations! Onotole gives you: 'Intellect+= 1'"
       say_color BOLDGREEN, "You can 'git push -u origin master' to your new repo
-           #{app_name} or check log for errors" 
-           if user_choose? :create_github_repo
+       #{app_name} or check log for errors" if user_choose? :create_github_repo
       say_color YELLOW, "Remember to run 'rails generate airbrake' with your API key." if user_choose? :airbrake
     end
 

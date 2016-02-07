@@ -57,8 +57,10 @@ the box
  for hirb
  * [dotenv-heroku](https://github.com/sideshowcoder/dotenv-heroku) Addition for
  quick variables export to heroku
- * [tinymce-rails](https://github.com/spohlenz/tinymce-rails)Integration of 
+ * [tinymce-rails](https://github.com/spohlenz/tinymce-rails) Integration of 
  TinyMCE with the Rails asset pipeline
+ * [annotate](https://github.com/ctran/annotate_models) Annotate Rails classes 
+ with schema and routes info
 
 
 ## Installation
@@ -181,7 +183,6 @@ Onotole also comes with:
 * The analytics adapter [Segment][segment] (and therefore config for Google
   Analytics, Intercom, Facebook Ads, Twitter Ads, etc.)
 
-
 ## Heroku
 
 You can optionally create Heroku staging and production apps:
@@ -282,6 +283,13 @@ Appname `tmp` is preferred for develop. It already added to gitignore.
 If you find some misprints fell free to fix them.
 
 Thank you!
+
+## Direct GitHub gem installation
+
+Gems, which have been installed from github, with 'github:' option in 
+`Gemfile.erb` will be automatically installed with `gem install` command. It made
+for making available support fresh fixes. If you do not need it, use 'git:' 
+option with full gem trace.   
 
 ## License
 

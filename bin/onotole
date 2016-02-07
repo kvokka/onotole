@@ -11,7 +11,14 @@ GEMPROCLIST = Onotole::AppBuilder.public_instance_methods.map(&:to_s)
                                  .map { |a| a[4..-5].to_sym }
                                  .sort
 
-DEFAULT_GEMSET = [:slim, :faker, :guard, :rubocop, :meta_request, :clean_comments, :responders].freeze
+DEFAULT_GEMSET = [:slim, 
+                  :faker, 
+                  :guard,
+                  :rubocop, 
+                  :meta_request, 
+                  :clean_comments, 
+                  :responders, 
+                  :annotate].freeze
 
 if ['-v', '--version'].include? ARGV[0]
   puts Onotole::VERSION

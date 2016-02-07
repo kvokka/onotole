@@ -1,5 +1,9 @@
 module Onotole
   module BeforeBundlePatch
+    def setup_default_gems
+      add_to_user_choise(:normalize)
+    end
+
     def add_user_gems
       GEMPROCLIST.each do |g|
         send "add_#{g}_gem" if user_choose? g.to_sym
@@ -132,6 +136,10 @@ module Onotole
       inject_into_file('Gemfile', "\ngem 'tinymce-rails'", after: '# user_choice')
       inject_into_file('Gemfile', "\ngem 'tinymce-rails-langs'", after: '# user_choice')
       copy_file 'tinymce.yml', 'config/tinymce.yml'
+    end
+
+    def add_annotate_gem
+      inject_into_file('Gemfile', "\ngem 'annotate'", after: 'group :development do')
     end
   end
 end

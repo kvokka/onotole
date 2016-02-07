@@ -11,6 +11,7 @@ module Onotole
       ask_cleanup_commens
       users_init_commit_choice
       add_github_repo_creation_choice
+      setup_default_gems
       add_user_gems
     end
   end
