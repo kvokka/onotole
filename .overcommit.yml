@@ -1,0 +1,77 @@
+CommitMsg:
+  ALL:
+  CapitalizedSubject:
+    enabled: true
+    description: 'Checking subject capitalization'
+  EmptyMessage:
+    enabled: true
+    description: 'Checking for empty commit message'
+    quiet: true
+  HardTabs:
+    enabled: true
+    description: 'Checking for hard tabs'
+  RussianNovel:
+    enabled: true
+    description: 'Checking length of commit message'
+    quiet: true
+  SingleLineSubject:
+    enabled: true
+    description: 'Checking subject line'
+  SpellCheck:
+    enabled: false
+    description: 'Checking for misspelled words'
+    required_executable: 'hunspell'
+    flags: ['-a']
+  TextWidth:
+    enabled: true
+    description: 'Checking text width'
+    max_subject_width: 60
+    max_body_width: 72
+  TrailingPeriod:
+    enabled: true
+    description: 'Checking for trailing periods in subject'
+PreCommit:
+  ALL:
+    problem_on_unmodified_line: report
+    requires_files: true
+    required: false
+    quiet: false
+  AuthorEmail:
+    enabled: true
+    description: 'Checking author email'
+    requires_files: false
+    required: true
+    quiet: true
+    pattern: '^[^@]+@.*$'
+  AuthorName:
+    enabled: false
+    description: 'Checking for author name'
+    requires_files: false
+    required: true
+    quiet: true
+  BrokenSymlinks:
+    enabled: true
+    description: 'Checking for broken symlinks'
+    quiet: true
+  CaseConflicts:
+    enabled: true
+    description: 'Checking for case-insensitivity conflicts'
+    quiet: true
+  MergeConflicts:
+    enabled: true
+    description: 'Checking for merge conflicts'
+    quiet: true
+    required_executable: 'grep'
+    flags: ['-IHn', "^<<<<<<<[ \t]"]
+  RuboCop:
+    enabled: ture
+    description: 'Analyzing with RuboCop'
+    required_executable: 'rubocop'
+    flags: ['--format=emacs', '--force-exclusion', '--display-cop-names']
+    install_command: 'gem install rubocop'
+    include:
+      - '**/*.gemspec'
+      - '**/*.rake'
+      - '**/*.rb'
+      - '**/Gemfile'
+      - '**/Rakefile'

@@ -139,7 +139,28 @@ module Onotole
     end
 
     def add_annotate_gem
-      inject_into_file('Gemfile', "\ngem 'annotate'", after: 'group :development do')
+      inject_into_file('Gemfile', "\n  gem 'annotate'", after: 'group :development do')
+    end
+
+    def add_overcommit_gem
+      inject_into_file('Gemfile', "\n  gem 'overcommit'", after: 'group :development do')
+      copy_file 'onotole_overcommit.yml', '.overcommit.yml'
+      rubocop_overcommit = <<-OVER
+  RuboCop:
+    enabled: ture
+    description: 'Analyzing with RuboCop'
+    required_executable: 'rubocop'
+    flags: ['--format=emacs', '--force-exclusion', '--display-cop-names']
+    install_command: 'gem install rubocop'
+    include:
+      - '**/*.gemspec'
+      - '**/*.rake'
+      - '**/*.rb'
+      - '**/Gemfile'
+      - '**/Rakefile'
+
+      OVER
+      append_file '.overcommit.yml', rubocop_overcommit if user_choose?(:rubocop)
     end
   end
 end

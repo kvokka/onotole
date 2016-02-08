@@ -3,6 +3,7 @@ module Onotole
     def post_init
       install_queue = [:responders,
                        :annotate,
+                       :overcommit,
                        :guard,
                        :guard_rubocop,
                        :bootstrap3_sass,
@@ -17,17 +18,17 @@ module Onotole
     end
 
     def after_install_devise
-      generate 'devise:install'
+      bundle_command 'exec rails generate devise:install'
       if AppBuilder.devise_model
-        generate "devise #{AppBuilder.devise_model.titleize}"
+        bundle_command "exec rails generate devise #{AppBuilder.devise_model.titleize}"
         inject_into_file('app/controllers/application_controller.rb',
                          "\nbefore_action :authenticate_#{AppBuilder.devise_model.titleize}!",
                          after: 'before_action :configure_permitted_parameters, if: :devise_controller?')
       end
       if user_choose?(:bootstrap3)
-        generate 'devise:views:bootstrap_templates'
+        bundle_command 'exec rails generate devise:views:bootstrap_templates'
       else
-        generate 'devise:views'
+        bundle_command 'exec rails generate devise:views'
       end
     end
 
@@ -40,11 +41,11 @@ if ENV['RAILS_ENV'] == 'test' || ENV['RAILS_ENV'] == 'development'
 end
         TEXT
       append_file 'Rakefile', t
-      run 'rubocop -a'
+      bundle_command 'exec rubocop --auto-correct'
     end
 
     def after_install_guard
-      run 'guard init'
+      bundle_command 'exec guard init'
       replace_in_file 'Guardfile',
                       "guard 'puma' do",
                       'guard :puma, port: 3000 do', quiet_err = true
@@ -76,8 +77,8 @@ end
     def after_install_bootstrap3
       AppBuilder.use_asset_pipelline = true
       remove_file 'app/views/layouts/application.html.erb'
-      generate 'bootstrap:install static'
-      generate 'bootstrap:layout'
+      bundle_command 'exec rails generate bootstrap:install static'
+      bundle_command 'exec rails generate bootstrap:layout'
       inject_into_file('app/assets/stylesheets/bootstrap_and_overrides.css',
                        "  =require devise_bootstrap_views\n",
                        before: '  */')
@@ -99,7 +100,7 @@ end
     end
 
     def after_install_responders
-      run('rails g responders:install')
+      bundle_command 'exec rails generate responders:install'
     end
 
     def after_install_create_github_repo
@@ -107,7 +108,12 @@ end
     end
 
     def after_install_annotate
-      run 'rails g annotate:install'
+      bundle_command 'exec rails generate annotate:install'
+    end
+
+    def after_install_overcommit
+      bundle_command 'exec overcommit --install'
+      bundle_command 'exec overcommit --sign'
     end
   end
 end

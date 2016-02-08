@@ -64,6 +64,8 @@ flag.
  TinyMCE with the Rails asset pipeline
  * `*`[annotate](https://github.com/ctran/annotate_models) Annotate Rails classes 
  with schema and routes info
+ * `*`[overcommit](https://github.com/brigade/overcommit) A fully configurable 
+ and extendable Git hook manager
 
 Mandatory installation gem list you will find in `Gemfile` section
 
@@ -225,7 +227,7 @@ bypass this with the ` * skip-git` option:
 
     onotole app  * skip-git true
 
-## GitHub
+## GitHub auto repository create
 
 You can optionally create a GitHub repository for the suspended Rails app. It
 requires that you have [Hub](https://github.com/github/hub) on your system:

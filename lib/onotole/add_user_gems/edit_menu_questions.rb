@@ -41,6 +41,7 @@ module Onotole
                    dotenv_heroku: 'dotenv-heroku support',
                    tinymce:       'Integration of TinyMCE with the Rails asset pipeline',
                    annotate:      'Annotate Rails classes with schema and routes info',
+                   overcommit:    'A fully configurable and extendable Git hook manager',
                    meta_request:  "Rails meta panel in chrome console. Very usefull in AJAX debugging.\n#{' ' * 24}Link for chrome add-on in Gemfile.\n#{' ' * 24}Do not delete comments if you need this link"
                     }
       multiple_choice('Write numbers of all preferred gems.', variants).each do |gem|

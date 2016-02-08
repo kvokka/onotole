@@ -223,15 +223,12 @@ end
     end
 
     def create_shared_flashes
-      copy_file '_flashes.html.erb',
-                'app/views/application/_flashes.html.erb'
-      copy_file 'flashes_helper.rb',
-                'app/helpers/flashes_helper.rb'
+      copy_file '_flashes.html.erb', 'app/views/application/_flashes.html.erb'
+      copy_file 'flashes_helper.rb', 'app/helpers/flashes_helper.rb'
     end
 
     def create_shared_javascripts
-      copy_file '_javascript.html.erb',
-                'app/views/application/_javascript.html.erb'
+      copy_file '_javascript.html.erb', 'app/views/application/_javascript.html.erb'
     end
 
     def create_application_layout
@@ -297,7 +294,7 @@ end
     end
 
     def configure_background_jobs_for_rspec
-      generate 'delayed_job:active_record'
+      bundle_command 'exec rails generate delayed_job:active_record'
     end
 
     def configure_action_mailer_in_specs
@@ -345,7 +342,7 @@ end
     end
 
     def generate_rspec
-      generate 'rspec:install'
+      bundle_command 'exec rails generate rspec:install'
     end
 
     def configure_puma
@@ -363,13 +360,13 @@ end
     end
 
     def install_refills
-      generate 'refills:import flashes'
+      bundle_command 'exec rails generate refills:import flashes'
       run 'rm app/views/refills/_flashes.html.erb'
       run 'rmdir app/views/refills'
     end
 
     def install_bitters
-      run 'bitters install --path app/assets/stylesheets'
+      bundle_command 'exec bitters install --path app/assets/stylesheets'
     end
 
     def gitignore_files
@@ -451,7 +448,7 @@ you can deploy to staging and production with:
 
     def setup_spring
       bundle_command 'exec spring binstub --all'
-      run 'spring stop'
+      bundle_command 'exec spring stop'
     end
 
     def copy_miscellaneous_files
@@ -661,9 +658,12 @@ end
       end
 
       def install_from_github(gem_name)
+        # TODO: in case of bundler update `bundle show` do now work any more
+        return true
+
         return nil unless gem_name
-        path = `bundle list #{gem_name}`.chomp
-        run "cd #{path} && gem build #{gem_name}.gemspec && gem install #{gem_name}"
+        path = `cd #{Dir.pwd} && bundle show #{gem_name}`.chomp
+        run "cd #{path} && bundle exec gem build #{gem_name}.gemspec && bundle exec gem install *.gem"
       end
 
       def user_choose?(g)

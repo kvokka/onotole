@@ -18,7 +18,8 @@ DEFAULT_GEMSET = [:slim,
                   :meta_request, 
                   :clean_comments, 
                   :responders, 
-                  :annotate].freeze
+                  :annotate,
+                  :overcommit].freeze
 
 if ['-v', '--version'].include? ARGV[0]
   puts Onotole::VERSION
