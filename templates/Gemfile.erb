@@ -20,6 +20,7 @@ gem "title"
 gem "uglifier"
 gem "therubyracer"
 gem 'rake', '~> 10.5.0'
+gem "awesome_print", :require=>"ap"
 # user_choice
 
 group :development do
@@ -30,7 +31,6 @@ group :development do
 end
 
 group :development, :test do
-  gem "awesome_print", :require=>"ap"
   gem "hirb"
   gem "bullet"
   gem "bundler-audit", require: false
