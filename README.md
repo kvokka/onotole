@@ -158,6 +158,10 @@ And development gems like:
   in-browser IRB consoles.
 * [Quiet Assets](https://github.com/evrone/quiet_assets) for muting assets
   pipeline log messages
+* [Better_errors](https://github.com/charliesome/better_errors) Better error 
+  page for Rack apps
+* [Binding_of_caller](https://github.com/banister/binding_of_caller) Retrieve 
+  the binding of a method's caller in MRI 1.9.2+
 
 And testing gems like:
 
