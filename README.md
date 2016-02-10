@@ -18,11 +18,14 @@ As default uses the latest Ruby version and Rails '~> 4.2.0'
 
 This user gem pack are available for custom installation (you will choose only
 what you need) all of this will be available in customization menu with `-c` 
-flag usage (no default selected gems will be installed). Gems with `*` mark 
+flag usage (no default selected gems will be installed), otherwise will be 
+installed default gem list. Gems with `*` mark 
 will be installed as addition like default, if start `onotole` with out `-c`
-flag. 
+flag. You can provide automatic install with options, like `--haml`. Default 
+pack will not be installed with any gem option.
 
- * [Airbrake](https://github.com/airbrake/airbrake) for exception notification
+
+ * [Airbrake](https://github.com/airbrake/airbrake) For exception notification
  * [bootstrap3](https://github.com/seyhunak/twitter-bootstrap-rails) Bootstrap
  with asset pipeline support
  * [bootstrap3_sass](https://github.com/twbs/bootstrap-sass) Bootstrap sass
