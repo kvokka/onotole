@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class FakeHeroku
   RECORDER = File.expand_path(File.join('..', '..', 'tmp', 'heroku_commands'), File.dirname(__FILE__))
 

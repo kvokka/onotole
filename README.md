@@ -69,6 +69,11 @@ pack will not be installed with any gem option.
  with schema and routes info
  * `*`[overcommit](https://github.com/brigade/overcommit) A fully configurable 
  and extendable Git hook manager
+ * [rails_admin](https://github.com/sferik/rails_admin) Rails engine that 
+ provides an easy-to-use interface for managing your data
+ * [activeadmin](https://github.com/activeadmin/activeadmin) Rails framework for 
+creating elegant backends for website administration. 
+
 
 Mandatory installation gem list you will find in `Gemfile` section
 

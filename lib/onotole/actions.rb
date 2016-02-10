@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Onotole
   module Actions
     def replace_in_file(relative_path, find, replace, quiet_err = false)

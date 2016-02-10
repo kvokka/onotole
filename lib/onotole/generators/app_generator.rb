@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'rails/generators'
 require 'rails/generators/rails/app/app_generator'
 module Onotole
@@ -108,7 +109,6 @@ module Onotole
       build :raise_on_missing_assets_in_test
       build :raise_on_delivery_errors
       build :set_test_delivery_method
-      build :add_bullet_gem_configuration
       build :raise_on_unpermitted_parameters
       build :provide_setup_script
       build :provide_dev_prime_task
@@ -284,6 +284,7 @@ module Onotole
 
     def post_init
       build :post_init
+      build :add_bullet_gem_configuration
     end
 
     protected

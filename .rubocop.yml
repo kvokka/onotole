@@ -8,7 +8,7 @@ Style/StringLiterals:
   ConsistentQuotesInMultiline: true
 Metrics/ClassLength:
   CountComments: false
-  Max: 500
+  Max: 700
 Metrics/ModuleLength:
   CountComments: false
   Max: 500
@@ -41,4 +41,5 @@ AllCops:
     - 'bin/**/*'
   TargetRubyVersion: 2.3
 Metrics/AbcSize:
-  Max: 25
+  Max: 30
+inherit_from: .rubocop_todo.yml

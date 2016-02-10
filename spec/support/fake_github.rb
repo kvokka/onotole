@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class FakeGithub
   RECORDER = File.expand_path(File.join('..', '..', 'tmp', 'hub_commands'), File.dirname(__FILE__))
 

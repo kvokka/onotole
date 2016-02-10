@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Onotole
   module BeforeBundlePatch
     def setup_default_gems
@@ -27,8 +28,7 @@ module Onotole
     end
 
     def add_rails_db_gem
-      inject_into_file('Gemfile', "\n  gem 'rails_db'\n  gem 'axlsx_rails'",
-                       after: 'group :development do')
+      inject_into_file('Gemfile', "\n  gem 'rails_db'\n  gem 'axlsx_rails'", after: '# user_choice')
     end
 
     def add_rubocop_gem
@@ -61,7 +61,10 @@ module Onotole
     end
 
     def add_meta_request_gem
-      inject_into_file('Gemfile', "\n  gem 'meta_request' # link for chrome add-on. https://chrome.google.com/webstore/detail/railspanel/gjpfobpafnhjhbajcjgccbbdofdckggg",
+      inject_into_file('Gemfile',
+                       "\n  gem 'meta_request' # link for chrome add-on. "\
+                       'https://chrome.google.com/webstore/detail/'\
+                       'railspanel/gjpfobpafnhjhbajcjgccbbdofdckggg',
                        after: 'group :development do')
     end
 
@@ -161,6 +164,23 @@ module Onotole
 
       OVER
       append_file '.overcommit.yml', rubocop_overcommit if user_choose?(:rubocop)
+    end
+
+    def add_ar_import_gem
+      inject_into_file('Gemfile', "\ngem 'activerecord-import'", after: '# user_choice')
+    end
+
+    def add_activeadmin_gem
+      inject_into_file('Gemfile', "\ngem 'activeadmin', github: 'activeadmin'", after: '# user_choice')
+    end
+
+    # def add_administrate_gem
+    #   inject_into_file('Gemfile', "\ngem 'administrate'", after: '# user_choice')
+    # end
+
+    def add_rails_admin_gem
+      inject_into_file('Gemfile', "\ngem 'rails_admin'", after: '# user_choice')
+      puts
     end
   end
 end

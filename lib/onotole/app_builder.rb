@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'forwardable'
 require 'onotole/add_user_gems/user_gems_menu_questions'
 require 'onotole/add_user_gems/edit_menu_questions'
@@ -294,7 +295,7 @@ end
     end
 
     def configure_background_jobs_for_rspec
-      bundle_command 'exec rails generate delayed_job:active_record'
+      rails_generator 'delayed_job:active_record'
     end
 
     def configure_action_mailer_in_specs
@@ -317,9 +318,9 @@ end
 
     def configure_simple_form
       if user_choose?(:bootstrap3_sass) || user_choose?(:bootstrap3)
-        bundle_command 'exec rails generate simple_form:install --bootstrap'
+        rails_generator 'simple_form:install --bootstrap'
       else
-        bundle_command 'exec rails generate simple_form:install'
+        rails_generator 'simple_form:install'
       end
     end
 
@@ -360,7 +361,7 @@ end
     end
 
     def install_refills
-      bundle_command 'exec rails generate refills:import flashes'
+      rails_generator 'refills:import flashes'
       run 'rm app/views/refills/_flashes.html.erb'
       run 'rmdir app/views/refills'
     end
@@ -574,7 +575,7 @@ end
         variants.each_with_index do |variant, i|
           values.push variant[0]
           say "#{i.to_s.rjust(5)}. #{BOLDBLUE}#{variant[0]
-                .to_s.ljust(15)}-#{COLOR_OFF} #{variant[1]}"
+                .to_s.ljust(20)}-#{COLOR_OFF} #{variant[1]}"
         end
         loop do
           answers = ask_stylish('Enter choices:').split ' '
@@ -672,6 +673,10 @@ end
 
       def add_to_user_choise(g)
         AppBuilder.user_choice.push g
+      end
+
+      def rails_generator(command)
+        bundle_command "exec rails generate #{command}"
       end
   end
 end

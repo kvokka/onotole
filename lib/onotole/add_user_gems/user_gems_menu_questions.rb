@@ -1,9 +1,11 @@
+# frozen_string_literal: true
 module Onotole
   module UserGemsMenu
     def users_gems
       choose_authenticate_engine
       choose_template_engine
       choose_frontend
+      choose_cms_engine
       # Placeholder for other gem additions
       # menu description in add_gems_in_menu.rb
 

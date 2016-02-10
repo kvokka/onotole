@@ -1,9 +1,13 @@
+# frozen_string_literal: true
 module Onotole
   module AfterInstallPatch
     def post_init
       install_queue = [:responders,
                        :annotate,
                        :overcommit,
+                       :activeadmin,
+                       :administrate,
+                       :rails_admin,
                        :guard,
                        :guard_rubocop,
                        :bootstrap3_sass,
@@ -20,15 +24,15 @@ module Onotole
     def after_install_devise
       bundle_command 'exec rails generate devise:install'
       if AppBuilder.devise_model
-        bundle_command "exec rails generate devise #{AppBuilder.devise_model.titleize}"
+        rails_generator "devise #{AppBuilder.devise_model.titleize}"
         inject_into_file('app/controllers/application_controller.rb',
                          "\nbefore_action :authenticate_#{AppBuilder.devise_model.titleize}!",
                          after: 'before_action :configure_permitted_parameters, if: :devise_controller?')
       end
       if user_choose?(:bootstrap3)
-        bundle_command 'exec rails generate devise:views:bootstrap_templates'
+        rails_generator 'devise:views:bootstrap_templates'
       else
-        bundle_command 'exec rails generate devise:views'
+        rails_generator 'devise:views'
       end
     end
 
@@ -77,8 +81,8 @@ end
     def after_install_bootstrap3
       AppBuilder.use_asset_pipelline = true
       remove_file 'app/views/layouts/application.html.erb'
-      bundle_command 'exec rails generate bootstrap:install static'
-      bundle_command 'exec rails generate bootstrap:layout'
+      rails_generator 'bootstrap:install static'
+      rails_generator 'bootstrap:layout'
       inject_into_file('app/assets/stylesheets/bootstrap_and_overrides.css',
                        "  =require devise_bootstrap_views\n",
                        before: '  */')
@@ -100,7 +104,7 @@ end
     end
 
     def after_install_responders
-      bundle_command 'exec rails generate responders:install'
+      rails_generator 'responders:install'
     end
 
     def after_install_create_github_repo
@@ -108,12 +112,24 @@ end
     end
 
     def after_install_annotate
-      bundle_command 'exec rails generate annotate:install'
+      rails_generator 'annotate:install'
     end
 
     def after_install_overcommit
       bundle_command 'exec overcommit --install'
       bundle_command 'exec overcommit --sign'
+    end
+
+    def after_install_activeadmin
+      if user_choose? :devise
+        rails_generator 'active_admin:install'
+      else
+        rails_generator 'active_admin:install --skip-users'
+      end
+    end
+
+    def after_install_rails_admin
+      rails_generator 'rails_admin:install'
     end
   end
 end

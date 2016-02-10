@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'onotole/version'
 require 'onotole/colors'
 require 'onotole/generators/app_generator'

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Onotole
   module Adapters
     class Heroku
