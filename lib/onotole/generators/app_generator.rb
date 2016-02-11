@@ -72,6 +72,7 @@ module Onotole
       invoke :create_github_repo
       invoke :setup_segment
       invoke :setup_spring
+      invoke :pre_commit_cleanup
       invoke :git_first_commit
       invoke :outro
     end
@@ -290,6 +291,10 @@ module Onotole
 
     def prevent_double_usage
       build :prevent_double_usage
+    end
+
+    def pre_commit_cleanup
+      build :clean_by_rubocop
     end
 
     protected

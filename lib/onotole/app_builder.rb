@@ -195,7 +195,7 @@ end
     end
 
     def create_database
-      bundle_command 'exec rake db:drop db:create db:migrate'
+      bundle_command 'exec rake db:drop db:create db:migrate db:seed'
     end
 
     def replace_gemfile

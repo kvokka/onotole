@@ -2,7 +2,8 @@
 module Onotole
   module AfterInstallPatch
     def post_init
-      install_queue = [:responders,
+      install_queue = [:devise,
+                       :responders,
                        :annotate,
                        :overcommit,
                        :activeadmin,
@@ -12,7 +13,6 @@ module Onotole
                        :guard_rubocop,
                        :bootstrap3_sass,
                        :bootstrap3,
-                       :devise,
                        :normalize,
                        :tinymce,
                        :rubocop,
@@ -22,7 +22,7 @@ module Onotole
     end
 
     def after_install_devise
-      bundle_command 'exec rails generate devise:install'
+      rails_generator 'devise:install'
       if AppBuilder.devise_model
         rails_generator "devise #{AppBuilder.devise_model.titleize}"
         inject_into_file('app/controllers/application_controller.rb',
@@ -46,9 +46,7 @@ if ENV['RAILS_ENV'] == 'test' || ENV['RAILS_ENV'] == 'development'
 end
         TEXT
       append_file 'Rakefile', t
-      # This is not a bug. Sometimes after first correction app may be dirty
-      bundle_command 'exec rubocop --auto-correct'
-      bundle_command 'exec rubocop --auto-correct'
+      clean_by_rubocop
     end
 
     def after_install_guard
@@ -121,6 +119,7 @@ end
     def after_install_overcommit
       bundle_command 'exec overcommit --install'
       bundle_command 'exec overcommit --sign'
+      inject_into_file('bin/setup', "\novercommit --install\novercommit --sign", after: '# User addons installation')
     end
 
     def after_install_activeadmin

@@ -114,11 +114,15 @@ module Onotole
     end
 
     def rails_generator(command)
-      bundle_command "exec rails generate #{command}"
+      bundle_command "exec rails generate #{command} -f"
     end
 
     def pgsql_db_exist?(db_name)
       system "psql -l | grep #{db_name}"
+    end
+
+    def clean_by_rubocop
+      bundle_command 'exec rubocop --auto-correct' if user_choose?(:rubocop)
     end
   end
 end

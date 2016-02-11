@@ -100,7 +100,7 @@ module Onotole
   # v.3.5 syntax. will be deprecated in 4.0
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_in) do |user_params|
-      user_params.permit(:email, :password)
+      user_params.permit(:email, :password, :remember_me)
     end
 
     devise_parameter_sanitizer.for(:sign_up) do |user_params|
@@ -166,7 +166,7 @@ module Onotole
       append_file '.overcommit.yml', rubocop_overcommit if user_choose?(:rubocop)
     end
 
-    def add_ar_import_gem
+    def add_activerecord_import_gem
       inject_into_file('Gemfile', "\ngem 'activerecord-import'", after: '# user_choice')
     end
 
