@@ -11,6 +11,9 @@ module OnotoleTestHelpers
   end
 
   def run_onotole(arguments = nil)
+    # unless !pgsql_db_exist?("#{APP_NAME}_development") || !pgsql_db_exist?("#{APP_NAME}_test")
+    #   allow(STDIN).to receive(:gets) { 'Y' }
+    # end
     Dir.chdir(tmp_path) do
       Bundler.with_clean_env do
         add_fakes_to_path
@@ -55,5 +58,9 @@ module OnotoleTestHelpers
 
     def root_path
       File.expand_path('../../../', __FILE__)
+    end
+
+    def pgsql_db_exist?(db_name)
+      system "psql -l | grep #{db_name}"
     end
 end

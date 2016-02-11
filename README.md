@@ -89,25 +89,23 @@ First install the onotole gem add this in `Gemfile` and `bundle`
 
 or
 
-```
-gem install onotole
-```
+    gem install onotole
 
 Create gemset if you need it. 
 
 Then run:
-`
+
     onotole projectname [ -c ] [ * rails_genetator_flags ]
-`
+
 
 This will create a Rails app in `projectname` using the latest version of Rails.
-`
+
     onotole projectname -c
-`
+
 And command like this will add some magic
-`
+
     onotole app  * github organization/project * heroku true
-`
+
 This will provide a dialog, where you can select needed gems, also you can add
 it with gemname flag, after app_name, like `onotole projectname --slim`.
 List of gems you always can get with `onotole --gems` command. Also, 

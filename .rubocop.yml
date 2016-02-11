@@ -39,6 +39,9 @@ Lint/Debugger:        # Easy deletion of all debugger breakpoints. false for deb
 AllCops:
   Exclude:
     - 'bin/**/*'
+    - 'vendor/**/*'
+    - 'log/**/*'    
+    - 'tmp/**/*'    
   TargetRubyVersion: 2.3
 Metrics/AbcSize:
   Max: 30

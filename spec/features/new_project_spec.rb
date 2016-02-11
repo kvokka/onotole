@@ -176,20 +176,23 @@ RSpec.describe 'Suspend a new project with default configuration' do
     end
   end
 
-  it 'removes comments and extra newlines from config files' do
-    config_files = [
-      IO.read("#{project_path}/config/application.rb"),
-      IO.read("#{project_path}/config/environment.rb"),
-      IO.read("#{project_path}/config/environments/development.rb"),
-      IO.read("#{project_path}/config/environments/production.rb"),
-      IO.read("#{project_path}/config/environments/test.rb")
-    ]
+  # TODO
+  # Not actual in current init config. I'll test it when I'll
+  # write tests for working with flags.
+  # it 'removes comments and extra newlines from config files' do
+  #   config_files = [
+  #     IO.read("#{project_path}/config/application.rb"),
+  #     IO.read("#{project_path}/config/environment.rb"),
+  #     IO.read("#{project_path}/config/environments/development.rb"),
+  #     IO.read("#{project_path}/config/environments/production.rb"),
+  #     IO.read("#{project_path}/config/environments/test.rb")
+  #   ]
 
-    config_files.each do |file|
-      expect(file).not_to match(/.*\s#.*/)
-      expect(file).not_to match(/^$\n/)
-    end
-  end
+  #   config_files.each do |file|
+  #     expect(file).not_to match(/.*\s#.*/)
+  #     expect(file).not_to match(/^$\n/)
+  #   end
+  # end
 
   it 'copies factories.rb' do
     expect(File).to exist("#{project_path}/spec/factories.rb")
