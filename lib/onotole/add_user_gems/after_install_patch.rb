@@ -37,6 +37,7 @@ module Onotole
     end
 
     def after_install_rubocop
+      run 'touch .rubocop_todo.yml'
       t = <<-TEXT
 
 if ENV['RAILS_ENV'] == 'test' || ENV['RAILS_ENV'] == 'development'
@@ -45,6 +46,8 @@ if ENV['RAILS_ENV'] == 'test' || ENV['RAILS_ENV'] == 'development'
 end
         TEXT
       append_file 'Rakefile', t
+      # This is not a bug. Sometimes after first correction app may be dirty
+      bundle_command 'exec rubocop --auto-correct'
       bundle_command 'exec rubocop --auto-correct'
     end
 

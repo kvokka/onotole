@@ -200,6 +200,7 @@ Onotole also comes with:
   environments
 * The analytics adapter [Segment][segment] (and therefore config for Google
   Analytics, Intercom, Facebook Ads, Twitter Ads, etc.)
+* Check existing of app DB and ask about continuation if base persisted 
 
 ## Heroku
 
@@ -278,6 +279,7 @@ installing QT are
 [here](https://github.com/thoughtbot/capybara-webkit/wiki/Installing-Qt-and-compiling-capybara-webkit).
 
 PostgreSQL needs to be installed and running for the `db:create` rake task.
+Also DB existing checking in `PostgreSQL` only.
 
 ## Contributing
 

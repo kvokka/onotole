@@ -4,6 +4,10 @@ require 'onotole/add_user_gems/user_gems_menu_questions'
 require 'onotole/add_user_gems/edit_menu_questions'
 require 'onotole/add_user_gems/before_bundle_patch'
 require 'onotole/add_user_gems/after_install_patch'
+require 'onotole/helpers'
+require 'onotole/git'
+require 'onotole/tests'
+require 'onotole/mail'
 
 module Onotole
   class AppBuilder < Rails::AppBuilder
@@ -12,6 +16,10 @@ module Onotole
     include Onotole::EditMenuQuestions
     include Onotole::BeforeBundlePatch
     include Onotole::AfterInstallPatch
+    include Onotole::Helpers
+    include Onotole::Git
+    include Onotole::Tests
+    include Onotole::Mail
     extend Forwardable
 
     @use_asset_pipelline = true
@@ -41,25 +49,9 @@ module Onotole
       template 'README.md.erb', 'README.md'
     end
 
-    def raise_on_missing_assets_in_test
-      inject_into_file(
-        'config/environments/test.rb',
-        "\n  config.assets.raise_runtime_errors = true",
-        after: 'Rails.application.configure do'
-      )
-    end
-
     def raise_on_delivery_errors
       replace_in_file 'config/environments/development.rb',
                       'raise_delivery_errors = false', 'raise_delivery_errors = true'
-    end
-
-    def set_test_delivery_method
-      inject_into_file(
-        'config/environments/development.rb',
-        "\n  config.action_mailer.delivery_method = :test",
-        after: 'config.action_mailer.raise_delivery_errors = true'
-      )
     end
 
     def add_bullet_gem_configuration
@@ -98,55 +90,12 @@ module Onotole
       copy_file 'dev.rake', 'lib/tasks/dev.rake'
     end
 
-    def configure_generators
-      config = <<-RUBY
-
-    config.generators do |generate|
-      generate.helper false
-      generate.javascript_engine false
-      generate.request_specs false
-      generate.routing_specs false
-      generate.stylesheets false
-      generate.test_framework :rspec
-      generate.view_specs false
-      generate.fixture_replacement :factory_girl
-    end
-
-      RUBY
-
-      inject_into_class 'config/application.rb', 'Application', config
-    end
-
-    def set_up_factory_girl_for_rspec
-      copy_file 'factory_girl_rspec.rb', 'spec/support/factory_girl.rb'
-    end
-
-    def generate_factories_file
-      copy_file 'factories.rb', 'spec/factories.rb'
-    end
-
     def set_up_hound
       copy_file 'hound.yml', '.hound.yml'
     end
 
     def configure_newrelic
       template 'newrelic.yml.erb', 'config/newrelic.yml'
-    end
-
-    def configure_smtp
-      copy_file 'smtp.rb', 'config/smtp.rb'
-
-      prepend_file 'config/environments/production.rb',
-                   %{require Rails.root.join("config/smtp")\n}
-
-      config = <<-RUBY
-
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = SMTP_SETTINGS
-      RUBY
-
-      inject_into_file 'config/environments/production.rb', config,
-                       after: 'config.action_mailer.raise_delivery_errors = false'
     end
 
     def enable_rack_canonical_host
@@ -258,35 +207,8 @@ end
       create_file '.ruby-version', "#{Onotole::RUBY_VERSION}\n"
     end
 
-    def enable_database_cleaner
-      copy_file 'database_cleaner_rspec.rb', 'spec/support/database_cleaner.rb'
-    end
-
-    def provide_shoulda_matchers_config
-      copy_file(
-        'shoulda_matchers_config_rspec.rb',
-        'spec/support/shoulda_matchers.rb'
-      )
-    end
-
-    def configure_spec_support_features
-      empty_directory_with_keep_file 'spec/features'
-      empty_directory_with_keep_file 'spec/support/features'
-    end
-
-    def configure_rspec
-      remove_file 'spec/rails_helper.rb'
-      remove_file 'spec/spec_helper.rb'
-      copy_file 'rails_helper.rb', 'spec/rails_helper.rb'
-      copy_file 'spec_helper.rb', 'spec/spec_helper.rb'
-    end
-
     def configure_ci
       template 'circle.yml.erb', 'circle.yml'
-    end
-
-    def configure_i18n_for_test_environment
-      copy_file 'i18n.rb', 'spec/support/i18n.rb'
     end
 
     def configure_i18n_for_missing_translations
@@ -296,14 +218,6 @@ end
 
     def configure_background_jobs_for_rspec
       rails_generator 'delayed_job:active_record'
-    end
-
-    def configure_action_mailer_in_specs
-      copy_file 'action_mailer.rb', 'spec/support/action_mailer.rb'
-    end
-
-    def configure_capybara_webkit
-      copy_file 'capybara_webkit.rb', 'spec/support/capybara_webkit.rb'
     end
 
     def configure_time_formats
@@ -324,12 +238,6 @@ end
       end
     end
 
-    def configure_action_mailer
-      action_mailer_host 'development', %("localhost:3000")
-      action_mailer_host 'test', %("www.example.com")
-      action_mailer_host 'production', %{ENV.fetch("APPLICATION_HOST")}
-    end
-
     def configure_active_job
       configure_application_file(
         'config.active_job.queue_adapter = :delayed_job'
@@ -340,10 +248,6 @@ end
     def fix_i18n_deprecation_warning
       config = '    config.i18n.enforce_available_locales = true'
       inject_into_class 'config/application.rb', 'Application', config
-    end
-
-    def generate_rspec
-      bundle_command 'exec rails generate rspec:install'
     end
 
     def configure_puma
@@ -370,37 +274,8 @@ end
       bundle_command 'exec bitters install --path app/assets/stylesheets'
     end
 
-    def gitignore_files
-      remove_file '.gitignore'
-      copy_file 'gitignore_file', '.gitignore'
-      [
-        'app/views/pages',
-        'spec/lib',
-        'spec/controllers',
-        'spec/helpers',
-        'spec/support/matchers',
-        'spec/support/mixins',
-        'spec/support/shared_examples'
-      ].each do |dir|
-        run "mkdir #{dir}"
-        run "touch #{dir}/.keep"
-      end
-    end
-
     def copy_dotfiles
       directory 'dotfiles', '.', force: true
-    end
-
-    def init_git
-      run 'git init'
-    end
-
-    def git_init_commit
-      if user_choose?(:gitcommit)
-        say 'Init commit'
-        run 'git add .'
-        run 'git commit -m "Init commit"'
-      end
     end
 
     def create_heroku_apps(flags)
@@ -436,10 +311,6 @@ you can deploy to staging and production with:
       YML
 
       append_file 'circle.yml', deploy_command
-    end
-
-    def create_github_repo(repo_name)
-      system "hub create #{repo_name}"
     end
 
     def setup_segment
@@ -512,13 +383,6 @@ end
       end
     end
 
-    def install_user_gems_from_github
-      File.readlines('Gemfile').each do |l|
-        possible_gem_name = l.match(/(?:github:\s+)(?:'|")\w+\/(.*)(?:'|")/i)
-        install_from_github possible_gem_name[1] if possible_gem_name
-      end
-    end
-
     # def rvm_bundler_stubs_install
     #   if system "rvm -v | grep 'rvm.io'"
     #     run 'chmod +x $rvm_path/hooks/after_cd_bundler'
@@ -545,138 +409,21 @@ end
       say_color YELLOW, "Remember to run 'rails generate airbrake' with your API key." if user_choose? :airbrake
     end
 
-    private
-
-      def yes_no_question(gem_name, gem_description)
-        gem_name_color = "#{gem_name.capitalize}.\n"
-        variants = { none: 'No', gem_name.to_sym => gem_name_color }
-        choice "Use #{gem_name}? #{gem_description}", variants
+    def delete_comments
+      if options[:clean_comments] || user_choose?(:clean_comments)
+        cleanup_comments 'Gemfile'
+        remove_config_comment_lines
+        remove_routes_comment_lines
       end
+    end
 
-      def choice(selector, variants)
-        unless variants.keys[1..-1].map { |a| options[a] }.include? true
-          values = []
-          say "\n  #{BOLDGREEN}#{selector}#{COLOR_OFF}"
-          variants.each_with_index do |variant, i|
-            values.push variant[0]
-            say "#{i.to_s.rjust(5)}. #{BOLDBLUE}#{variant[1]}#{COLOR_OFF}"
-          end
-          answer = ask_stylish('Enter choice:') until (0...variants.length)
-                                                      .map(&:to_s).include? answer
-          values[answer.to_i] == :none ? nil : values[answer.to_i]
-        end
+    def prevent_double_usage
+      unless !pgsql_db_exist?("#{app_name}_development") || !pgsql_db_exist?("#{app_name}_test")
+        say_color RED, "   YOU HAVE EXISTING DB WITH #{app_name.upcase}!!!"
+        say_color RED, "   WRITE 'Y' TO CONTINUE WITH DELETION OF ALL DATA"
+        say_color RED, '   ANY OTHER INPUT FOR EXIT'
+        exit 0 unless STDIN.gets.chomp == 'Y'
       end
-
-      def multiple_choice(selector, variants)
-        values = []
-        result = []
-        answers = ''
-        say "\n  #{BOLDGREEN}#{selector} Use space as separator#{COLOR_OFF}"
-        variants.each_with_index do |variant, i|
-          values.push variant[0]
-          say "#{i.to_s.rjust(5)}. #{BOLDBLUE}#{variant[0]
-                .to_s.ljust(20)}-#{COLOR_OFF} #{variant[1]}"
-        end
-        loop do
-          answers = ask_stylish('Enter choices:').split ' '
-          break if answers.any? && (answers - (0...variants.length)
-                  .to_a.map(&:to_s)).empty?
-        end
-        answers.delete '0'
-        answers.uniq.each { |a| result.push values[a.to_i] }
-        result
-      end
-
-      def ask_stylish(str)
-        ask "#{BOLDGREEN}  #{str} #{COLOR_OFF}".rjust(10)
-      end
-
-      def say_color(color, str)
-        say "#{color}#{str}#{COLOR_OFF}".rjust(4)
-      end
-
-      def raise_on_missing_translations_in(environment)
-        config = 'config.action_view.raise_on_missing_translations = true'
-        uncomment_lines("config/environments/#{environment}.rb", config)
-      end
-
-      def heroku_adapter
-        @heroku_adapter ||= Adapters::Heroku.new(self)
-      end
-
-      def serve_static_files_line
-        "config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?\n"
-      end
-
-      def add_gems_from_args
-        ARGV.each do |g|
-          next unless g[0] == '-' && g[1] == '-'
-          add_to_user_choise g[2..-1].to_sym
-        end
-      end
-
-      def cleanup_comments(file)
-        accepted_content = File.readlines(file).reject do |line|
-          line =~ /^\s*#.*$/ || line =~ /^$\n/
-        end
-
-        File.open(file, 'w') do |f|
-          accepted_content.each { |line| f.puts line }
-        end
-      end
-
-      def delete_comments
-        if options[:clean_comments] || user_choose?(:clean_comments)
-          cleanup_comments 'Gemfile'
-          remove_config_comment_lines
-          remove_routes_comment_lines
-        end
-      end
-
-      # does not recognize variable nesting, but now it does not matter
-      def cover_def_by(file, lookup_str, external_def)
-        expect_end = 0
-        found = false
-        accepted_content = ''
-        File.readlines(file).each do |line|
-          expect_end += 1 if found && line =~ /\sdo\s/
-          expect_end -= 1 if found && line =~ /(\s+end|^end)/
-          if line =~ Regexp.new(lookup_str)
-            accepted_content += "#{external_def}\n#{line}"
-            expect_end += 1
-            found = true
-          else
-            accepted_content += line
-          end
-          if found && expect_end == 0
-            accepted_content += "\nend"
-            found = false
-          end
-        end
-        File.open(file, 'w') do |f|
-          f.puts accepted_content
-        end
-      end
-
-      def install_from_github(gem_name)
-        # TODO: in case of bundler update `bundle show` do now work any more
-        return true
-
-        return nil unless gem_name
-        path = `cd #{Dir.pwd} && bundle show #{gem_name}`.chomp
-        run "cd #{path} && bundle exec gem build #{gem_name}.gemspec && bundle exec gem install *.gem"
-      end
-
-      def user_choose?(g)
-        AppBuilder.user_choice.include? g
-      end
-
-      def add_to_user_choise(g)
-        AppBuilder.user_choice.push g
-      end
-
-      def rails_generator(command)
-        bundle_command "exec rails generate #{command}"
-      end
+    end
   end
 end

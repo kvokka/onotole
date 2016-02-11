@@ -8,7 +8,7 @@ Style/StringLiterals:
   ConsistentQuotesInMultiline: true
 Metrics/ClassLength:
   CountComments: false
-  Max: 700
+  Max: 500
 Metrics/ModuleLength:
   CountComments: false
   Max: 500

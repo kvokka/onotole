@@ -25,7 +25,8 @@ Metrics/MethodLength:
   CountComments: false  # count full line comments?
   Max: 40
 Style/StringLiterals:
-  EnforcedStyle: single_quotes
+  EnforcedStyle: double_quotes
+  ConsistentQuotesInMultiline: true
 Style/StringLiteralsInInterpolation:
   EnforcedStyle: single_quotes
 NumericLiterals:
@@ -42,3 +43,4 @@ AllCops:
   TargetRubyVersion: 2.3
 Metrics/AbcSize:
   Max: 25
+inherit_from: .rubocop_todo.yml

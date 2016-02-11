@@ -1,2 +1,2 @@
 #!/bin/sh
-gem build onotole.gemspec && gem install onotole
+rm onotole-*.gem && gem build onotole.gemspec && gem install onotole

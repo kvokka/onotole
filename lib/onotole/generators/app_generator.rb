@@ -44,6 +44,7 @@ module Onotole
     end
 
     def onotole_customization
+      invoke :prevent_double_usage
       invoke :customize_gemfile
       invoke :custom_gems_setup
       # invoke :bundler_stubs_install
@@ -285,6 +286,10 @@ module Onotole
     def post_init
       build :post_init
       build :add_bullet_gem_configuration
+    end
+
+    def prevent_double_usage
+      build :prevent_double_usage
     end
 
     protected

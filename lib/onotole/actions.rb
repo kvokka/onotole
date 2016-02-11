@@ -30,5 +30,13 @@ module Onotole
         before: "\nend"
       )
     end
+
+    def ask_stylish(str)
+      ask "#{BOLDGREEN}  #{str} #{COLOR_OFF}".rjust(10)
+    end
+
+    def say_color(color, str)
+      say "#{color}#{str}#{COLOR_OFF}".rjust(4)
+    end
   end
 end
