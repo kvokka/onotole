@@ -73,6 +73,8 @@ pack will not be installed with any gem option.
  provides an easy-to-use interface for managing your data
  * [activeadmin](https://github.com/activeadmin/activeadmin) Rails framework for 
 creating elegant backends for website administration. 
+ * `*`[rubycritic](https://github.com/whitesmith/rubycritic) A Ruby code quality 
+ reporter
 
 
 Mandatory installation gem list you will find in `Gemfile` section

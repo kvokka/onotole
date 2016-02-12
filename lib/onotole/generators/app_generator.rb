@@ -31,9 +31,9 @@ module Onotole
       class_option :clean_comments, type: :boolean, aliases: '--clean_comments', default: false,
                                     desc: 'Clean up comments in config & routes files'
 
-      GEMPROCLIST.each do |g|
-        class_option g.to_sym, type: :boolean, aliases: "--#{g}", default: false,
-                               desc: "#{g.to_s.humanize} gem install"
+      GEMPROCLIST.each do |gem_name|
+        class_option gem_name.to_sym, type: :boolean, aliases: "--#{gem_name}",
+              default: false, desc: "#{gem_name.to_s.humanize} gem install"
       end
       super
     end
@@ -192,17 +192,15 @@ module Onotole
     # end
 
     def setup_git
-      unless options[:skip_git]
-        say 'Initializing git'
-        invoke :init_git
-      end
+      return if options[:skip_git]
+      say 'Initializing git'
+      invoke :init_git
     end
 
     def setup_gitignore
-      unless options[:skip_git]
-        say 'Replace .gitignore'
-        invoke :setup_gitignore
-      end
+      return if options[:skip_git]
+      say 'Replace .gitignore'
+      invoke :setup_gitignore
     end
 
     def git_first_commit
@@ -225,10 +223,10 @@ module Onotole
     end
 
     def create_github_repo
-      if !options[:skip_git] && options[:github]
-        say 'Creating Github repo'
-        build :create_github_repo, options[:github]
-      end
+      return if options[:skip_git]
+      return unless options[:github]
+      say 'Creating Github repo'
+      build :create_github_repo, options[:github]
     end
 
     def setup_segment

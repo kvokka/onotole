@@ -41,6 +41,7 @@ module Onotole
                    will_paginate:       'Easy pagination implement',
                    faker:               'Gem for generate fake data in testing',
                    rubocop:             'Code inspector and code formatting tool',
+                   rubycritic:          'A Ruby code quality reporter',
                    guard:               'Guard (with RSpec, livereload, rails, migrate, bundler)',
                    guard_rubocop:       'Auto-declare code miss in guard',
                    bundler_audit:       'Extra possibilities for gems version control',

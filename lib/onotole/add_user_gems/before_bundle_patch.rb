@@ -182,5 +182,10 @@ module Onotole
       inject_into_file('Gemfile', "\ngem 'rails_admin'", after: '# user_choice')
       puts
     end
+
+    def add_rubycritic_gem
+      inject_into_file('Gemfile', "\n  gem 'rubycritic', :require => false",
+                       after: 'group :development do')
+    end
   end
 end

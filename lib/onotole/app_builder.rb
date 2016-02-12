@@ -392,12 +392,12 @@ end
 
     def user_gems_from_args_or_default_set
       gems_flags = []
-      options.each { |k, v| gems_flags.push k.to_sym if v == true }
+      options.each { |gem, usage| gems_flags.push(gem.to_sym) if usage }
       gems = GEMPROCLIST & gems_flags
       if gems.empty?
         AppBuilder.user_choice = DEFAULT_GEMSET
       else
-        gems.each { |g| AppBuilder.user_choice << g }
+        gems.each { |gem| AppBuilder.user_choice << gem }
       end
       add_user_gems
     end

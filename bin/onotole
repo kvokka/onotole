@@ -13,6 +13,7 @@ GEMPROCLIST = Onotole::AppBuilder.public_instance_methods.map(&:to_s)
 
 DEFAULT_GEMSET = [:slim, 
                   :faker, 
+                  :rubycritic,
                   :guard,
                   :rubocop, 
                   :meta_request, 

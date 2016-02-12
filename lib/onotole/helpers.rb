@@ -17,7 +17,8 @@ module Onotole
         end
         answer = ask_stylish('Enter choice:') until (0...variants.length)
                                                     .map(&:to_s).include? answer
-        values[answer.to_i] == :none ? nil : values[answer.to_i]
+        numeric_answer = answer.to_i
+        numeric_answer == :none ? nil : numeric_answer
       end
     end
 
@@ -37,7 +38,7 @@ module Onotole
                 .to_a.map(&:to_s)).empty?
       end
       answers.delete '0'
-      answers.uniq.each { |a| result.push values[a.to_i] }
+      answers.uniq.each { |answer| result.push values[answer.to_i] }
       result
     end
 
@@ -55,28 +56,28 @@ module Onotole
     end
 
     def add_gems_from_args
-      ARGV.each do |g|
-        next unless g[0] == '-' && g[1] == '-'
-        add_to_user_choise g[2..-1].to_sym
+      ARGV.each do |gem_name|
+        next unless gem_name.slice(0, 2) == '--'
+        add_to_user_choise gem_name[2..-1].to_sym
       end
     end
 
-    def cleanup_comments(file)
-      accepted_content = File.readlines(file).reject do |line|
+    def cleanup_comments(file_name)
+      accepted_content = File.readlines(file_name).reject do |line|
         line =~ /^\s*#.*$/ || line =~ /^$\n/
       end
 
-      File.open(file, 'w') do |f|
-        accepted_content.each { |line| f.puts line }
+      File.open(file_name, 'w') do |file|
+        accepted_content.each { |line| file.puts line }
       end
     end
 
     # does not recognize variable nesting, but now it does not matter
-    def cover_def_by(file, lookup_str, external_def)
+    def cover_def_by(file_name, lookup_str, external_def)
       expect_end = 0
       found = false
       accepted_content = ''
-      File.readlines(file).each do |line|
+      File.readlines(file_name).each do |line|
         expect_end += 1 if found && line =~ /\sdo\s/
         expect_end -= 1 if found && line =~ /(\s+end|^end)/
         if line =~ Regexp.new(lookup_str)
@@ -91,9 +92,7 @@ module Onotole
           found = false
         end
       end
-      File.open(file, 'w') do |f|
-        f.puts accepted_content
-      end
+      File.open(file_name, 'w') { |file| file.puts accepted_content }
     end
 
     def install_from_github(_gem_name)
@@ -105,12 +104,12 @@ module Onotole
       # run "cd #{path} && bundle exec gem build #{gem_name}.gemspec && bundle exec gem install *.gem"
     end
 
-    def user_choose?(g)
-      AppBuilder.user_choice.include? g
+    def user_choose?(gem)
+      AppBuilder.user_choice.include? gem
     end
 
-    def add_to_user_choise(g)
-      AppBuilder.user_choice.push g
+    def add_to_user_choise(gem)
+      AppBuilder.user_choice.push gem
     end
 
     def rails_generator(command)
