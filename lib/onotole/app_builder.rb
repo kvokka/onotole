@@ -1,13 +1,7 @@
 # frozen_string_literal: true
 require 'forwardable'
-require 'onotole/add_user_gems/user_gems_menu_questions'
-require 'onotole/add_user_gems/edit_menu_questions'
-require 'onotole/add_user_gems/before_bundle_patch'
-require 'onotole/add_user_gems/after_install_patch'
-require 'onotole/helpers'
-require 'onotole/git'
-require 'onotole/tests'
-require 'onotole/mail'
+# require 'pry'
+Dir['lib/onotole/**/*.rb'].each { |file| require file.slice(4..-4) }
 
 module Onotole
   class AppBuilder < Rails::AppBuilder
@@ -20,6 +14,8 @@ module Onotole
     include Onotole::Git
     include Onotole::Tests
     include Onotole::Mail
+    include Onotole::Goodbye
+    include Onotole::FrontendDefault
     extend Forwardable
 
     @use_asset_pipelline = true
@@ -49,11 +45,6 @@ module Onotole
       template 'README.md.erb', 'README.md'
     end
 
-    def raise_on_delivery_errors
-      replace_in_file 'config/environments/development.rb',
-                      'raise_delivery_errors = false', 'raise_delivery_errors = true'
-    end
-
     def add_bullet_gem_configuration
       config = <<-RUBY
   config.after_initialize do
@@ -73,11 +64,6 @@ module Onotole
 
     def raise_on_unpermitted_parameters
       config = "\n    config.action_controller.action_on_unpermitted_parameters = :raise\n"
-      inject_into_class 'config/application.rb', 'Application', config
-    end
-
-    def configure_quiet_assets
-      config = "\n    config.quiet_assets = true\n"
       inject_into_class 'config/application.rb', 'Application', config
     end
 
@@ -130,22 +116,6 @@ module Onotole
       )
     end
 
-    def setup_asset_host
-      replace_in_file 'config/environments/production.rb',
-                      "# config.action_controller.asset_host = 'http://assets.example.com'",
-                      'config.action_controller.asset_host = ENV.fetch("ASSET_HOST", ENV.fetch("APPLICATION_HOST"))'
-
-      replace_in_file 'config/initializers/assets.rb',
-                      "config.assets.version = '1.0'",
-                      'config.assets.version = (ENV["ASSETS_VERSION"] || "1.0")'
-
-      inject_into_file(
-        'config/environments/production.rb',
-        '  config.static_cache_control = "public, max-age=#{1.year.to_i}"',
-        after: serve_static_files_line
-      )
-    end
-
     def setup_staging_environment
       staging_file = 'config/environments/staging.rb'
       copy_file 'staging.rb', staging_file
@@ -168,23 +138,8 @@ end
       remove_file 'config/initializers/wrap_parameters.rb'
     end
 
-    def create_partials_directory
-      empty_directory 'app/views/application'
-    end
-
-    def create_shared_flashes
-      copy_file '_flashes.html.erb', 'app/views/application/_flashes.html.erb'
-      copy_file 'flashes_helper.rb', 'app/helpers/flashes_helper.rb'
-    end
-
     def create_shared_javascripts
       copy_file '_javascript.html.erb', 'app/views/application/_javascript.html.erb'
-    end
-
-    def create_application_layout
-      template 'onotole_layout.html.erb.erb',
-               'app/views/layouts/application.html.erb',
-               force: true
     end
 
     def use_postgres_config_template
@@ -258,20 +213,10 @@ end
       copy_file 'Procfile', 'Procfile'
     end
 
-    def setup_stylesheets
-      remove_file 'app/assets/stylesheets/application.css'
-      copy_file 'application.scss',
-                'app/assets/stylesheets/application.scss'
-    end
-
     def install_refills
       rails_generator 'refills:import flashes'
       run 'rm app/views/refills/_flashes.html.erb'
       run 'rmdir app/views/refills'
-    end
-
-    def install_bitters
-      bundle_command 'exec bitters install --path app/assets/stylesheets'
     end
 
     def copy_dotfiles
@@ -313,11 +258,6 @@ you can deploy to staging and production with:
       append_file 'circle.yml', deploy_command
     end
 
-    def setup_segment
-      copy_file '_analytics.html.erb',
-                'app/views/application/_analytics.html.erb'
-    end
-
     def setup_spring
       bundle_command 'exec spring binstub --all'
       bundle_command 'exec spring stop'
@@ -327,19 +267,6 @@ you can deploy to staging and production with:
       copy_file 'browserslist', 'browserslist'
       copy_file 'errors.rb', 'config/initializers/errors.rb'
       copy_file 'json_encoding.rb', 'config/initializers/json_encoding.rb'
-    end
-
-    def customize_error_pages
-      meta_tags = <<-EOS
-  <meta charset="utf-8" />
-  <meta name="ROBOTS" content="NOODP" />
-  <meta name="viewport" content="initial-scale=1" />
-      EOS
-
-      %w(500 404 422).each do |page|
-        inject_into_file "public/#{page}.html", meta_tags, after: "<head>\n"
-        replace_in_file "public/#{page}.html", /<!--.+-->\n/, ''
-      end
     end
 
     def remove_config_comment_lines
@@ -402,19 +329,11 @@ end
       add_user_gems
     end
 
-    def show_goodbye_message
-      say_color BOLDGREEN, "Congratulations! Onotole gives you: 'Intellect+= 1'"
-      say_color BOLDGREEN, "You can 'git push -u origin master' to your new repo
-       #{app_name} or check log for errors" if user_choose? :create_github_repo
-      say_color YELLOW, "Remember to run 'rails generate airbrake' with your API key." if user_choose? :airbrake
-    end
-
     def delete_comments
-      if options[:clean_comments] || user_choose?(:clean_comments)
-        cleanup_comments 'Gemfile'
-        remove_config_comment_lines
-        remove_routes_comment_lines
-      end
+      return unless options[:clean_comments] || user_choose?(:clean_comments)
+      cleanup_comments 'Gemfile'
+      remove_config_comment_lines
+      remove_routes_comment_lines
     end
 
     def prevent_double_usage

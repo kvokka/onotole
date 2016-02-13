@@ -187,5 +187,10 @@ module Onotole
       inject_into_file('Gemfile', "\n  gem 'rubycritic', :require => false",
                        after: 'group :development do')
     end
+
+    def add_railroady_gem
+      inject_into_file('Gemfile', "\n  gem 'railroady', :require => false",
+                       after: 'group :development do')
+    end
   end
 end

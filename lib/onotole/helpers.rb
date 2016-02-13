@@ -121,7 +121,8 @@ module Onotole
     end
 
     def clean_by_rubocop
-      bundle_command 'exec rubocop --auto-correct' if user_choose?(:rubocop)
+      return unless user_choose?(:rubocop)
+      bundle_command 'exec rubocop --auto-correct'
     end
   end
 end

@@ -13,7 +13,7 @@ module Onotole
   run "mkdir #{dir}"
   run "touch #{dir}/.keep"
 end
-      bundle_command 'exec rails generate rspec:install'
+      rails_generator 'rspec:install'
     end
 
     def configure_capybara_webkit

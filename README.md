@@ -75,6 +75,7 @@ pack will not be installed with any gem option.
 creating elegant backends for website administration. 
  * `*`[rubycritic](https://github.com/whitesmith/rubycritic) A Ruby code quality 
  reporter
+ * [railroady](https://github.com/preston/railroady) Model and controller UML class diagram generator. Originally based on the "railroad" plugin
 
 
 Mandatory installation gem list you will find in `Gemfile` section
