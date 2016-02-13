@@ -8,18 +8,20 @@ module Onotole
     end
 
     def choice(selector, variants)
-      unless variants.keys[1..-1].map { |a| options[a] }.include? true
-        values = []
-        say "\n  #{BOLDGREEN}#{selector}#{COLOR_OFF}"
-        variants.each_with_index do |variant, i|
-          values.push variant[0]
-          say "#{i.to_s.rjust(5)}. #{BOLDBLUE}#{variant[1]}#{COLOR_OFF}"
-        end
-        answer = ask_stylish('Enter choice:') until (0...variants.length)
-                                                    .map(&:to_s).include? answer
-        numeric_answer = answer.to_i
-        numeric_answer == :none ? nil : numeric_answer
+      return if variant_in_options? variants
+      values = variants.keys
+      say "\n  #{BOLDGREEN}#{selector}#{COLOR_OFF}"
+      variants.each_with_index do |variant, i|
+        say "#{i.to_s.rjust(5)}. #{BOLDBLUE}#{variant[1]}#{COLOR_OFF}"
       end
+      numeric_answers = (0...variants.length).map(&:to_s)
+      answer = ask_stylish('Enter choice:') until numeric_answers.include? answer
+      symbol_answer = values[answer.to_i]
+      symbol_answer == :none ? nil : symbol_answer
+    end
+
+    def variant_in_options?(variants)
+      variants.keys[1..-1].map { |a| options[a] }.include? true
     end
 
     def multiple_choice(selector, variants)

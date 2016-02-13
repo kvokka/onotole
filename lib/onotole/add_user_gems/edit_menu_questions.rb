@@ -31,8 +31,9 @@ module Onotole
       variants = { none:        'None',
                    activeadmin: 'Activeadmin CMS',
                    rails_admin: 'Rails admin CMS',
-                   rails_db:    'Rails DB. Simple pretty view in browser & xls export for models' }
-      gem = choice 'Select CMS: ', variants
+                   rails_db:    'Rails DB. Simple pretty view in browser & xls export for models',
+                   typus:       'Typus control panel to allow trusted users edit structured content.' }
+      gem = choice 'Select control panel or CMS: ', variants
       add_to_user_choise(gem) if gem
     end
 

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 require 'forwardable'
-# require 'pry'
+require 'pry'
 Dir['lib/onotole/**/*.rb'].each { |file| require file.slice(4..-4) }
 
 module Onotole

@@ -4,10 +4,10 @@ module Onotole
     def post_init
       install_queue = [:devise,
                        :responders,
+                       :typus,
                        :annotate,
                        :overcommit,
                        :activeadmin,
-                       :administrate,
                        :rails_admin,
                        :guard,
                        :guard_rubocop,
@@ -132,6 +132,12 @@ end
 
     def after_install_rails_admin
       rails_generator 'rails_admin:install'
+    end
+
+    def after_install_typus
+      rails_generator 'typus'
+      rails_generator 'typus:migration'
+      rails_generator 'typus:views'
     end
   end
 end
