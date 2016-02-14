@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 module Onotole
-  module FrontendDefault
+  module DefaultFrontend
     def configure_quiet_assets
       config = "\n    config.quiet_assets = true\n"
       inject_into_class 'config/application.rb', 'Application', config
@@ -63,6 +63,16 @@ module Onotole
 
     def create_partials_directory
       empty_directory 'app/views/application'
+    end
+
+    def install_refills
+      rails_generator 'refills:import flashes'
+      run 'rm app/views/refills/_flashes.html.erb'
+      run 'rmdir app/views/refills'
+    end
+
+    def create_shared_javascripts
+      copy_file '_javascript.html.erb', 'app/views/application/_javascript.html.erb'
     end
   end
 end

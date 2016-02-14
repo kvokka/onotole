@@ -115,7 +115,7 @@ module Onotole
     end
 
     def rails_generator(command)
-      bundle_command "exec rails generate #{command} -f"
+      bundle_command "exec rails generate #{command} -f #{quiet_suffix}"
     end
 
     def pgsql_db_exist?(db_name)
@@ -124,7 +124,30 @@ module Onotole
 
     def clean_by_rubocop
       return unless user_choose?(:rubocop)
-      bundle_command 'exec rubocop --auto-correct'
+      bundle_command "exec rubocop --auto-correct #{quiet_suffix}"
+    end
+
+    def quiet_suffix
+      AppBuilder.quiet ? ' > /dev/null' : ''
+    end
+
+    def user_gems_from_args_or_default_set
+      gems_flags = []
+      options.each { |gem, usage| gems_flags.push(gem.to_sym) if usage }
+      gems = GEMPROCLIST & gems_flags
+      if gems.empty?
+        AppBuilder.user_choice = DEFAULT_GEMSET
+      else
+        gems.each { |gem| AppBuilder.user_choice << gem }
+      end
+      add_user_gems
+    end
+
+    def add_user_gems
+      GEMPROCLIST.each do |g|
+        send "add_#{g}_gem" if user_choose? g.to_sym
+      end
+      # add_foo_bar_gem if user_choose?(:foo) && user_choose?(:bar)
     end
   end
 end

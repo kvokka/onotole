@@ -9,6 +9,7 @@ RSpec.describe 'Heroku' do
     end
 
     it 'suspends a project for Heroku' do
+      allow(Onotole::AppBuilder).to receive(:prevent_double_usage)
       app_name = OnotoleTestHelpers::APP_NAME.dasherize
 
       expect(FakeHeroku).to(
@@ -81,6 +82,7 @@ RSpec.describe 'Heroku' do
     end
 
     it 'suspends a project with extra Heroku flags' do
+      allow(Onotole::AppBuilder).to receive(:prevent_double_usage)
       expect(FakeHeroku).to have_created_app_for('staging', '--region eu')
       expect(FakeHeroku).to have_created_app_for('production', '--region eu')
     end
