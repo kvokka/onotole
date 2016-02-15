@@ -73,6 +73,10 @@ pack will not be installed with any gem option.
  provides an easy-to-use interface for managing your data
  * [activeadmin](https://github.com/activeadmin/activeadmin) Rails framework for 
 creating elegant backends for website administration. 
+ * [ActiveAdminImport](https://github.com/activeadmin-plugins/active_admin_import) 
+ Based on ActiveRecord-import gem - the most efficient way to import for ActiveAdmin
+ * [ActiveAdminTheme](https://github.com/activeadmin-plugins/active_admin_theme) 
+ Flat skin for ActiveAdmin
  * `*`[rubycritic](https://github.com/whitesmith/rubycritic) A Ruby code quality 
  reporter
  * [railroady](https://github.com/preston/railroady) Model and controller UML 

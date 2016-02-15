@@ -13,6 +13,7 @@ module Onotole
                        :guard_rubocop,
                        :bootstrap3_sass,
                        :bootstrap3,
+                       :active_admin_theme,
                        :normalize,
                        :tinymce,
                        :rubocop,
@@ -138,6 +139,11 @@ end
       rails_generator 'typus'
       rails_generator 'typus:migration'
       rails_generator 'typus:views'
+    end
+
+    def after_install_active_admin_theme
+      append_file('app/assets/stylesheets/active_admin.scss',
+                  "\n@import 'wigu/active_admin_theme';")
     end
   end
 end

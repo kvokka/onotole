@@ -165,7 +165,6 @@ module Onotole
 
     def add_rails_admin_gem
       inject_into_file('Gemfile', "\ngem 'rails_admin'", after: '# user_choice')
-      puts
     end
 
     def add_rubycritic_gem
@@ -195,6 +194,14 @@ module Onotole
       inject_into_file('Gemfile', "\ngem 'bootstrap-kaminari-views'",
                        after: '# user_choice') if user_choose?(:bootstrap3) ||
                                                   user_choose?(:bootstrap3_sass)
+    end
+
+    def add_active_admin_import_gem
+      inject_into_file('Gemfile', "\ngem 'active_admin_import'", after: '# user_choice')
+    end
+
+    def add_active_admin_theme_gem
+      inject_into_file('Gemfile', "\ngem 'active_admin_theme'", after: '# user_choice')
     end
   end
 end

@@ -35,6 +35,17 @@ module Onotole
                    typus:       'Typus control panel to allow trusted users edit structured content.' }
       gem = choice 'Select control panel or CMS: ', variants
       add_to_user_choise(gem) if gem
+      show_active_admin_plugins_submenu
+    end
+
+    def show_active_admin_plugins_submenu
+      return unless user_choose? :activeadmin
+      variants = {            none:                'None',
+                              active_admin_import: 'Active_admin_import - the most efficient way to import for ActiveAdmin',
+                              active_admin_theme:  'Active_admin_theme - flat skin for activeadmin' }
+      multiple_choice('Select activeadmin plug-ins.', variants).each do |gem|
+        add_to_user_choise gem
+      end
     end
 
     def choose_pagimation
@@ -51,7 +62,6 @@ module Onotole
 
     def choose_undroup_gems
       variants = { none:                'None',
-
                    faker:               'Gem for generate fake data in testing',
                    rubocop:             'Code inspector and code formatting tool',
                    rubycritic:          'A Ruby code quality reporter',
@@ -92,12 +102,11 @@ module Onotole
     end
 
     def ask_cleanup_commens
-      unless options[:clean_comments]
-        variants = { none: 'No', clean_comments: 'Yes' }
-        sel = choice 'Delete comments in Gemfile, routes.rb & config files? ',
-                     variants
-        add_to_user_choise(sel) unless sel == :none
-      end
+      return if options[:clean_comments]
+      variants = { none: 'No', clean_comments: 'Yes' }
+      sel = choice 'Delete comments in Gemfile, routes.rb & config files? ',
+                   variants
+      add_to_user_choise(sel) unless sel == :none
     end
 
     def add_github_repo_creation_choice
