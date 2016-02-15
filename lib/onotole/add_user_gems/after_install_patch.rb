@@ -3,6 +3,7 @@ module Onotole
   module AfterInstallPatch
     def post_init
       install_queue = [:devise,
+                       :paper_trail,
                        :responders,
                        :typus,
                        :annotate,
@@ -144,6 +145,10 @@ end
     def after_install_active_admin_theme
       append_file('app/assets/stylesheets/active_admin.scss',
                   "\n@import 'wigu/active_admin_theme';")
+    end
+
+    def after_install_paper_trail
+      rails_generator 'paper_trail:install'
     end
   end
 end

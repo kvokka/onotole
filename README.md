@@ -83,6 +83,8 @@ creating elegant backends for website administration.
  class diagram generator. Originally based on the "railroad" plugin
  * [typus](https://github.com/typus/typus) Ruby on Rails control panel to allow 
  trusted users edit structured content. http://docs.typuscmf.com
+ * [paper_trail](https://github.com/airblade/paper_trail) Track changes to your 
+ models' data. Good for auditing or versioning.
 
 
 Mandatory installation gem list you will find in `Gemfile` section

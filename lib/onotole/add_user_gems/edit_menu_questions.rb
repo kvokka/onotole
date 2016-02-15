@@ -77,6 +77,7 @@ module Onotole
                    overcommit:          'A fully configurable and extendable Git hook manager',
                    activerecord_import: 'A library for bulk inserting data using ActiveRecord.',
                    railroady:           'Model and controller UML class diagram generator.',
+                   paper_trail:         'Track changes to your models data. For auditing or versioning.',
                    meta_request:        'Rails meta panel in chrome console.'\
                    " Very usefull in\n#{' ' * 24}AJAX debugging. Link for chrome"\
                    " add-on in Gemfile.\n#{' ' * 24}Do not delete comments if you need this link"

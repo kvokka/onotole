@@ -203,5 +203,9 @@ module Onotole
     def add_active_admin_theme_gem
       inject_into_file('Gemfile', "\ngem 'active_admin_theme'", after: '# user_choice')
     end
+
+    def add_paper_trail_gem
+      inject_into_file('Gemfile', "\ngem 'paper_trail'", after: '# user_choice')
+    end
   end
 end
