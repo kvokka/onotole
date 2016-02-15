@@ -112,14 +112,6 @@ module Onotole
       copy_file 'devise_rspec.rb', 'spec/support/devise.rb'
     end
 
-    def add_will_paginate_gem
-      inject_into_file('Gemfile', "\ngem 'will_paginate', '~> 3.0.6'",
-                       after: '# user_choice')
-      inject_into_file('Gemfile', "\ngem 'will_paginate-bootstrap'",
-                       after: '# user_choice') if user_choose?(:bootstrap3) ||
-                                                  user_choose?(:bootstrap3_sass)
-    end
-
     def add_responders_gem
       inject_into_file('Gemfile', "\ngem 'responders'", after: '# user_choice')
     end
@@ -189,9 +181,20 @@ module Onotole
       inject_into_file('Gemfile', "\n  gem 'typus', github: 'typus/typus'", after: '# user_choice')
     end
 
+    def add_will_paginate_gem
+      inject_into_file('Gemfile', "\ngem 'will_paginate', '~> 3.0.6'",
+                       after: '# user_choice')
+      inject_into_file('Gemfile', "\ngem 'will_paginate-bootstrap'",
+                       after: '# user_choice') if user_choose?(:bootstrap3) ||
+                                                  user_choose?(:bootstrap3_sass)
+    end
+
     def add_kaminari_gem
       inject_into_file('Gemfile', "\ngem 'kaminari'", after: '# user_choice')
       copy_file 'kaminari.rb', 'config/initializers/kaminari.rb'
+      inject_into_file('Gemfile', "\ngem 'bootstrap-kaminari-views'",
+                       after: '# user_choice') if user_choose?(:bootstrap3) ||
+                                                  user_choose?(:bootstrap3_sass)
     end
   end
 end
