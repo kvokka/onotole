@@ -78,9 +78,9 @@ module Onotole
 
     def configure_simple_form
       if user_choose?(:bootstrap3_sass) || user_choose?(:bootstrap3)
-        rails_generator 'simple_form:install --bootstrap'
+        rails_generator "simple_form:install --bootstrap  #{quiet_suffix}"
       else
-        rails_generator 'simple_form:install'
+        rails_generator "simple_form:install #{quiet_suffix}"
       end
     end
 

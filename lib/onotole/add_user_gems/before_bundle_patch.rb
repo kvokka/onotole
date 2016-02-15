@@ -188,5 +188,10 @@ module Onotole
     def add_typus_gem
       inject_into_file('Gemfile', "\n  gem 'typus', github: 'typus/typus'", after: '# user_choice')
     end
+
+    def add_kaminari_gem
+      inject_into_file('Gemfile', "\ngem 'kaminari'", after: '# user_choice')
+      copy_file 'kaminari.rb', 'config/initializers/kaminari.rb'
+    end
   end
 end

@@ -37,9 +37,21 @@ module Onotole
       add_to_user_choise(gem) if gem
     end
 
+    def choose_pagimation
+      if user_choose? :activeadmin
+        add_to_user_choise(:kaminari)
+        return
+      end
+      variants = { none:          'None',
+                   will_paginate: 'Will paginate',
+                   kaminari:      'Kaminari' }
+      gem = choice 'Select paginator: ', variants
+      add_to_user_choise(gem) if gem
+    end
+
     def choose_undroup_gems
       variants = { none:                'None',
-                   will_paginate:       'Easy pagination implement',
+
                    faker:               'Gem for generate fake data in testing',
                    rubocop:             'Code inspector and code formatting tool',
                    rubycritic:          'A Ruby code quality reporter',
