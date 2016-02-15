@@ -182,8 +182,7 @@ module Onotole
     end
 
     def add_railroady_gem
-      inject_into_file('Gemfile', "\n  gem 'railroady', :require => false",
-                       after: 'group :development do')
+      inject_into_file('Gemfile', "\n  gem 'railroady'", after: 'group :development do')
     end
 
     def add_typus_gem

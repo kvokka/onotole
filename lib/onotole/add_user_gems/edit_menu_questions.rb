@@ -29,7 +29,7 @@ module Onotole
 
     def choose_cms_engine
       variants = { none:        'None',
-                   activeadmin: 'Activeadmin CMS',
+                   activeadmin: 'Activeadmin CMS (if devise selected Admin model will create automatic)',
                    rails_admin: 'Rails admin CMS',
                    rails_db:    'Rails DB. Simple pretty view in browser & xls export for models',
                    typus:       'Typus control panel to allow trusted users edit structured content.' }
