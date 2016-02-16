@@ -110,6 +110,7 @@ module Onotole
       inject_into_file('app/controllers/application_controller.rb', devise_conf,
                        after: 'protect_from_forgery with: :exception')
       copy_file 'devise_rspec.rb', 'spec/support/devise.rb'
+      copy_file 'devise.ru.yml', 'config/locales/devise.ru.yml'
     end
 
     def add_responders_gem
@@ -157,6 +158,11 @@ module Onotole
 
     def add_activeadmin_gem
       inject_into_file('Gemfile', "\ngem 'activeadmin', github: 'activeadmin'", after: '# user_choice')
+      copy_file 'activeadmin.en.yml', 'config/locales/activeadmin.en.yml'
+      copy_file 'activeadmin.ru.yml', 'config/locales/activeadmin.ru.yml'
+      # it still live https://github.com/Prelang/feedback/issues/14 and this patch helps
+      run 'mkdir app/inputs'
+      copy_file 'inet_input.rb', 'app/inputs/inet_input.rb'
     end
 
     # def add_administrate_gem

@@ -79,9 +79,11 @@ end
       rails_generator 'delayed_job:active_record'
     end
 
+    # copy ru_locale here also. Update in future
     def configure_time_formats
       remove_file 'config/locales/en.yml'
       template 'config_locales_en.yml.erb', 'config/locales/en.yml'
+      template 'config_locales_ru.yml.erb', 'config/locales/ru.yml'
     end
 
     def configure_i18n_for_missing_translations
