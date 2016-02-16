@@ -207,5 +207,9 @@ module Onotole
     def add_paper_trail_gem
       inject_into_file('Gemfile', "\ngem 'paper_trail'", after: '# user_choice')
     end
+
+    def add_validates_timeliness_gem
+      inject_into_file('Gemfile', "\ngem 'validates_timeliness'", after: '# user_choice')
+    end
   end
 end

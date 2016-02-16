@@ -3,6 +3,7 @@ module Onotole
   module AfterInstallPatch
     def post_init
       install_queue = [:devise,
+                       :validates_timeliness,
                        :paper_trail,
                        :responders,
                        :typus,
@@ -28,7 +29,7 @@ module Onotole
       if AppBuilder.devise_model
         rails_generator "devise #{AppBuilder.devise_model.titleize}"
         inject_into_file('app/controllers/application_controller.rb',
-                         "\nbefore_action :authenticate_#{AppBuilder.devise_model.titleize}!",
+                         "\nbefore_action :authenticate_#{AppBuilder.devise_model.downcase}!",
                          after: 'before_action :configure_permitted_parameters, if: :devise_controller?')
       end
       if user_choose?(:bootstrap3)
@@ -149,6 +150,10 @@ end
 
     def after_install_paper_trail
       rails_generator 'paper_trail:install'
+    end
+
+    def after_install_validates_timeliness
+      rails_generator 'validates_timeliness:install'
     end
   end
 end

@@ -85,6 +85,9 @@ creating elegant backends for website administration.
  trusted users edit structured content. http://docs.typuscmf.com
  * [paper_trail](https://github.com/airblade/paper_trail) Track changes to your 
  models' data. Good for auditing or versioning.
+ * [validates_timeliness](https://github.com/adzap/validates_timeliness) 
+ Date and time validation plugin for ActiveModel and Rails. Supports multiple 
+ ORMs and allows custom date/time formats.
 
 
 Mandatory installation gem list you will find in `Gemfile` section
