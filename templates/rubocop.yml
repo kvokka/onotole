@@ -45,5 +45,5 @@ AllCops:
     - 'tmp/**/*'    
   TargetRubyVersion: 2.3
 Metrics/AbcSize:
-  Max: 25
+  Max: 35
 inherit_from: .rubocop_todo.yml
