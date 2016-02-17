@@ -2,7 +2,7 @@
 
 New Rails project wizard. Onotole will help!
 
-[![Onotole](http://sobesednik.ru/sites/default/files/styles/420x315/public/complex_images/images/vasserman-anatoliy1-rl_2.jpg?itok=c43MW8vK)](https://www.youtube.com/watch?v=wAuqhLpV2DY)
+[![Onotole](http://i.imgur.com/8VsFFvy.jpg?1)](https://www.youtube.com/watch?v=wAuqhLpV2DY)
 
 Read more [ENG](https://en.wikipedia.org/wiki/Anatoly_Wasserman) | 
 [RUS](https://ru.wikipedia.org/wiki/%D0%92%D0%B0%D1%81%D1%81%D0%B5%D1%80%D0%BC%D0%B0%D0%BD,_%D0%90%D0%BD%D0%B0%D1%82%D0%BE%D0%BB%D0%B8%D0%B9_%D0%90%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%D0%BE%D0%B2%D0%B8%D1%87) | [RUS lurk](http://lurkmore.to/%D0%92%D0%B0%D1%81%D1%81%D0%B5%D1%80%D0%BC%D0%B0%D0%BD)
