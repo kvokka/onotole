@@ -221,5 +221,9 @@ module Onotole
     def add_active_skin_gem
       inject_into_file('Gemfile', "\ngem 'active_skin'", after: '# user_choice')
     end
+
+    def add_flattened_active_admin_gem
+      inject_into_file('Gemfile', "\ngem 'flattened_active_admin'", after: '# user_choice')
+    end
   end
 end

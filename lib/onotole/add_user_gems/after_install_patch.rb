@@ -92,6 +92,14 @@ end
         File.open('app/assets/stylesheets/active_admin.scss', 'a') do |f|
           f.write "\n@import 'active_skin;'\n\\\\$skinLogo: url('admin_logo.png') no-repeat 0 0;"
         end if user_choose? :active_skin
+        if user_choose? :flattened_active_admin
+          File.open('app/assets/stylesheets/active_admin.scss', 'w') do |f|
+            f.write "\n@import 'flattened_active_admin/variables;'
+            \n@import 'flattened_active_admin/mixins;'
+            \n@import 'flattened_active_admin/base;'"
+          end
+          rails_generator 'flattened_active_admin:variables'
+        end
 
       else
         copy_file 'admin_bootstrap.scss', 'vendor/assets/stylesheets/active_admin/admin_bootstrap.scss'

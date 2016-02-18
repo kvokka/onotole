@@ -78,6 +78,8 @@ creating elegant backends for website administration.
  * [ActiveAdminTheme](https://github.com/activeadmin-plugins/active_admin_theme) 
  Flat skin for ActiveAdmin
  * [Active_skin](https://github.com/rstgroup/active_skin) Flat skin for active admin.
+ * [flattened_active_admin](https://github.com/Papercloud/flattened_active_admin) 
+ Theme. Bring your Active Admin up-to-date with this customizable add on
  * `*`[rubycritic](https://github.com/whitesmith/rubycritic) A Ruby code quality 
  reporter
  * [railroady](https://github.com/preston/railroady) Model and controller UML 
