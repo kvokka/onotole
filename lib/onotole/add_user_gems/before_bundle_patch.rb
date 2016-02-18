@@ -217,5 +217,9 @@ module Onotole
     def add_validates_timeliness_gem
       inject_into_file('Gemfile', "\ngem 'validates_timeliness'", after: '# user_choice')
     end
+
+    def add_active_skin_gem
+      inject_into_file('Gemfile', "\ngem 'active_skin'", after: '# user_choice')
+    end
   end
 end

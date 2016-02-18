@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 require 'forwardable'
-# require 'pry'
+require 'pry'
 Dir[File.expand_path(File.join(File.dirname(File.absolute_path(__FILE__)), '../')) + '/**/*.rb'].each do |file|
   require file
 end
@@ -27,13 +27,14 @@ module Onotole
     @app_file_scss = 'app/assets/stylesheets/application.scss'
     @app_file_css = 'app/assets/stylesheets/application.css'
     @js_file = 'app/assets/javascripts/application.js'
+    @active_admin_theme_selected = false
     @quiet = true
 
     class << self
        attr_accessor :use_asset_pipelline,
                      :devise_model,
                      :user_choice, :app_file_scss,
-                     :app_file_css, :js_file, :quiet
+                     :app_file_css, :js_file, :quiet, :active_admin_theme_selected
     end
 
     def_delegators :heroku_adapter,

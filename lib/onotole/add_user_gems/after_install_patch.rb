@@ -77,12 +77,27 @@ end
       setup_stylesheets
       AppBuilder.use_asset_pipelline = false
       append_file(AppBuilder.app_file_scss,
-                  "\n@import 'bootstrap-sprockets';\n@import 'bootstrap_variables'\n@import 'bootstrap';")
+                  "\n@import 'bootstrap_variables';
+                   \n@import 'bootstrap-sprockets';
+                  \n@import 'bootstrap';")
       inject_into_file(AppBuilder.js_file, "\n//= require bootstrap-sprockets",
                        after: '//= require jquery_ujs')
-      copy_file 'admin_bootstrap.scss', 'vendor/assets/stylesheets/active_admin/admin_bootstrap.scss'
-      copy_file 'active_admin.scss', 'vendor/assets/stylesheets/active_admin.scss'
-      remove_file 'app/assets/stylesheets/active_admin.scss'
+      return unless user_choose? :activeadmin
+      if AppBuilder.active_admin_theme_selected
+
+        File.open('app/assets/stylesheets/active_admin.scss', 'a') do |f|
+          f.write "\n@import 'wigu/active_admin_theme';"
+        end if user_choose? :active_admin_theme
+
+        File.open('app/assets/stylesheets/active_admin.scss', 'a') do |f|
+          f.write "\n@import 'active_skin;'\n\\\\$skinLogo: url('admin_logo.png') no-repeat 0 0;"
+        end if user_choose? :active_skin
+
+      else
+        copy_file 'admin_bootstrap.scss', 'vendor/assets/stylesheets/active_admin/admin_bootstrap.scss'
+        copy_file 'active_admin.scss', 'vendor/assets/stylesheets/active_admin.scss'
+        remove_file 'app/assets/stylesheets/active_admin.scss'
+      end
     end
 
     def after_install_bootstrap3

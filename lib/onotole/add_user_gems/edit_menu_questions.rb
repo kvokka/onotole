@@ -41,10 +41,13 @@ module Onotole
     def show_active_admin_plugins_submenu
       return unless user_choose? :activeadmin
       variants = {            none:                'None',
-                              active_admin_import: 'Active_admin_import - the most efficient way to import for ActiveAdmin',
-                              active_admin_theme:  'Active_admin_theme - flat skin for activeadmin' }
+                              active_admin_import: 'The most efficient way to import for ActiveAdmin',
+                              active_admin_theme:  'Theme, flat skin',
+                              active_skin:         'Theme, flat, nice, good maintenance' }
+      themes = [:active_admin_theme, :active_skin]
       multiple_choice('Select activeadmin plug-ins.', variants).each do |gem|
         add_to_user_choise gem
+        AppBuilder.active_admin_theme_selected = true if themes.include? gem
       end
     end
 
