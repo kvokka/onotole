@@ -91,6 +91,8 @@ creating elegant backends for website administration.
  * [validates_timeliness](https://github.com/adzap/validates_timeliness) 
  Date and time validation plugin for ActiveModel and Rails. Supports multiple 
  ORMs and allows custom date/time formats.
+ * [font-awesome-sass](https://github.com/FortAwesome/font-awesome-sass) 
+ Font-Awesome Sass gem for use in Ruby/Rails projects
 
 
 Mandatory installation gem list you will find in `Gemfile` section

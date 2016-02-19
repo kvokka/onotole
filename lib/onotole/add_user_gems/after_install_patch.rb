@@ -16,6 +16,7 @@ module Onotole
                        :bootstrap3_sass,
                        :bootstrap3,
                        :active_admin_theme,
+                       :font_awesome_sass,
                        :normalize,
                        :tinymce,
                        :rubocop,
@@ -180,6 +181,12 @@ end
 
     def after_install_validates_timeliness
       rails_generator 'validates_timeliness:install'
+    end
+
+    def after_install_font_awesome_sass
+      return if AppBuilder.use_asset_pipelline
+      append_file(AppBuilder.app_file_scss,
+                  "\n@import 'font-awesome-sprockets';\n@import 'font-awesome';")
     end
   end
 end

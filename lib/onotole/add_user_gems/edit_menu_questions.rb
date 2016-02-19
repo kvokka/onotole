@@ -83,6 +83,7 @@ module Onotole
                    railroady:            'Model and controller UML class diagram generator',
                    paper_trail:          'Track changes to your models data. For auditing or versioning',
                    validates_timeliness: 'Date and time validation plugin for ActiveModel and Rails',
+                   font_awesome_sass:    'Font-Awesome Sass gem for use in Ruby/Rails projects',
                    meta_request:         'Rails meta panel in chrome console.'\
                    " Very usefull in\n#{' ' * 24}AJAX debugging. Link for chrome"\
                    " add-on in Gemfile.\n#{' ' * 24}Do not delete comments if you need this link"

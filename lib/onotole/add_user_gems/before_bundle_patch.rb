@@ -225,5 +225,9 @@ module Onotole
     def add_flattened_active_admin_gem
       inject_into_file('Gemfile', "\ngem 'flattened_active_admin'", after: '# user_choice')
     end
+
+    def add_font_awesome_sass_gem
+      inject_into_file('Gemfile', "\ngem 'font-awesome-sass', '~> 4.5.0'", after: '# user_choice')
+    end
   end
 end
