@@ -166,6 +166,7 @@ module Onotole
 
     def configure_app
       say 'Configuring app'
+      build :configure_support_path
       build :configure_action_mailer
       build :configure_active_job
       build :configure_time_formats
@@ -293,6 +294,10 @@ module Onotole
 
     def pre_commit_cleanup
       build :clean_by_rubocop
+    end
+
+    def configure_support_path
+      build :configure_support_path
     end
 
     protected

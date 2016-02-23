@@ -1,5 +1,6 @@
 #!/bin/sh
 rm onotole-*.gem 
 rm -fr tmp/
+rubocop -a
 git add .
 gem build onotole.gemspec && gem install onotole
