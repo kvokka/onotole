@@ -7,6 +7,7 @@ module Onotole
       choose_frontend
       choose_authenticate_engine
       choose_pagimation
+      choose_develoder_tools
       # Placeholder for other gem additions
       # menu description in add_gems_in_menu.rb
 

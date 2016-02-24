@@ -64,29 +64,38 @@ module Onotole
       add_to_user_choise(gem) if gem
     end
 
-    def choose_undroup_gems
-      variants = { none:                 'None',
-                   faker:                'Gem for generate fake data in testing',
-                   rubocop:              'Code inspector and code formatting tool',
-                   rubycritic:           'A Ruby code quality reporter',
-                   guard:                'Guard (with RSpec, livereload, rails, migrate, bundler)',
-                   guard_rubocop:        'Auto-declare code miss in guard',
-                   bundler_audit:        'Extra possibilities for gems version control',
-                   airbrake:             'Airbrake error logging',
-                   responders:           'A set of responders modules to dry up your Rails 4.2+ app.',
-                   hirbunicode:          'Hirb unicode support',
-                   dotenv_heroku:        'dotenv-heroku support',
-                   tinymce:              'Integration of TinyMCE with the Rails asset pipeline',
-                   annotate:             'Annotate Rails classes with schema and routes info',
-                   overcommit:           'A fully configurable and extendable Git hook manager',
-                   activerecord_import:  'A library for bulk inserting data using ActiveRecord',
-                   railroady:            'Model and controller UML class diagram generator',
-                   paper_trail:          'Track changes to your models data. For auditing or versioning',
-                   validates_timeliness: 'Date and time validation plugin for ActiveModel and Rails',
-                   font_awesome_sass:    'Font-Awesome Sass gem for use in Ruby/Rails projects',
-                   meta_request:         'Rails meta panel in chrome console.'\
+    def choose_develoder_tools
+      variants = { none:          'None',
+                   faker:         'Gem for generate fake data in testing',
+                   rubocop:       'Code inspector and code formatting tool',
+                   guard:         'Guard (with RSpec, livereload, rails, migrate, bundler)',
+                   guard_rubocop: 'Auto-declare code miss in guard',
+                   bundler_audit: 'Extra possibilities for gems version control',
+                   airbrake:      'Airbrake error logging',
+                   annotate:      'Annotate Rails classes with schema and routes info',
+                   overcommit:    'A fully configurable and extendable Git hook manager',
+                   railroady:     'Model and controller UML class diagram generator',
+                   hirbunicode:   'Hirb unicode support',
+                   dotenv_heroku: 'dotenv-heroku support',
+                   meta_request:  'Rails meta panel in chrome console.'\
                    " Very usefull in\n#{' ' * 24}AJAX debugging. Link for chrome"\
                    " add-on in Gemfile.\n#{' ' * 24}Do not delete comments if you need this link"
+                    }
+      multiple_choice('Write numbers of all preferred gems.', variants).each do |gem|
+        add_to_user_choise gem
+      end
+    end
+
+    def choose_undroup_gems
+      variants = { none:                 'None',
+                   rubycritic:           'A Ruby code quality reporter',
+                   responders:           'A set of responders modules to dry up your Rails 4.2+ app.',
+                   tinymce:              'Integration of TinyMCE with the Rails asset pipeline',
+                   activerecord_import:  'A library for bulk inserting data using ActiveRecord',
+                   paper_trail:          'Track changes to your models data. For auditing or versioning',
+                   cyrillizer:           'Character conversion from latin to cyrillic and vice versa',
+                   validates_timeliness: 'Date and time validation plugin for ActiveModel and Rails',
+                   font_awesome_sass:    'Font-Awesome Sass gem for use in Ruby/Rails projects'
                     }
       multiple_choice('Write numbers of all preferred gems.', variants).each do |gem|
         add_to_user_choise gem
