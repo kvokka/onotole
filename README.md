@@ -95,6 +95,8 @@ creating elegant backends for website administration.
  Font-Awesome Sass gem for use in Ruby/Rails projects
  * [cyrillizer](https://github.com/dalibor/cyrillizer) Character conversion from
   latin to cyrillic and vice versa
+ * [ckeditor](https://github.com/galetahub/ckeditor) CKEditor is a WYSIWYG text 
+ editor designed to simplify web content creation.
 
 
 Mandatory installation gem list you will find in `Gemfile` section
@@ -222,6 +224,9 @@ Onotole also comes with:
 * The analytics adapter [Segment][segment] (and therefore config for Google
   Analytics, Intercom, Facebook Ads, Twitter Ads, etc.)
 * Check existing of app DB and ask about continuation if base persisted 
+* Added style flash messagaes for `bootstrap-sass` gem
+* Auto add gem `devise_bootstrap_views` when `bootstrap-sass` and `devise` 
+selected for pretty view from the box
 
 ## Heroku
 

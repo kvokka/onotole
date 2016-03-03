@@ -1,6 +1,13 @@
 # frozen_string_literal: true
 module Onotole
   module BeforeBundlePatch
+    def add_user_gems
+      add_to_user_choise(:devise_bootstrap_views) if user_choose?(:bootstrap3_sass) && user_choose?(:devise)
+      GEMPROCLIST.each do |g|
+        send "add_#{g}_gem" if user_choose? g.to_sym
+      end
+    end
+
     def setup_default_gems
       add_to_user_choise(:normalize)
     end
@@ -232,6 +239,14 @@ module Onotole
 
     def add_cyrillizer_gem
       inject_into_file('Gemfile', "\ngem 'cyrillizer'", after: '# user_choice')
+    end
+
+    def add_ckeditor_gem
+      inject_into_file('Gemfile', "\ngem 'ckeditor'", after: '# user_choice')
+    end
+
+    def add_devise_bootstrap_views_gem
+      inject_into_file('Gemfile', "\ngem 'devise-bootstrap-views'", after: '# user_choice')
     end
   end
 end

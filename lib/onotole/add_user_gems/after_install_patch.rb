@@ -15,6 +15,7 @@ module Onotole
                        :guard_rubocop,
                        :bootstrap3_sass,
                        :bootstrap3,
+                       :devise_bootstrap_views,
                        :active_admin_theme,
                        :font_awesome_sass,
                        :normalize,
@@ -83,6 +84,7 @@ end
                   \n@import 'bootstrap';")
       inject_into_file(AppBuilder.js_file, "\n//= require bootstrap-sprockets",
                        after: '//= require jquery_ujs')
+      copy_file 'bootstrap_flash_helper.rb', 'app/helpers/bootstrap_flash_helper.rb'
       return unless user_choose? :activeadmin
       if AppBuilder.active_admin_theme_selected
 
@@ -187,6 +189,11 @@ end
       return if AppBuilder.use_asset_pipelline
       append_file(AppBuilder.app_file_scss,
                   "\n@import 'font-awesome-sprockets';\n@import 'font-awesome';")
+    end
+
+    def after_install_devise_bootstrap_views
+      append_file(AppBuilder.app_file_scss, "\n@import 'devise_bootstrap_views'")
+      rails_generator 'devise:views:bootstrap_templates'
     end
   end
 end

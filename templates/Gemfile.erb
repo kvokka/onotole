@@ -29,13 +29,6 @@ group :development do
   gem "spring-commands-rspec"
   gem "web-console"
   gem "bullet"
-end
-
-group :development, :test do
-  gem "hirb"
-  gem "bundler-audit", require: false
-  gem "dotenv-rails"
-  gem "factory_girl_rails"
   gem "pry-byebug"
   gem "pry-rails"
   gem 'pry-doc'
@@ -43,11 +36,18 @@ group :development, :test do
   gem 'pry-state'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem "hirb"
+end
+
+group :development, :test do
+  gem "factory_girl_rails"
+  gem "bundler-audit", require: false
+  gem "dotenv-rails"
   gem "rspec-rails", "~> 3.4.0"
-  gem 'fuubar'
 end
 
 group :test do
+  gem 'fuubar'
   gem "capybara-webkit"
   gem "database_cleaner"
   gem "formulaic"

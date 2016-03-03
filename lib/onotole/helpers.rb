@@ -142,12 +142,5 @@ module Onotole
       end
       add_user_gems
     end
-
-    def add_user_gems
-      GEMPROCLIST.each do |g|
-        send "add_#{g}_gem" if user_choose? g.to_sym
-      end
-      # add_foo_bar_gem if user_choose?(:foo) && user_choose?(:bar)
-    end
   end
 end
