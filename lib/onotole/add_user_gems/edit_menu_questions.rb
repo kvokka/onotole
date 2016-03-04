@@ -96,7 +96,8 @@ module Onotole
                    cyrillizer:           'Character conversion from latin to cyrillic and vice versa',
                    validates_timeliness: 'Date and time validation plugin for ActiveModel and Rails',
                    font_awesome_sass:    'Font-Awesome Sass gem for use in Ruby/Rails projects',
-                   ckeditor:             'CKEditor is a WYSIWYG text editor designed for web content creation.'
+                   ckeditor:             'CKEditor is a WYSIWYG text editor designed for web content creation.',
+                   axlsx_rails:          'XLS support, cyrillic support, good support at all'
                     }
       multiple_choice('Write numbers of all preferred gems.', variants).each do |gem|
         add_to_user_choise gem

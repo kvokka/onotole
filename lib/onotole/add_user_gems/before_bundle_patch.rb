@@ -248,5 +248,9 @@ module Onotole
     def add_devise_bootstrap_views_gem
       inject_into_file('Gemfile', "\ngem 'devise-bootstrap-views'", after: '# user_choice')
     end
+
+    def add_axlsx_rails_gem
+      inject_into_file('Gemfile', "\ngem 'axlsx_rails'", after: '# user_choice')
+    end
   end
 end

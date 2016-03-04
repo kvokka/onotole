@@ -97,6 +97,8 @@ creating elegant backends for website administration.
   latin to cyrillic and vice versa
  * [ckeditor](https://github.com/galetahub/ckeditor) CKEditor is a WYSIWYG text 
  editor designed to simplify web content creation.
+ * [axlsx_rails](https://github.com/straydogstudio/axlsx_rails) A Rails plug-in 
+ to provide templates for the axlsx gem for providing Excel files format support
 
 
 Mandatory installation gem list you will find in `Gemfile` section
