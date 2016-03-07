@@ -42,6 +42,10 @@ module OnotoleTestHelpers
     @project_path ||= Pathname.new("#{tmp_path}/#{APP_NAME}")
   end
 
+  def app_name
+    OnotoleTestHelpers::APP_NAME
+  end
+
   private
 
     def tmp_path

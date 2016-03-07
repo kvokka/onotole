@@ -30,7 +30,7 @@ module Onotole
     end
 
     def set_up_forego
-      copy_file 'Procfile', 'Procfile'
+      template 'Procfile.erb', 'Procfile', force: true
     end
 
     def setup_staging_environment
@@ -48,7 +48,11 @@ end
     end
 
     def setup_secret_token
-      template 'secrets.yml', 'config/secrets.yml', force: true
+      copy_file 'secrets.yml', 'config/secrets.yml', force: true
+      # strange bug with ERB in ERB. solved this way
+      replace_in_file 'config/secrets.yml',
+                      "<%= ENV['SECRET_KEY_BASE'] %>",
+                      "<%= ENV['#{app_name.upcase}_SECRET_KEY_BASE'] %>"
     end
 
     def disallow_wrapping_parameters
@@ -103,6 +107,7 @@ end
 
     def copy_dotfiles
       directory 'dotfiles', '.', force: true
+      template 'dotenv.erb', '.env'
     end
 
     def setup_spring
@@ -161,11 +166,11 @@ end
       config = <<-RUBY
 
   if ENV.fetch("HEROKU_APP_NAME", "").include?("staging-pr-")
-    ENV["APPLICATION_HOST"] = ENV["HEROKU_APP_NAME"] + ".herokuapp.com"
+    ENV["#{app_name.upcase}_APPLICATION_HOST"] = ENV["HEROKU_APP_NAME"] + ".herokuapp.com"
   end
 
   # Ensure requests are only served from one, canonical host name
-  config.middleware.use Rack::CanonicalHost, ENV.fetch("APPLICATION_HOST")
+  config.middleware.use Rack::CanonicalHost, ENV.fetch("#{app_name.upcase}_APPLICATION_HOST")
       RUBY
 
       inject_into_file(

@@ -1,0 +1,10 @@
+# frozen_string_literal: true
+SMTP_SETTINGS = {
+  address:              ENV.fetch(<%= "#{app_name.upcase}_SMTP_ADDRESS" %>), # example: "smtp.sendgrid.net"
+  authentication:       :plain,
+  domain:               ENV.fetch(<%= "#{app_name.upcase}_SMTP_DOMAIN" %>), # example: "heroku.com"
+  enable_starttls_auto: true,
+  password:             ENV.fetch(<%= "#{app_name.upcase}_SMTP_PASSWORD" %>),
+  port:                 '587',
+  user_name:            ENV.fetch(<%= "#{app_name.upcase}_SMTP_USERNAME" %>)
+}.freeze

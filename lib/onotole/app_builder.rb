@@ -93,7 +93,7 @@ module Onotole
     end
 
     def configure_puma
-      copy_file 'puma.rb', 'config/puma.rb'
+      template 'puma.rb.erb', 'config/puma.rb'
     end
 
     # def rvm_bundler_stubs_install

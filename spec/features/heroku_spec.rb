@@ -17,11 +17,8 @@ RSpec.describe 'Heroku' do
       )
       expect(FakeHeroku).to have_created_app_for('staging')
       expect(FakeHeroku).to have_created_app_for('production')
-      expect(FakeHeroku).to have_configured_vars('staging', 'SECRET_KEY_BASE')
-      expect(FakeHeroku).to have_configured_vars(
-        'production',
-        'SECRET_KEY_BASE'
-      )
+      expect(FakeHeroku).to have_configured_vars('staging', "#{app_name.dasherize.upcase}_SECRET_KEY_BASE")
+      expect(FakeHeroku).to have_configured_vars('production', "#{app_name.dasherize.upcase}_SECRET_KEY_BASE")
       expect(FakeHeroku).to have_setup_pipeline_for(app_name)
 
       bin_setup_path = "#{project_path}/bin/setup"

@@ -210,6 +210,15 @@ And testing gems like:
   RSpec matchers
 * [Timecop](https://github.com/ferndopolis/timecop-console) for testing time
 
+## ENV Variables
+
+All variables are stored in `.env` file and calls with project name prefix. It 
+made for avoid name space problems with placing more than 1 of Onotole created 
+app on 1 server. Onotole prefix all `env` variables with `#{app_name}` and now 
+you will not have any problems with export variables in production. With this 
+thick you can easy use ENV export tool or just put ENV variables in `.bashrc` 
+without name space conflicts.
+
 ## Other goodies
 
 Onotole also comes with:
@@ -221,8 +230,8 @@ Onotole also comes with:
 * A [low database connection pool limit][pool]
 * [Safe binstubs][binstub]
 * [t() and l() in specs without prefixing with I18n][i18n]
-* An automatically-created `SECRET_KEY_BASE` environment variable in all
-  environments
+* An automatically-created `#{APP_NAME}_SECRET_KEY_BASE` environment variable in
+ all environments
 * The analytics adapter [Segment][segment] (and therefore config for Google
   Analytics, Intercom, Facebook Ads, Twitter Ads, etc.)
 * Check existing of app DB and ask about continuation if base persisted 

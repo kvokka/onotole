@@ -46,7 +46,7 @@ RSpec.describe 'Suspend a new project with default configuration' do
   end
 
   it 'loads secret_key_base from env' do
-    expect(secrets_file).to match(/secret_key_base: <%= ENV\["SECRET_KEY_BASE"\] %>/)
+    expect(secrets_file).to match /secret_key_base: <%= ENV\[('|")#{app_name.upcase}_SECRET_KEY_BASE('|")\] %>/
   end
 
   it 'adds bin/setup file' do
@@ -119,7 +119,7 @@ RSpec.describe 'Suspend a new project with default configuration' do
 
   it 'uses APPLICATION_HOST, not HOST in the production config' do
     prod_env_file = IO.read("#{project_path}/config/environments/production.rb")
-    expect(prod_env_file).to match(/("|')APPLICATION_HOST("|')/)
+    expect(prod_env_file).to match /("|')#{app_name.upcase}_APPLICATION_HOST("|')/
     expect(prod_env_file).not_to match(/("|')HOST("|')/)
   end
 

@@ -42,7 +42,7 @@ module Onotole
       def set_heroku_rails_secrets
         %w(staging production).each do |environment|
           run_toolbelt_command(
-            "config:add SECRET_KEY_BASE=#{generate_secret}",
+            "config:add #{app_builder.app_name.dasherize.upcase}_SECRET_KEY_BASE=#{generate_secret}",
             environment
           )
         end

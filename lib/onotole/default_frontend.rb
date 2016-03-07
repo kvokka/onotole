@@ -9,11 +9,12 @@ module Onotole
     def setup_asset_host
       replace_in_file 'config/environments/production.rb',
                       "# config.action_controller.asset_host = 'http://assets.example.com'",
-                      'config.action_controller.asset_host = ENV.fetch("ASSET_HOST", ENV.fetch("APPLICATION_HOST"))'
+                      "config.action_controller.asset_host = ENV.fetch('#{app_name.upcase}_ASSET_HOST',"\
+                      " ENV.fetch('#{app_name.upcase}_APPLICATION_HOST'))"
 
       replace_in_file 'config/initializers/assets.rb',
                       "config.assets.version = '1.0'",
-                      'config.assets.version = (ENV["ASSETS_VERSION"] || "1.0")'
+                      "config.assets.version = (ENV['#{app_name.upcase}_ASSETS_VERSION'] || '1.0')"
 
       inject_into_file(
         'config/environments/production.rb',

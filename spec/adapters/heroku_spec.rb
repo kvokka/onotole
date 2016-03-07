@@ -34,15 +34,11 @@ module Onotole
         Heroku.new(app_builder).set_heroku_rails_secrets
 
         expect(app_builder).to(
-          have_configured_var('staging', 'SECRET_KEY_BASE')
+          have_configured_var('staging', "#{app_name.dasherize.upcase}_SECRET_KEY_BASE")
         )
         expect(app_builder).to(
-          have_configured_var('production', 'SECRET_KEY_BASE')
+          have_configured_var('production', "#{app_name.dasherize.upcase}_SECRET_KEY_BASE")
         )
-      end
-
-      def app_name
-        OnotoleTestHelpers::APP_NAME
       end
 
       def have_configured_var(remote_name, var)

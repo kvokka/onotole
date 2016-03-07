@@ -4,7 +4,7 @@ module Onotole
     def configure_action_mailer
       action_mailer_host 'development', %("localhost:3000")
       action_mailer_host 'test', %("www.example.com")
-      action_mailer_host 'production', %{ENV.fetch("APPLICATION_HOST")}
+      action_mailer_host 'production', %{ENV.fetch("#{app_name.upcase}_APPLICATION_HOST")}
     end
 
     def configure_action_mailer_in_specs
@@ -12,7 +12,7 @@ module Onotole
     end
 
     def configure_smtp
-      copy_file 'smtp.rb', 'config/smtp.rb'
+      template 'smtp.rb.erb', 'config/smtp.rb', force: true
 
       prepend_file 'config/environments/production.rb',
                    %{require Rails.root.join("config/smtp")\n}

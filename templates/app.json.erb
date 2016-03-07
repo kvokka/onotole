@@ -14,22 +14,22 @@
     "RAILS_ENV":{
       "required":true
     },
-    "SECRET_KEY_BASE":{
+    "<%= "#{app_name.upcase}_SECRET_KEY_BASE" %>":{
       "generator":"secret"
     },
-    "SMTP_ADDRESS":{
+    "<%= "#{app_name.upcase}_SMTP_ADDRESS" %>":{
       "required":true
     },
-    "SMTP_DOMAIN":{
+    "<%= "#{app_name.upcase}_SMTP_DOMAIN" %>":{
       "required":true
     },
-    "SMTP_PASSWORD":{
+    "<%= "#{app_name.upcase}_SMTP_PASSWORD" %>":{
       "required":true
     },
-    "SMTP_USERNAME":{
+    "<%= "#{app_name.upcase}_SMTP_USERNAME" %>":{
       "required":true
     },
-    "WEB_CONCURRENCY":{
+    "<%= "#{app_name.upcase}_WEB_CONCURRENCY" %>":{
       "required":true
     }
   },

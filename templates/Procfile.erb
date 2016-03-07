@@ -1,0 +1,2 @@
+web: bundle exec puma -p $4: <%= "#{app_name.upcase}_PORT" %> -C ./config/puma.rb
+worker: bundle exec rake jobs:work
