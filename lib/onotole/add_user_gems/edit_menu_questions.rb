@@ -44,11 +44,16 @@ module Onotole
                               active_admin_import:    'The most efficient way to import for ActiveAdmin',
                               active_admin_theme:     'Theme, flat skin',
                               active_skin:            'Theme, flat, nice, good maintenance',
-                              flattened_active_admin: 'Theme. Bring your Active Admin up-to-date with this customizable add on' }
+                              flattened_active_admin: 'Theme, bring your Active Admin up-to-date with this customizable add on',
+                              active_admin_bootstrap: 'Theme, simple bootstrap (sass) elements',
+                              active_admin_face:      'Theme for ActiveAdmin with glyphicons and flattens' }
       themes = [:active_admin_theme, :active_skin, :flattened_active_admin]
-      multiple_choice('Select activeadmin plug-ins.', variants).each do |gem|
+      multiple_choice('Select activeadmin plug-ins (Themes are SASS or SCSS only).', variants).each do |gem|
         add_to_user_choise gem
-        AppBuilder.active_admin_theme_selected = true if themes.include? gem
+        if themes.include? gem
+          AppBuilder.use_asset_pipelline = false
+          AppBuilder.active_admin_theme_selected = true
+        end
       end
     end
 

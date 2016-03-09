@@ -10,6 +10,11 @@ module Onotole
                        :annotate,
                        :overcommit,
                        :activeadmin,
+                       :active_admin_theme,
+                       :acive_skin,
+                       :flattened_active_admin,
+                       :active_admin_face,
+                       :active_admin_bootstrap,
                        :rails_admin,
                        :guard,
                        :guard_rubocop,
@@ -85,30 +90,6 @@ end
       inject_into_file(AppBuilder.js_file, "\n//= require bootstrap-sprockets",
                        after: '//= require jquery_ujs')
       copy_file 'bootstrap_flash_helper.rb', 'app/helpers/bootstrap_flash_helper.rb'
-      return unless user_choose? :activeadmin
-      if AppBuilder.active_admin_theme_selected
-
-        File.open('app/assets/stylesheets/active_admin.scss', 'a') do |f|
-          f.write "\n@import 'wigu/active_admin_theme';"
-        end if user_choose? :active_admin_theme
-
-        File.open('app/assets/stylesheets/active_admin.scss', 'a') do |f|
-          f.write "\n@import 'active_skin;'\n\\\\$skinLogo: url('admin_logo.png') no-repeat 0 0;"
-        end if user_choose? :active_skin
-        if user_choose? :flattened_active_admin
-          File.open('app/assets/stylesheets/active_admin.scss', 'w') do |f|
-            f.write "\n@import 'flattened_active_admin/variables;'
-            \n@import 'flattened_active_admin/mixins;'
-            \n@import 'flattened_active_admin/base;'"
-          end
-          rails_generator 'flattened_active_admin:variables'
-        end
-
-      else
-        copy_file 'admin_bootstrap.scss', 'vendor/assets/stylesheets/active_admin/admin_bootstrap.scss'
-        copy_file 'active_admin.scss', 'vendor/assets/stylesheets/active_admin.scss'
-        remove_file 'app/assets/stylesheets/active_admin.scss'
-      end
     end
 
     def after_install_bootstrap3
@@ -172,11 +153,6 @@ end
       rails_generator 'typus:views'
     end
 
-    def after_install_active_admin_theme
-      append_file('app/assets/stylesheets/active_admin.scss',
-                  "\n@import 'wigu/active_admin_theme';")
-    end
-
     def after_install_paper_trail
       rails_generator 'paper_trail:install'
     end
@@ -194,6 +170,50 @@ end
     def after_install_devise_bootstrap_views
       append_file(AppBuilder.app_file_scss, "\n@import 'devise_bootstrap_views'")
       rails_generator 'devise:views:bootstrap_templates'
+    end
+
+    def after_install_active_admin_bootstrap
+      return unless user_choose?(:bootstrap3_sass) || user_choose?(:activeadmin)
+      AppBuilder.use_asset_pipelline = false
+      copy_file 'admin_bootstrap.scss', 'vendor/assets/stylesheets/active_admin/admin_bootstrap.scss'
+      copy_file 'active_admin.scss', 'vendor/assets/stylesheets/active_admin.scss'
+      remove_file 'app/assets/stylesheets/active_admin.scss'
+    end
+
+    def after_install_active_admin_theme
+      return unless user_choose? :activeadmin
+      File.open('app/assets/stylesheets/active_admin.scss', 'a') do |f|
+        f.write "\n@import 'wigu/active_admin_theme';"
+      end
+    end
+
+    def after_install_acive_skin
+      return unless user_choose? :activeadmin
+      File.open('app/assets/stylesheets/active_admin.scss', 'a') do |f|
+        f.write "\n@import 'active_skin;'\n\\\\$skinLogo: url('admin_logo.png') no-repeat 0 0;"
+      end
+    end
+
+    def after_install_flattened_active_admin
+      return unless user_choose? :activeadmin
+      File.open('app/assets/stylesheets/active_admin.scss', 'w') do |f|
+        f.write "\n@import 'flattened_active_admin/variables;'
+        \n@import 'flattened_active_admin/mixins;'
+        \n@import 'flattened_active_admin/base;'"
+      end
+      rails_generator 'flattened_active_admin:variables'
+    end
+
+    def after_install_active_admin_face
+      return unless user_choose? :activeadmin
+      File.open('app/assets/stylesheets/active_admin.scss', 'w') do |f|
+        f.write "\n@import 'active_admin_face/variables;'
+        \n@import 'active_admin_face/mixins;'
+        \n@import 'active_admin_face/base;'"
+      end
+      append_file 'app/assets/javascripts/active_admin.js.coffee',
+                  "\n#= require active_admin_face/base"
+      rails_generator 'active_admin_face:variables'
     end
   end
 end
