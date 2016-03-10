@@ -85,7 +85,7 @@ module Onotole
       def set_heroku_serve_static_files
         %w(staging production).each do |environment|
           run_toolbelt_command(
-            'config:add RAILS_SERVE_STATIC_FILES=true',
+            "config:add #{app_name.upcase}_RAILS_SERVE_STATIC_FILES=true",
             environment
           )
         end
