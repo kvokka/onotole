@@ -13,7 +13,7 @@ module Onotole
                        :active_admin_theme,
                        :acive_skin,
                        :flattened_active_admin,
-                       :active_admin_face,
+                       :face_of_active_admin,
                        :active_admin_bootstrap,
                        :rails_admin,
                        :guard,
@@ -204,16 +204,16 @@ end
       rails_generator 'flattened_active_admin:variables'
     end
 
-    def after_install_active_admin_face
+    def after_install_face_of_active_admin
       return unless user_choose? :activeadmin
       File.open('app/assets/stylesheets/active_admin.scss', 'w') do |f|
-        f.write "\n@import 'active_admin_face/variables;'
-        \n@import 'active_admin_face/mixins;'
-        \n@import 'active_admin_face/base;'"
+        f.write "\n@import 'face_of_active_admin/variables;'
+        \n@import 'face_of_active_admin/mixins;'
+        \n@import 'face_of_active_admin/base;'"
       end
       append_file 'app/assets/javascripts/active_admin.js.coffee',
-                  "\n#= require active_admin_face/base"
-      rails_generator 'active_admin_face:variables'
+                  "\n#= require face_of_active_admin/base"
+      rails_generator 'face_of_active_admin:variables'
     end
   end
 end

@@ -253,8 +253,8 @@ module Onotole
       inject_into_file('Gemfile', "\ngem 'axlsx_rails'", after: '# user_choice')
     end
 
-    def add_active_admin_face_gem
-      inject_into_file('Gemfile', "\ngem 'active_admin_face'", after: '# user_choice')
+    def add_face_of_active_admin_gem
+      inject_into_file('Gemfile', "\ngem 'face_of_active_admin'", after: '# user_choice')
     end
   end
 end

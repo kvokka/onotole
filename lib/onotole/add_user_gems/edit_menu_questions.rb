@@ -46,7 +46,7 @@ module Onotole
                               active_skin:            'Theme, flat, nice, good maintenance',
                               flattened_active_admin: 'Theme, bring your Active Admin up-to-date with this customizable add on',
                               active_admin_bootstrap: 'Theme, simple bootstrap (sass) elements',
-                              active_admin_face:      'Theme for ActiveAdmin with glyphicons and flattens' }
+                              face_of_active_admin:   'Theme for ActiveAdmin with glyphicons and flattens' }
       themes = [:active_admin_theme, :active_skin, :flattened_active_admin]
       multiple_choice('Select activeadmin plug-ins (Themes are SASS or SCSS only).', variants).each do |gem|
         add_to_user_choise gem
