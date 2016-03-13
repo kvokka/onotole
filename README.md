@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/kvokka/onotole/badges/gpa.svg)](https://codeclimate.com/github/kvokka/onotole)
+
 # Onotole
 
 New Rails project wizard. Onotole will help!
