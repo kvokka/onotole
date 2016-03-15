@@ -103,6 +103,10 @@ creating elegant backends for website administration.
  editor designed to simplify web content creation.
  * [axlsx_rails](https://github.com/straydogstudio/axlsx_rails) A Rails plug-in 
  to provide templates for the axlsx gem for providing Excel files format support
+ * [prawn](https://github.com/prawnpdf/prawn) Fast, Nimble PDF Writer for Ruby 
+ http://prawnpdf.org 
+ * [prawn-table](https://github.com/prawnpdf/prawn-table) Provides support for 
+ tables in Prawn
 
 
 Mandatory installation gem list you will find in `Gemfile` section

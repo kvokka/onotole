@@ -256,5 +256,10 @@ module Onotole
     def add_face_of_active_admin_gem
       inject_into_file('Gemfile', "\ngem 'face_of_active_admin'", after: '# user_choice')
     end
+
+    def add_prawn_gem
+      inject_into_file('Gemfile', "\ngem 'prawn'", after: '# user_choice')
+      inject_into_file('Gemfile', "\ngem 'prawn-table'", after: '# user_choice')
+    end
   end
 end

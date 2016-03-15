@@ -296,10 +296,6 @@ module Onotole
       build :clean_by_rubocop
     end
 
-    def configure_support_path
-      build :configure_support_path
-    end
-
     protected
 
       def get_builder_class
