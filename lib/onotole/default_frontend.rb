@@ -75,5 +75,10 @@ module Onotole
     def create_shared_javascripts
       copy_file '_javascript.html.erb', 'app/views/application/_javascript.html.erb'
     end
+
+    def add_vendor_css_path
+      vendor_css_path = "\nRails.application.config.assets.paths += Dir[(Rails.root.join('vendor/assets/stylesheets'))]"
+      append_file 'config/initializers/assets.rb', vendor_css_path
+    end
   end
 end

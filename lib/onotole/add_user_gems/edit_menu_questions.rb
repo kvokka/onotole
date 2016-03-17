@@ -102,6 +102,7 @@ module Onotole
                    validates_timeliness: 'Date and time validation plugin for ActiveModel and Rails',
                    font_awesome_sass:    'Font-Awesome Sass gem for use in Ruby/Rails projects',
                    ckeditor:             'CKEditor is a WYSIWYG text editor designed for web content creation.',
+                   fotoramajs:           'Fotorama JS gallery for Rails http://fotorama.io/',
                    prawn:                'Prawn gem for PDF support vs prawn-table for easy tables',
                    axlsx_rails:          'XLS support, cyrillic support, good support at all'
                     }

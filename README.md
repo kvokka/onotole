@@ -101,12 +101,16 @@ creating elegant backends for website administration.
   latin to cyrillic and vice versa
  * [ckeditor](https://github.com/galetahub/ckeditor) CKEditor is a WYSIWYG text 
  editor designed to simplify web content creation.
+ * [axslx](https://github.com/randym/axlsx) Xlsx generation with charts, images, 
+ automated column width, customizable styles and full schema validation.
  * [axlsx_rails](https://github.com/straydogstudio/axlsx_rails) A Rails plug-in 
  to provide templates for the axlsx gem for providing Excel files format support
  * [prawn](https://github.com/prawnpdf/prawn) Fast, Nimble PDF Writer for Ruby 
  http://prawnpdf.org 
  * [prawn-table](https://github.com/prawnpdf/prawn-table) Provides support for 
  tables in Prawn
+ * [fotoramajs](https://github.com/ai/fotoramajs) Fotorama JS gallery for Ruby 
+ on Rails http://fotorama.io/
 
 
 Mandatory installation gem list you will find in `Gemfile` section
@@ -246,6 +250,7 @@ Onotole also comes with:
 * Added style flash messagaes for `bootstrap-sass` gem
 * Auto add gem `devise_bootstrap_views` when `bootstrap-sass` and `devise` 
 selected for pretty view from the box
+* Added autoload js and scss from `vendor/assets/javascripts` and `vendor/assets/stylesheets`
 
 ## Heroku
 

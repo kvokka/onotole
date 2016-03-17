@@ -192,5 +192,9 @@ end
       config = "\n    config.autoload_paths << Rails.root.join('app/support')\n"
       inject_into_class 'config/application.rb', 'Application', config
     end
+
+    def apply_vendorjs_folder
+      inject_into_file(AppBuilder.js_file, "//= require_tree ../../../vendor/assets/javascripts/.\n", before: '//= require_tree .')
+    end
   end
 end

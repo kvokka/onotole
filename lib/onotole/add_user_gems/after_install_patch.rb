@@ -2,31 +2,33 @@
 module Onotole
   module AfterInstallPatch
     def post_init
-      install_queue = [:devise,
-                       :validates_timeliness,
-                       :paper_trail,
-                       :responders,
-                       :typus,
-                       :annotate,
-                       :overcommit,
-                       :activeadmin,
-                       :active_admin_theme,
-                       :acive_skin,
-                       :flattened_active_admin,
-                       :face_of_active_admin,
-                       :active_admin_bootstrap,
-                       :rails_admin,
-                       :guard,
-                       :guard_rubocop,
-                       :bootstrap3_sass,
-                       :bootstrap3,
-                       :devise_bootstrap_views,
-                       :active_admin_theme,
-                       :font_awesome_sass,
-                       :normalize,
-                       :tinymce,
-                       :rubocop,
-                       :create_github_repo]
+      install_queue = [
+        :fotoramajs,
+        :devise,
+        :validates_timeliness,
+        :paper_trail,
+        :responders,
+        :typus,
+        :annotate,
+        :overcommit,
+        :activeadmin,
+        :active_admin_theme,
+        :acive_skin,
+        :flattened_active_admin,
+        :face_of_active_admin,
+        :active_admin_bootstrap,
+        :rails_admin,
+        :guard,
+        :guard_rubocop,
+        :bootstrap3_sass,
+        :bootstrap3,
+        :devise_bootstrap_views,
+        :active_admin_theme,
+        :font_awesome_sass,
+        :normalize,
+        :tinymce,
+        :rubocop,
+        :create_github_repo]
       install_queue.each { |g| send "after_install_#{g}" if user_choose? g }
       delete_comments
     end
@@ -214,6 +216,12 @@ end
       append_file 'app/assets/javascripts/active_admin.js.coffee',
                   "\n#= require face_of_active_admin/base"
       rails_generator 'face_of_active_admin:variables'
+    end
+
+    def after_install_fotoramajs
+      return unless user_choose? :fotoramajs
+      inject_into_file(AppBuilder.js_file, "\n//= require fotorama",
+                       after: '//= require jquery_ujs')
     end
   end
 end

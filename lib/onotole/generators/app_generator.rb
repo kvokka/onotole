@@ -175,6 +175,8 @@ module Onotole
       build :setup_default_rake_task
       build :configure_puma
       build :set_up_forego
+      build :apply_vendorjs_folder
+      build :add_vendor_css_path
     end
 
     # def setup_stylesheets

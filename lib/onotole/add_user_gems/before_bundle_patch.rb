@@ -253,6 +253,10 @@ module Onotole
       inject_into_file('Gemfile', "\ngem 'axlsx_rails'", after: '# user_choice')
     end
 
+    def add_axlsx_gem
+      inject_into_file('Gemfile', "\ngem 'axlsx'", after: '# user_choice')
+    end
+
     def add_face_of_active_admin_gem
       inject_into_file('Gemfile', "\ngem 'face_of_active_admin'", after: '# user_choice')
     end
@@ -260,6 +264,10 @@ module Onotole
     def add_prawn_gem
       inject_into_file('Gemfile', "\ngem 'prawn'", after: '# user_choice')
       inject_into_file('Gemfile', "\ngem 'prawn-table'", after: '# user_choice')
+    end
+
+    def add_fotoramajs_gem
+      inject_into_file('Gemfile', "\ngem 'fotoramajs'", after: '# user_choice')
     end
   end
 end
