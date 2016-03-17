@@ -80,5 +80,10 @@ module Onotole
       vendor_css_path = "\nRails.application.config.assets.paths += Dir[(Rails.root.join('vendor/assets/stylesheets'))]"
       append_file 'config/initializers/assets.rb', vendor_css_path
     end
+
+    def add_fonts_autoload
+      fonts = "\nRails.application.config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/"
+      append_file 'config/initializers/assets.rb', fonts
+    end
   end
 end

@@ -250,7 +250,9 @@ Onotole also comes with:
 * Added style flash messagaes for `bootstrap-sass` gem
 * Auto add gem `devise_bootstrap_views` when `bootstrap-sass` and `devise` 
 selected for pretty view from the box
-* Added autoload js and scss from `vendor/assets/javascripts` and `vendor/assets/stylesheets`
+* Added autoload js and scss from `vendor/assets/javascripts` and 
+`vendor/assets/stylesheets`
+* Added autoload fonts from `app/assets/fonts/**/*`
 
 ## Heroku
 

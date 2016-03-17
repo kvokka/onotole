@@ -222,6 +222,7 @@ end
       return unless user_choose? :fotoramajs
       inject_into_file(AppBuilder.js_file, "\n//= require fotorama",
                        after: '//= require jquery_ujs')
+      append_file(AppBuilder.app_file_scss, "\n@import 'fotorama'")
     end
   end
 end

@@ -177,6 +177,7 @@ module Onotole
       build :set_up_forego
       build :apply_vendorjs_folder
       build :add_vendor_css_path
+      build :add_fonts_autoload
     end
 
     # def setup_stylesheets
