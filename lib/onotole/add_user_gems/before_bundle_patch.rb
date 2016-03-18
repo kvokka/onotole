@@ -19,7 +19,7 @@ module Onotole
     def add_dotenv_heroku_gem
       inject_into_file('Gemfile', "\n  gem 'dotenv-heroku'",
                        after: 'group :development do')
-      append_file 'Rakefile', %(\nrequire 'dotenv-heroku/tasks' if ENV['RAILS_ENV'] == 'test' || ENV['RAILS_ENV'] == 'development'\n)
+      append_file 'Rakefile', %(\nrequire 'dotenv-heroku/tasks' if ENV['RACK_ENV'] == 'test' || ENV['RACK_ENV'] == 'development'\n)
     end
 
     def add_slim_gem

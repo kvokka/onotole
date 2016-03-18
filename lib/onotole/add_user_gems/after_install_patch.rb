@@ -52,7 +52,7 @@ module Onotole
       run 'touch .rubocop_todo.yml'
       t = <<-TEXT
 
-if ENV['RAILS_ENV'] == 'test' || ENV['RAILS_ENV'] == 'development'
+if ENV['RACK_ENV'] == 'test' || ENV['RACK_ENV'] == 'development'
   require 'rubocop/rake_task'
   RuboCop::RakeTask.new
 end

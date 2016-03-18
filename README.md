@@ -26,6 +26,7 @@ will be installed as addition like default, if start `onotole` with out `-c`
 flag. You can provide automatic install with options, like `--haml`. Default 
 pack will not be installed with any gem option.
 
+### Flexible gem group
 
  * [Airbrake](https://github.com/airbrake/airbrake) For exception notification
  * [bootstrap3](https://github.com/seyhunak/twitter-bootstrap-rails) Bootstrap
@@ -129,16 +130,18 @@ or
 
     gem install onotole
 
-Create gemset if you need it. 
-
 Then run:
 
     onotole projectname [ -c ] [ * rails_genetator_flags ]
 
+There is 2 main ways of using:
+1. `onotole projectname` will generate project with default mandatory gems and 
+default flexible gems
+2. `onotole projectname -c` will generate project with mandatory gems and will 
+provide a menu for gem selection, where you will need to choose all options.
 
-This will create a Rails app in `projectname` using the latest version of Rails.
-
-    onotole projectname -c
+Of course you are free to add standard `rails new` flags, inasmuch as Onotole
+based on standard rails generator
 
 And command like this will add some magic
 
@@ -149,10 +152,6 @@ it with gemname flag, after app_name, like `onotole projectname --slim`.
 List of gems you always can get with `onotole --gems` command. Also, 
 `onotole --help` can be useful.
 
-!!! Note, that databases with names `projectname`_development and `projectname`_test
-will be dropped. For example, if your project calls `awesome`, databases
-`awesome_development` and `awesome_test` will be dropped.
-
 *NB: if you install custom gems, default user gem pack will not be installed.
 
 ## Gemfile
@@ -161,7 +160,7 @@ To see the latest and greatest gems, look at Onotole'
 [Gemfile](templates/Gemfile.erb), which will be appended to the default
 generated projectname/Gemfile. This gem will be installed anyway.
 
-It includes application gems like:
+### Mandatory gem group
 
 * [Autoprefixer Rails](https://github.com/ai/autoprefixer-rails) for CSS vendor prefixes
 * [Delayed Job](https://github.com/collectiveidea/delayed_job) for background
@@ -264,8 +263,7 @@ This:
 
 * Creates a staging and production Heroku app
 * Sets them as `staging` and `production` Git remotes
-* Configures staging with `RACK_ENV` and `RAILS_ENV` environment variables set
-  to `staging`
+* Configures staging with `RACK_ENV` environment variable set to `staging`
 * Adds the [Rails Stdout Logging][logging-gem] gem
   to configure the app to log to standard out,
   which is how [Heroku's logging][heroku-logging] works.

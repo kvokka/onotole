@@ -82,7 +82,7 @@ module Onotole
     end
 
     def add_fonts_autoload
-      fonts = "\nRails.application.config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/"
+      fonts = "\nRails.application.config.assets.precompile << /\.(?:svg|eot|woff|ttf|otf)\z/"
       append_file 'config/initializers/assets.rb', fonts
     end
   end
