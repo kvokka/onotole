@@ -112,6 +112,10 @@ creating elegant backends for website administration.
  tables in Prawn
  * [fotoramajs](https://github.com/ai/fotoramajs) Fotorama JS gallery for Ruby 
  on Rails http://fotorama.io/
+ * [geocoder](https://github.com/alexreisner/geocoder) Complete Ruby geocoding 
+ solution. http://www.rubygeocoder.com
+ * [Gmaps4rails](https://github.com/apneadiving/Google-Maps-for-Rails) Enables 
+ easy Google map + overlays creation in Ruby apps http://apneadiving.github.io/
 
 
 Mandatory installation gem list you will find in `Gemfile` section

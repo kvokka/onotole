@@ -4,6 +4,8 @@ module Onotole
     def post_init
       install_queue = [
         :fotoramajs,
+        :underscore_rails,
+        :gmaps4rails,
         :devise,
         :validates_timeliness,
         :paper_trail,
@@ -223,6 +225,18 @@ end
       inject_into_file(AppBuilder.js_file, "\n//= require fotorama",
                        after: '//= require jquery_ujs')
       append_file(AppBuilder.app_file_scss, "\n@import 'fotorama'")
+    end
+
+    def after_install_underscore_rails
+      return unless user_choose? :underscore_rails
+      inject_into_file(AppBuilder.js_file, "\n//= require underscore",
+                       after: '//= require jquery_ujs')
+    end
+
+    def after_install_gmaps4rails
+      return unless user_choose? :gmaps4rails
+      inject_into_file(AppBuilder.js_file, "\n//= require gmaps/google",
+                       after: '//= require underscore')
     end
   end
 end

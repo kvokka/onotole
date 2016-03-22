@@ -269,5 +269,17 @@ module Onotole
     def add_fotoramajs_gem
       inject_into_file('Gemfile', "\ngem 'fotoramajs'", after: '# user_choice')
     end
+
+    def add_geocoder_gem
+      inject_into_file('Gemfile', "\ngem 'geocoder'", after: '# user_choice')
+    end
+
+    def add_gmaps4rails_gem
+      inject_into_file('Gemfile', "\ngem 'gmaps4rails'", after: '# user_choice')
+    end
+
+    def add_underscore_rails_gem
+      inject_into_file('Gemfile', "\ngem 'underscore-rails'", after: '# user_choice')
+    end
   end
 end

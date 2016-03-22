@@ -73,6 +73,7 @@ module Onotole
       variants = { none:          'None',
                    faker:         'Gem for generate fake data in testing',
                    rubocop:       'Code inspector and code formatting tool',
+                   rubycritic:    'A Ruby code quality reporter',
                    guard:         'Guard (with RSpec, livereload, rails, migrate, bundler)',
                    guard_rubocop: 'Auto-declare code miss in guard',
                    bundler_audit: 'Extra possibilities for gems version control',
@@ -91,24 +92,32 @@ module Onotole
       end
     end
 
+    def choose_wysiwyg
+      variants = { none:     'None',
+                   ckeditor: 'CKEditor is a WYSIWYG text editor designed for web content creation.',
+                   tinymce:  'Integration of TinyMCE with the Rails asset pipeline' }
+      gem = choice 'Select wysiwyg: ', variants
+      add_to_user_choise(gem) if gem
+    end
+
     def choose_undroup_gems
       variants = { none:                 'None',
-                   rubycritic:           'A Ruby code quality reporter',
                    responders:           'A set of responders modules to dry up your Rails 4.2+ app.',
-                   tinymce:              'Integration of TinyMCE with the Rails asset pipeline',
                    activerecord_import:  'A library for bulk inserting data using ActiveRecord',
                    paper_trail:          'Track changes to your models data. For auditing or versioning',
                    cyrillizer:           'Character conversion from latin to cyrillic and vice versa',
                    validates_timeliness: 'Date and time validation plugin for ActiveModel and Rails',
                    font_awesome_sass:    'Font-Awesome Sass gem for use in Ruby/Rails projects',
-                   ckeditor:             'CKEditor is a WYSIWYG text editor designed for web content creation.',
                    fotoramajs:           'Fotorama JS gallery for Rails http://fotorama.io/',
                    prawn:                'Prawn gem for PDF support vs prawn-table for easy tables',
-                   axlsx_rails:          'XLS support, cyrillic support, good support at all'
+                   axlsx_rails:          'XLS support, cyrillic support, good support at all',
+                   geocoder:             'Complete Ruby geocoding solution. http://www.rubygeocoder.com',
+                   gmaps4rails:          'Enables easy Google map + overlays creation. http://apneadiving.github.io/'
                     }
       multiple_choice('Write numbers of all preferred gems.', variants).each do |gem|
         add_to_user_choise gem
       end
+      add_to_user_choise :underscore_rails if user_choose?(:gmaps4rails)
     end
 
     # template for yes/no question

@@ -5,6 +5,6 @@ SMTP_SETTINGS = {
   domain:               ENV.fetch(<%= "#{app_name.upcase}_SMTP_DOMAIN" %>), # example: "heroku.com"
   enable_starttls_auto: true,
   password:             ENV.fetch(<%= "#{app_name.upcase}_SMTP_PASSWORD" %>),
-  port:                 '587',
+  port:                 ENV.fetch(<%= "#{app_name.upcase}_SMTP_PORT" %>),
   user_name:            ENV.fetch(<%= "#{app_name.upcase}_SMTP_USERNAME" %>)
 }.freeze
