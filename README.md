@@ -28,18 +28,14 @@ pack will not be installed with any gem option.
 
 ### Flexible gem group
 
- * [Airbrake](https://github.com/airbrake/airbrake) For exception notification
+#### Frontend frameworks
+
  * [bootstrap3](https://github.com/seyhunak/twitter-bootstrap-rails) Bootstrap
  with asset pipeline support
  * [bootstrap3_sass](https://github.com/twbs/bootstrap-sass) Bootstrap sass
- * [bundler_audit](https://github.com/rubysec/bundler-audit) Patch-level
- verification for Bundler
- * `*`[faker](https://github.com/stympy/faker) A library for generating fake data
- such as names, addresses, and phone numbers.
- * `*`[guard](https://github.com/guard/guard) Guard is a command line tool to
- easily handle events on file system modifications. http://guardgem.org
- * [guard_rubocop](https://github.com/yujinakayama/guard-rubocop) Guard plugin
- for RuboCop
+
+#### Template engines
+
  * `*`[slim](https://github.com/slim-template/slim) Slim is a template language
  whose goal is reduce the syntax to the essential parts without becoming
  cryptic. http://slim-lang.com
@@ -47,35 +43,26 @@ pack will not be installed with any gem option.
   installs with slim
  * [haml](https://github.com/haml/haml) HTML Abstraction Markup Language - A
  Markup Haiku http://haml.info
- * `*`[meta_request](https://github.com/dejan/rails_panel/tree/master/meta_request)
- Supporting gem for Rails Panel (Google Chrome extension for Rails development).
- * [rails_db](https://github.com/igorkasyanchuk/rails_db) Rails Database Viewer
- and SQL Query Runner https://youtu.be/TYsRxXRFp1g
- * `*`[rubocop](https://github.com/bbatsov/rubocop) A Ruby static code analyzer,
- based on the community Ruby style guide.
+
+#### Authenticate engines
+
  * [devise](https://github.com/plataformatec/devise) Flexible authentication
  solution for Rails with Warden. http://blog.plataformatec.com.br/tag/devise/
  * [devise-bootstrap-views](https://github.com/hisea/devise-bootstrap-views)
- * [will_paginate](https://github.com/mislav/will_paginate) Pagination library
- for Rails, Sinatra, Merb, DataMapper
- * [will_paginate-bootstrap](https://github.com/bootstrap-ruby/will_paginate-bootstrap)
- Integrates the Twitter Bootstrap pagination component with will_paginate
- * `*`[responders](https://github.com/plataformatec/responders) A set of responders
- modules to dry up your Rails 4.2+ app.
- * [hirb-unicode](https://github.com/miaout17/hirb-unicode) Unicode support
- for hirb
- * [dotenv-heroku](https://github.com/sideshowcoder/dotenv-heroku) Addition for
- quick variables export to heroku
- * [tinymce-rails](https://github.com/spohlenz/tinymce-rails) Integration of 
- TinyMCE with the Rails asset pipeline
- * `*`[annotate](https://github.com/ctran/annotate_models) Annotate Rails classes 
- with schema and routes info
- * `*`[overcommit](https://github.com/brigade/overcommit) A fully configurable 
- and extendable Git hook manager
+
+#### CMS engines & DB viewers
+
  * [rails_admin](https://github.com/sferik/rails_admin) Rails engine that 
  provides an easy-to-use interface for managing your data
  * [activeadmin](https://github.com/activeadmin/activeadmin) Rails framework for 
 creating elegant backends for website administration. 
+ * [typus](https://github.com/typus/typus) Ruby on Rails control panel to allow 
+ trusted users edit structured content. http://docs.typuscmf.com
+ * [rails_db](https://github.com/igorkasyanchuk/rails_db) Rails Database Viewer
+ and SQL Query Runner https://youtu.be/TYsRxXRFp1g
+
+##### ActiveAdmin plug-ins
+
  * [ActiveAdminImport](https://github.com/activeadmin-plugins/active_admin_import) 
  Based on ActiveRecord-import gem - the most efficient way to import for ActiveAdmin
  * [ActiveAdminTheme](https://github.com/activeadmin-plugins/active_admin_theme) 
@@ -85,12 +72,68 @@ creating elegant backends for website administration.
  Theme. Bring your Active Admin up-to-date with this customizable add on
  * [Face_of_active_admin](https://github.com/kvokka/face_of_active_admin) Theme 
  for ActiveAdmin with glyphicons and flattens
+ * [active_admin_bootstrap](https://gist.github.com/ball-hayden/2fd4d40b150a39716dec) 
+Very simple ActiveAdmin Bootstrap theme
+
+#### Pagimation
+
+ * [will_paginate](https://github.com/mislav/will_paginate) Pagination library
+ for Rails, Sinatra, Merb, DataMapper
+ * [will_paginate-bootstrap](https://github.com/bootstrap-ruby/will_paginate-bootstrap)
+ Integrates the Twitter Bootstrap pagination component with will_paginate
+ * [kaminari](https://github.com/amatsuda/kaminari) A Scope & Engine based, 
+ clean, powerful, customizable and sophisticated paginator for Rails
+ * [bootstrap-kaminari-views](https://github.com/matenia/bootstrap-kaminari-views)
+Bootstrap kaminari plugin
+
+#### WYSIWYG
+
+ * [ckeditor](https://github.com/galetahub/ckeditor) CKEditor is a WYSIWYG text 
+ editor designed to simplify web content creation.
+ * [tinymce-rails](https://github.com/spohlenz/tinymce-rails) Integration of 
+ TinyMCE with the Rails asset pipeline
+
+
+#### Developer tools
+
+ * [Airbrake](https://github.com/airbrake/airbrake) For exception notification
+ * [bundler_audit](https://github.com/rubysec/bundler-audit) Patch-level
+ verification for Bundler
+ * `*`[faker](https://github.com/stympy/faker) A library for generating fake data
+ such as names, addresses, and phone numbers.
+ * `*`[guard](https://github.com/guard/guard) Guard is a command line tool to
+ easily handle events on file system modifications. http://guardgem.org
+ * [guard_rubocop](https://github.com/yujinakayama/guard-rubocop) Guard plugin
+ for RuboCop
+ * `*`[meta_request](https://github.com/dejan/rails_panel/tree/master/meta_request)
+ Supporting gem for Rails Panel (Google Chrome extension for Rails development).
+ * `*`[rubocop](https://github.com/bbatsov/rubocop) A Ruby static code analyzer,
+ based on the community Ruby style guide.
+ * `*`[annotate](https://github.com/ctran/annotate_models) Annotate Rails classes 
+ with schema and routes info
+ * `*`[overcommit](https://github.com/brigade/overcommit) A fully configurable 
+ and extendable Git hook manager
  * `*`[rubycritic](https://github.com/whitesmith/rubycritic) A Ruby code quality 
  reporter
  * [railroady](https://github.com/preston/railroady) Model and controller UML 
  class diagram generator. Originally based on the "railroad" plugin
- * [typus](https://github.com/typus/typus) Ruby on Rails control panel to allow 
- trusted users edit structured content. http://docs.typuscmf.com
+ * [hirb-unicode](https://github.com/miaout17/hirb-unicode) Unicode support
+ for hirb
+ * [dotenv-heroku](https://github.com/sideshowcoder/dotenv-heroku) Addition for
+ quick variables export to heroku
+ * [image_optim](https://github.com/toy/image_optim) Optimize (lossless compress, 
+optionally lossy) images (jpeg, png, gif, svg) using external utilities
+ * [mailcatcher](https://github.com/sj26/mailcatcher) Catches mail and serves 
+it through a dream. http://mailcatcher.me
+
+#### Misc
+
+
+
+ * [activerecord_import](https://github.com/zdennis/activerecord-import) 
+ Activerecord-import is a library for bulk inserting data using ActiveRecord.
+ * `*`[responders](https://github.com/plataformatec/responders) A set of responders
+ modules to dry up your Rails 4.2+ app.
  * [paper_trail](https://github.com/airblade/paper_trail) Track changes to your 
  models' data. Good for auditing or versioning.
  * [validates_timeliness](https://github.com/adzap/validates_timeliness) 
@@ -100,8 +143,11 @@ creating elegant backends for website administration.
  Font-Awesome Sass gem for use in Ruby/Rails projects
  * [cyrillizer](https://github.com/dalibor/cyrillizer) Character conversion from
   latin to cyrillic and vice versa
- * [ckeditor](https://github.com/galetahub/ckeditor) CKEditor is a WYSIWYG text 
- editor designed to simplify web content creation.
+ * [fotoramajs](https://github.com/ai/fotoramajs) Fotorama JS gallery for Ruby 
+ on Rails http://fotorama.io/
+
+##### XLS & PDF
+
  * [axslx](https://github.com/randym/axlsx) Xlsx generation with charts, images, 
  automated column width, customizable styles and full schema validation.
  * [axlsx_rails](https://github.com/straydogstudio/axlsx_rails) A Rails plug-in 
@@ -110,18 +156,15 @@ creating elegant backends for website administration.
  http://prawnpdf.org 
  * [prawn-table](https://github.com/prawnpdf/prawn-table) Provides support for 
  tables in Prawn
- * [fotoramajs](https://github.com/ai/fotoramajs) Fotorama JS gallery for Ruby 
- on Rails http://fotorama.io/
+ 
+##### Geolocation
+
  * [geocoder](https://github.com/alexreisner/geocoder) Complete Ruby geocoding 
  solution. http://www.rubygeocoder.com
  * [Gmaps4rails](https://github.com/apneadiving/Google-Maps-for-Rails) Enables 
  easy Google map + overlays creation in Ruby apps http://apneadiving.github.io/
-* [image_optim](https://github.com/toy/image_optim) Optimize (lossless compress, 
-optionally lossy) images (jpeg, png, gif, svg) using external utilities
-* [mailcatcher](https://github.com/sj26/mailcatcher) Catches mail and serves 
-it through a dream. http://mailcatcher.me
 
-Mandatory installation gem list you will find in `Gemfile` section
+Mandatory installation gem list you will find in `Gemfile` section of this readme
 
 ## Installation
 
