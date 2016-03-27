@@ -116,7 +116,8 @@ creating elegant backends for website administration.
  solution. http://www.rubygeocoder.com
  * [Gmaps4rails](https://github.com/apneadiving/Google-Maps-for-Rails) Enables 
  easy Google map + overlays creation in Ruby apps http://apneadiving.github.io/
-
+* [image_optim](https://github.com/toy/image_optim) Optimize (lossless compress, 
+optionally lossy) images (jpeg, png, gif, svg) using external utilities
 
 Mandatory installation gem list you will find in `Gemfile` section
 

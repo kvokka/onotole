@@ -281,5 +281,10 @@ module Onotole
     def add_underscore_rails_gem
       inject_into_file('Gemfile', "\ngem 'underscore-rails'", after: '# user_choice')
     end
+
+    def add_image_optim_gem
+      inject_into_file('Gemfile', "\ngem 'image_optim_pack'", after: '# user_choice')
+      inject_into_file('Gemfile', "\ngem 'image_optim'", after: '# user_choice')
+    end
   end
 end

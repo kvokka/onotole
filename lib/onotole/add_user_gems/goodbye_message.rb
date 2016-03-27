@@ -5,6 +5,7 @@ module Onotole
       github_check
       airbrake_check
       graphviz_check
+      image_optim_check
       say_color BOLDGREEN, "Congratulations! Onotole gives you: 'Intellect+= 1'"
     end
 
@@ -23,6 +24,12 @@ module Onotole
     def airbrake_check
       return unless user_choose? :airbrake
       say_color YELLOW, "Remember to run 'rails generate airbrake' with your API key."
+    end
+
+    def image_optim_check
+      return unless user_choose? :image_optim
+      say_color YELLOW, "You may install 'svgo' for 'image_optim' by `npm install -g svgo`"
+      say_color YELLOW, "You may install 'pngout' for 'image_optim' from http://www.jonof.id.au/kenutils"
     end
   end
 end
