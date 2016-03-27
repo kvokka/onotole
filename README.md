@@ -118,6 +118,8 @@ creating elegant backends for website administration.
  easy Google map + overlays creation in Ruby apps http://apneadiving.github.io/
 * [image_optim](https://github.com/toy/image_optim) Optimize (lossless compress, 
 optionally lossy) images (jpeg, png, gif, svg) using external utilities
+* [mailcatcher](https://github.com/sj26/mailcatcher) Catches mail and serves 
+it through a dream. http://mailcatcher.me
 
 Mandatory installation gem list you will find in `Gemfile` section
 

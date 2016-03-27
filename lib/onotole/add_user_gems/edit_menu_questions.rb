@@ -84,6 +84,7 @@ module Onotole
                    hirbunicode:   'Hirb unicode support',
                    dotenv_heroku: 'dotenv-heroku support',
                    image_optim:   'Optimize images (jpeg, png, gif, svg) using external utilities',
+                   mailcatcher:   'Catches mail and serves it through a dream. http://mailcatcher.me',
                    meta_request:  'Rails meta panel in chrome console.'\
                    " Very usefull in\n#{' ' * 24}AJAX debugging. Link for chrome"\
                    " add-on in Gemfile.\n#{' ' * 24}Do not delete comments if you need this link"

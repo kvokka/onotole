@@ -6,6 +6,7 @@ module Onotole
         :fotoramajs,
         :underscore_rails,
         :gmaps4rails,
+        :mailcatcher,
         :devise,
         :validates_timeliness,
         :paper_trail,
@@ -237,6 +238,17 @@ end
       return unless user_choose? :gmaps4rails
       inject_into_file(AppBuilder.js_file, "\n//= require gmaps/google",
                        after: '//= require underscore')
+    end
+
+    def after_install_mailcatcher
+      config = <<-RUBY
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+      RUBY
+
+      replace_in_file 'config/environments/development.rb',
+                      'config.action_mailer.delivery_method = :file', config
     end
   end
 end

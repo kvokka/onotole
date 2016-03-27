@@ -286,5 +286,9 @@ module Onotole
       inject_into_file('Gemfile', "\ngem 'image_optim_pack'", after: '# user_choice')
       inject_into_file('Gemfile', "\ngem 'image_optim'", after: '# user_choice')
     end
+
+    def add_mailcatcher_gem
+      inject_into_file('Gemfile', "\n  gem 'mailcatcher'", after: 'group :development do')
+    end
   end
 end
