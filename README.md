@@ -26,6 +26,10 @@ will be installed as addition like default, if start `onotole` with out `-c`
 flag. You can provide automatic install with options, like `--haml`. Default 
 pack will not be installed with any gem option.
 
+I begin collecting some [goodies](https://github.com/kvokka/onotole/goodies) 
+where some patches and tweaks will be placed in, for easyer getting into and
+using it with already started projects.
+
 ### Flexible gem group
 
 #### Frontend frameworks
@@ -302,6 +306,8 @@ selected for pretty view from the box
 * Added autoload js and scss from `vendor/assets/javascripts` and 
 `vendor/assets/stylesheets`
 * Added autoload fonts from `app/assets/fonts/**/*`
+* Patch for no error work, if `Mailcatcher` is not loaded. In this case 
+`delivery_method = :file`. It checks on the `rails server` starts.
 
 ## Heroku
 

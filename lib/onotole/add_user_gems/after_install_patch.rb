@@ -243,8 +243,13 @@ end
     def after_install_mailcatcher
       config = <<-RUBY
 
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+  if system ('lsof -i :1025 | grep mailcatch  > /dev/null')
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = { address: "localhost", port: 1025 }
+  else
+    config.action_mailer.delivery_method = :file
+  end
+
       RUBY
 
       replace_in_file 'config/environments/development.rb',
