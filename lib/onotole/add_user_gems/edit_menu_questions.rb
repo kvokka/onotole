@@ -114,7 +114,8 @@ module Onotole
                    prawn:                'Prawn gem for PDF support vs prawn-table for easy tables',
                    axlsx_rails:          'XLS support, cyrillic support, good support at all',
                    geocoder:             'Complete Ruby geocoding solution. http://www.rubygeocoder.com',
-                   gmaps4rails:          'Enables easy Google map + overlays creation. http://apneadiving.github.io/'
+                   gmaps4rails:          'Enables easy Google map + overlays creation. http://apneadiving.github.io/',
+                   rack_cors:            'Rack Middleware for handling Cross-Origin Resource Sharing (CORS).'
                     }
       multiple_choice('Write numbers of all preferred gems.', variants).each do |gem|
         add_to_user_choise gem

@@ -7,6 +7,7 @@ module Onotole
         :underscore_rails,
         :gmaps4rails,
         :mailcatcher,
+        :rack_cors,
         :devise,
         :validates_timeliness,
         :paper_trail,
@@ -222,20 +223,17 @@ end
     end
 
     def after_install_fotoramajs
-      return unless user_choose? :fotoramajs
       inject_into_file(AppBuilder.js_file, "\n//= require fotorama",
                        after: '//= require jquery_ujs')
       append_file(AppBuilder.app_file_scss, "\n@import 'fotorama'")
     end
 
     def after_install_underscore_rails
-      return unless user_choose? :underscore_rails
       inject_into_file(AppBuilder.js_file, "\n//= require underscore",
                        after: '//= require jquery_ujs')
     end
 
     def after_install_gmaps4rails
-      return unless user_choose? :gmaps4rails
       inject_into_file(AppBuilder.js_file, "\n//= require gmaps/google",
                        after: '//= require underscore')
     end
@@ -254,6 +252,21 @@ end
 
       replace_in_file 'config/environments/development.rb',
                       'config.action_mailer.delivery_method = :file', config
+    end
+
+    def after_install_rack_cors
+      config = <<-RUBY
+
+    config.middleware.insert_before 0, "Rack::Cors" do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :options]
+      end
+    end
+
+      RUBY
+
+      inject_into_class 'config/application.rb', 'Application', config
     end
   end
 end

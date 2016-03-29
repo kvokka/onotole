@@ -149,6 +149,8 @@ it through a dream. http://mailcatcher.me
   latin to cyrillic and vice versa
  * [fotoramajs](https://github.com/ai/fotoramajs) Fotorama JS gallery for Ruby 
  on Rails http://fotorama.io/
+ * [rack-cors](https://github.com/cyu/rack-cors) Rack Middleware for handling 
+ Cross-Origin Resource Sharing (CORS), which makes cross-origin AJAX possible.
 
 ##### XLS & PDF
 

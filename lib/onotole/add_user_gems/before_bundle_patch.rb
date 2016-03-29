@@ -290,5 +290,9 @@ module Onotole
     def add_mailcatcher_gem
       inject_into_file('Gemfile', "\n  gem 'mailcatcher'", after: 'group :development do')
     end
+
+    def add_rack_cors_gem
+      inject_into_file('Gemfile', "\ngem 'rack-cors', :require => 'rack/cors'", after: '# user_choice')
+    end
   end
 end
