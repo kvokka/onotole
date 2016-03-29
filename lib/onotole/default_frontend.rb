@@ -77,7 +77,7 @@ module Onotole
     end
 
     def add_vendor_css_path
-      vendor_css_path = "\nRails.application.config.assets.paths += Dir[(Rails.root.join('vendor/assets/stylesheets'))]"
+      vendor_css_path = "\nRails.application.config.assets.paths += Dir[(Rails.root.join('vendor/assets/stylesheets'))]\nRails.application.config.assets.paths += Dir[(Rails.root.join('vendor/assets/images'))]"
       append_file 'config/initializers/assets.rb', vendor_css_path
     end
 
