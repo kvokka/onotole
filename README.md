@@ -79,7 +79,7 @@ creating elegant backends for website administration.
  * [active_admin_bootstrap](https://gist.github.com/ball-hayden/2fd4d40b150a39716dec) 
 Very simple ActiveAdmin Bootstrap theme
 
-#### Pagimation
+#### Pagination
 
  * [will_paginate](https://github.com/mislav/will_paginate) Pagination library
  for Rails, Sinatra, Merb, DataMapper
