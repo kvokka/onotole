@@ -12,22 +12,22 @@ Read more [ENG](https://en.wikipedia.org/wiki/Anatoly_Wasserman) |
 ## About
 
 Fork from thoughtbot/suspenders(https://github.com/thoughtbot/suspenders)
-Implemented function of user choice gems installation with all their settings,
-so you can use fully working application with all needed installed and
+implemented function of user choice gems installation with all their settings,
+so you can use fully working application with everything needed installed and
 configured from the box. Cut `Bitters` as default choice.
 
 As default uses the latest Ruby version and Rails '~> 4.2.0' 
 
-This user gem pack are available for custom installation (you will choose only
-what you need) all of this will be available in customization menu with `-c` 
-flag usage (no default selected gems will be installed), otherwise will be 
-installed default gem list. Gems with `*` mark 
-will be installed as addition like default, if start `onotole` with out `-c`
-flag. You can provide automatic install with options, like `--haml`. Default 
-pack will not be installed with any gem option.
+This user gem pack is available for custom installation (you will only choose 
+what you need) all of this will be available in the customization menu with `-c` 
+flag usage (no default selected gems will be installed), otherwise default gem 
+list will be installed. Gems with `*` mark will be installed as addition like
+default, if starting `onotole` without `-c` flag. You can provide automatic 
+installation with options, like `--haml`. Default pack will not be installed 
+with any gem option.
 
 I begin collecting some [goodies](https://github.com/kvokka/onotole/goodies) 
-where some patches and tweaks will be placed in, for easyer getting into and
+where some patches and tweaks will be placed in, for easier getting into and
 using it with already started projects.
 
 ### Flexible gem group
@@ -41,7 +41,7 @@ using it with already started projects.
 #### Template engines
 
  * `*`[slim](https://github.com/slim-template/slim) Slim is a template language
- whose goal is reduce the syntax to the essential parts without becoming
+ which goal to reduce the syntax to the essential parts without becoming
  cryptic. http://slim-lang.com
  * [html2slim](https://github.com/slim-template/html2slim) HTML2SLIM utility,
   installs with slim
@@ -190,7 +190,7 @@ Then run:
 
     onotole projectname [ -c ] [ * rails_genetator_flags ]
 
-There is 2 main ways of using:
+There are 2 main ways of using:
 1. `onotole projectname` will generate project with default mandatory gems and 
 default flexible gems
 2. `onotole projectname -c` will generate project with mandatory gems and will 
