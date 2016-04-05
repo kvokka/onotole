@@ -207,16 +207,16 @@ end
     def after_install_acive_skin
       return unless user_choose? :activeadmin
       File.open('app/assets/stylesheets/active_admin.scss', 'a') do |f|
-        f.write "\n@import 'active_skin;'\n\\\\$skinLogo: url('admin_logo.png') no-repeat 0 0;"
+        f.write "\n@import 'active_skin';\n\\\\$skinLogo: url('admin_logo.png') no-repeat 0 0;"
       end
     end
 
     def after_install_flattened_active_admin
       return unless user_choose? :activeadmin
       File.open('app/assets/stylesheets/active_admin.scss', 'w') do |f|
-        f.write "\n@import 'flattened_active_admin/variables;'
-        \n@import 'flattened_active_admin/mixins;'
-        \n@import 'flattened_active_admin/base;'"
+        f.write "\n@import 'flattened_active_admin/variables';
+        \n@import 'flattened_active_admin/mixins';
+        \n@import 'flattened_active_admin/base';"
       end
       rails_generator 'flattened_active_admin:variables'
     end
@@ -224,9 +224,9 @@ end
     def after_install_face_of_active_admin
       return unless user_choose? :activeadmin
       File.open('app/assets/stylesheets/active_admin.scss', 'w') do |f|
-        f.write "\n@import 'face_of_active_admin/variables;'
-        \n@import 'face_of_active_admin/mixins;'
-        \n@import 'face_of_active_admin/base;'"
+        f.write "\n@import 'face_of_active_admin_variables';
+        \n@import 'face_of_active_admin/mixins';
+        \n@import 'face_of_active_admin/base';"
       end
       append_file 'app/assets/javascripts/active_admin.js.coffee',
                   "\n#= require face_of_active_admin/base"

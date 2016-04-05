@@ -294,5 +294,10 @@ module Onotole
     def add_rack_cors_gem
       inject_into_file('Gemfile', "\ngem 'rack-cors', :require => 'rack/cors'", after: '# user_choice')
     end
+
+    def add_rack_mini_profiler_gem
+      inject_into_file('Gemfile', "\n  gem 'rack-mini-profiler', require: false", after: '# user_choice')
+      copy_file 'rack_mini_profiler.rb', 'config/initializers/rack_mini_profiler.rb'
+    end
   end
 end

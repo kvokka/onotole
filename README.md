@@ -129,6 +129,10 @@ Bootstrap kaminari plugin
 optionally lossy) images (jpeg, png, gif, svg) using external utilities
  * [mailcatcher](https://github.com/sj26/mailcatcher) Catches mail and serves 
 it through a dream. http://mailcatcher.me
+ * `*`[rack-mini-profiler](https://github.com/MiniProfiler/rack-mini-profiler)
+ Middleware that displays speed badge for every html page. Designed to work both
+  in production and in development.
+
 
 #### Misc
 

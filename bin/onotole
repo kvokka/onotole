@@ -20,6 +20,7 @@ DEFAULT_GEMSET = [:slim,
                   :clean_comments, 
                   :responders, 
                   :annotate,
+                  :rack_mini_profiler,
                   :overcommit].freeze
 
 if ['-v', '--version'].include? ARGV[0]
