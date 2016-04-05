@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
 
   s.description = <<-HERE
 Onotole is a Rails project generator that you can upgrade. Use Onotole if you're
-in a rush to build something amazing or just want to test out some new 
+in a rush to build something amazing or just want to test out some new
 technologes. You can choose more than 50 gems to add and get all of it with init
 settings and be free from init confings copy/paste
   HERE

@@ -23,15 +23,15 @@ DEFAULT_GEMSET = [:slim,
                   :overcommit].freeze
 
 if ['-v', '--version'].include? ARGV[0]
-  puts Onotole::VERSION
+  puts "Onotole version #{Onotole::VERSION}"
   exit 0
 elsif ['--gems'].include? ARGV[0]
   puts 'You can manually can add gems from the list like options'
   puts "Onotole app_path  [--gem1_name --gem2_name ...]\n\n"
 
   GEMPROCLIST.map { |a| "--#{a}" }.each_with_index do |g, i|
-    puts  if i % 4 == 0 && i > 1
-    print g.ljust(20)
+    puts  if i % 3 == 0 && i > 1
+    print g.ljust(26)
   end
   puts
   exit 0
