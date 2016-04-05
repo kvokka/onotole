@@ -142,5 +142,9 @@ module Onotole
       end
       add_user_gems
     end
+
+    def touch(file_name)
+      `touch #{file_name}`
+    end
   end
 end

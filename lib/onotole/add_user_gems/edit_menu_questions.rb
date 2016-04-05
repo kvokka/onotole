@@ -96,8 +96,8 @@ module Onotole
 
     def choose_wysiwyg
       variants = { none:     'None',
-                   ckeditor: 'CKEditor is a WYSIWYG text editor designed for web content creation.',
-                   tinymce:  'Integration of TinyMCE with the Rails asset pipeline' }
+                   ckeditor: 'CKEditor text editor designed for web content creation.',
+                   tinymce:  'TinyMCE with the Rails asset pipeline' }
       gem = choice 'Select wysiwyg: ', variants
       add_to_user_choise(gem) if gem
     end

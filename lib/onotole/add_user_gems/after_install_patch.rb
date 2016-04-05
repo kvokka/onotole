@@ -89,6 +89,7 @@ end
     def after_install_bootstrap3_sass
       setup_stylesheets
       AppBuilder.use_asset_pipelline = false
+      touch AppBuilder.app_file_scss
       append_file(AppBuilder.app_file_scss,
                   "\n@import 'bootstrap_variables';
                    \n@import 'bootstrap-sprockets';
@@ -110,9 +111,11 @@ end
 
     def after_install_normalize
       if AppBuilder.use_asset_pipelline
+        touch AppBuilder.app_file_css
         inject_into_file(AppBuilder.app_file_css, " *= require normalize-rails\n",
                          after: " * file per style scope.\n *\n")
       else
+        touch AppBuilder.app_file_scss
         inject_into_file(AppBuilder.app_file_scss, "\n@import 'normalize-rails';",
                          after: '@charset "utf-8";')
       end
@@ -168,13 +171,21 @@ end
     end
 
     def after_install_font_awesome_sass
-      return if AppBuilder.use_asset_pipelline
-      append_file(AppBuilder.app_file_scss,
-                  "\n@import 'font-awesome-sprockets';\n@import 'font-awesome';")
+      if AppBuilder.use_asset_pipelline
+        inject_into_file(AppBuilder.app_file_css,
+                         " *= require font-awesome-sprockets\n *= require font-awesome\n",
+                         after: " * file per style scope.\n *\n")
+      else
+        touch AppBuilder.app_file_scss
+        append_file(AppBuilder.app_file_scss,
+                    "\n@import 'font-awesome-sprockets';\n@import 'font-awesome';")
+      end
     end
 
     def after_install_devise_bootstrap_views
-      append_file(AppBuilder.app_file_scss, "\n@import 'devise_bootstrap_views'")
+      return if AppBuilder.use_asset_pipelline
+      touch AppBuilder.app_file_scss
+      append_file(AppBuilder.app_file_scss, "\n@import 'devise_bootstrap_views';")
       rails_generator 'devise:views:bootstrap_templates'
     end
 
@@ -223,9 +234,15 @@ end
     end
 
     def after_install_fotoramajs
+      if AppBuilder.use_asset_pipelline
+        inject_into_file(AppBuilder.app_file_css, " *= require fotorama\n",
+                         after: " * file per style scope.\n *\n")
+      else
+        touch AppBuilder.app_file_scss
+        append_file(AppBuilder.app_file_scss, "\n@import 'fotorama';")
+      end
       inject_into_file(AppBuilder.js_file, "\n//= require fotorama",
                        after: '//= require jquery_ujs')
-      append_file(AppBuilder.app_file_scss, "\n@import 'fotorama'")
     end
 
     def after_install_underscore_rails
