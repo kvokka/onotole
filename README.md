@@ -314,6 +314,9 @@ selected for pretty view from the box
 * Added autoload fonts from `app/assets/fonts/**/*`
 * Patch for no error work, if `Mailcatcher` is not loaded. In this case 
 `delivery_method = :file`. It checks on the `rails server` starts.
+* No need to add `rails_helper` or `spec_helper` in specs.
+* In `.env` just switch on `#{app_name}_COVERAGE` to true and get your test 
+coverage.
 
 ## Heroku
 
