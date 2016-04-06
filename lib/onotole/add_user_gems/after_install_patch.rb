@@ -3,6 +3,7 @@ module Onotole
   module AfterInstallPatch
     def post_init
       install_queue = [
+        :ckeditor,
         :fotoramajs,
         :underscore_rails,
         :gmaps4rails,
@@ -284,6 +285,10 @@ end
       RUBY
 
       inject_into_class 'config/application.rb', 'Application', config
+    end
+
+    def after_install_ckeditor
+      append_file(AppBuilder.js_file, "\n#= require ckeditor/init")
     end
   end
 end

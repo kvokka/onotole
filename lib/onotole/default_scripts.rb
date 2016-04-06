@@ -185,9 +185,8 @@ end
     end
 
     def configure_support_path
-      run 'touch app/support'
-      app_require_files = "Dir[Rails.root.join('app/support/**/*.rb')].each { |file| require file }"
-      append_file 'config/application.rb', app_require_files
+      run 'touch app/support/.keep'
+      copy_file 'support.rb', 'config/initializers/support.rb'
 
       config = "\n    config.autoload_paths << Rails.root.join('app/support')\n"
       inject_into_class 'config/application.rb', 'Application', config

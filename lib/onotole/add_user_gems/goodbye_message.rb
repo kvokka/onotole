@@ -7,6 +7,7 @@ module Onotole
       graphviz_check
       image_optim_check
       rack_cors_check
+      ckeditor_check
       say_color BOLDGREEN, "Congratulations! Onotole gives you: 'Intellect+= 1'"
     end
 
@@ -36,6 +37,11 @@ module Onotole
     def rack_cors_check
       return unless user_choose? :rack_cors
       say_color YELLOW, 'Check your config/application.rb file for rack-cors settings for security.'
+    end
+
+    def ckeditor_check
+      return unless user_choose? :ckeditor
+      say_color YELLOW, 'Visit ckeditor homepage and install back-end for it.'
     end
   end
 end
