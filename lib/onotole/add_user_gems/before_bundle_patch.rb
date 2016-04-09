@@ -300,8 +300,8 @@ module Onotole
       copy_file 'rack_mini_profiler.rb', 'config/initializers/rack_mini_profiler.rb'
     end
 
-def add_newrelic_rpm_gem
+    def add_newrelic_rpm_gem
       inject_into_file('Gemfile', "\ngem 'newrelic_rpm'", after: '# user_choice')
-  end
+    end
   end
 end

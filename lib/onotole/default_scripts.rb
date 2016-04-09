@@ -198,7 +198,7 @@ end
     end
 
     def add_dotenv_to_startup
-    inject_into_file('config/application.rb', "\nDotenv::Railtie.load\n", after: 'Bundler.require(*Rails.groups)')
+      inject_into_file('config/application.rb', "\nDotenv::Railtie.load\n", after: 'Bundler.require(*Rails.groups)')
     end
   end
 end

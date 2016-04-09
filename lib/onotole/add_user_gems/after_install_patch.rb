@@ -293,9 +293,9 @@ end
     end
 
     def after_install_image_optim
-file.open('config/initializers/image_optim.rb', "w") do |f|
-  f.write "Rails.application.config.assets.image_optim = {svgo:  false, pngout:  false}"
-end
+      file.open('config/initializers/image_optim.rb', 'w') do |f|
+        f.write 'Rails.application.config.assets.image_optim = {svgo:  false, pngout:  false}'
+      end
     end
   end
 end
