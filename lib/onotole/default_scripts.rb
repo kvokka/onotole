@@ -108,6 +108,7 @@ end
     def copy_dotfiles
       directory 'dotfiles', '.', force: true
       template 'dotenv.erb', '.env'
+      run 'touch .env.production'
     end
 
     def setup_spring
@@ -194,6 +195,10 @@ end
 
     def apply_vendorjs_folder
       inject_into_file(AppBuilder.js_file, "//= require_tree ../../../vendor/assets/javascripts/.\n", before: '//= require_tree .')
+    end
+
+    def add_dotenv_to_startup
+    inject_into_file('config/application.rb', "\nDotenv::Railtie.load\n", after: 'Bundler.require(*Rails.groups)')
     end
   end
 end

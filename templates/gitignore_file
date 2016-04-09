@@ -16,3 +16,4 @@
 /vendor/bundle
 /.idea/
 /vendor/cache/
+/.env.production

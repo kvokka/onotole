@@ -155,6 +155,7 @@ it through a dream. http://mailcatcher.me
  on Rails http://fotorama.io/
  * [rack-cors](https://github.com/cyu/rack-cors) Rack Middleware for handling 
  Cross-Origin Resource Sharing (CORS), which makes cross-origin AJAX possible.
+ * [newrelic_rpm](https://github.com/newrelic/rpm) for monitoring performance 
 
 ##### XLS & PDF
 
@@ -229,7 +230,6 @@ generated projectname/Gemfile. This gem will be installed anyway.
   helpers
 * [High Voltage](https://github.com/thoughtbot/high_voltage) for static pages
 * [jQuery Rails](https://github.com/rails/jquery-rails) for jQuery
-* [New Relic RPM](https://github.com/newrelic/rpm) for monitoring performance
 * [Normalize](https://necolas.github.io/normalize.css/) for resetting browser styles
 * [Postgres](https://github.com/ged/ruby-pg) for access to the Postgres database
 * [Rack Canonical Host](https://github.com/tylerhunt/rack-canonical-host) to
@@ -286,9 +286,10 @@ And testing gems like:
 All variables are stored in `.env` file and calls with project name prefix. It 
 made for avoid name space problems with placing more than 1 of Onotole created 
 app on 1 server. Onotole prefix all `env` variables with `#{app_name}` and now 
-you will not have any problems with export variables in production. With this 
-thick you can easy use ENV export tool or just put ENV variables in `.bashrc` 
-without name space conflicts.
+you will not have any problems with export variables in production. In 
+production environment you can make `.env.production` file and put all consants
+there. Also with this thick you can easy use ENV export tool or just put ENV 
+variables in `.bashrc` without name space conflicts. 
 
 ## Other goodies
 

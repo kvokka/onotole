@@ -283,8 +283,8 @@ module Onotole
     end
 
     def add_image_optim_gem
-      inject_into_file('Gemfile', "\ngem 'image_optim_pack'", after: '# user_choice')
-      inject_into_file('Gemfile', "\ngem 'image_optim'", after: '# user_choice')
+      inject_into_file('Gemfile', "\ngem 'image_optim_pack'", after: 'group :development do')
+      inject_into_file('Gemfile', "\ngem 'image_optim'", after: 'group :development do')
     end
 
     def add_mailcatcher_gem
@@ -299,5 +299,9 @@ module Onotole
       inject_into_file('Gemfile', "\n  gem 'rack-mini-profiler', require: false", after: '# user_choice')
       copy_file 'rack_mini_profiler.rb', 'config/initializers/rack_mini_profiler.rb'
     end
+
+def add_newrelic_rpm_gem
+      inject_into_file('Gemfile', "\ngem 'newrelic_rpm'", after: '# user_choice')
+  end
   end
 end

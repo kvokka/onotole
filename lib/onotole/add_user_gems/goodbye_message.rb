@@ -32,6 +32,7 @@ module Onotole
       return unless user_choose? :image_optim
       say_color YELLOW, "You may install 'svgo' for 'image_optim' by `npm install -g svgo`"
       say_color YELLOW, "You may install 'pngout' for 'image_optim' from http://www.jonof.id.au/kenutils"
+      say_color YELLOW, "By default this tools are switch off in image_optim.rb"
     end
 
     def rack_cors_check

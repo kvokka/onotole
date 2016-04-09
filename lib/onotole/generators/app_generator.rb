@@ -117,6 +117,7 @@ module Onotole
       build :configure_generators
       build :configure_i18n_for_missing_translations
       build :configure_quiet_assets
+      build :add_dotenv_to_startup
     end
 
     def setup_test_environment
