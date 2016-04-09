@@ -12,6 +12,8 @@ test:
   database: <%= app_name %>_test
 
 production: &deploy
+  adapter: postgresql
+  database: <%= app_name %>_production
   encoding: utf8
   min_messages: warning
   pool: <%%= [Integer(ENV.fetch("MAX_THREADS", 5)), Integer(ENV.fetch("DB_POOL", 5))].max %>
