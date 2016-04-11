@@ -318,6 +318,7 @@ selected for pretty view from the box
 * No need to add `rails_helper` or `spec_helper` in specs.
 * In `.env` just switch on `#{app_name}_COVERAGE` to true and get your test 
 coverage.
+* Added `kaminari-i18n` installation with `ActiveAdmin` or `kaminari` gem
 
 ## Heroku
 

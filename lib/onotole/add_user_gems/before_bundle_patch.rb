@@ -165,6 +165,7 @@ module Onotole
 
     def add_activeadmin_gem
       inject_into_file('Gemfile', "\ngem 'activeadmin', github: 'activeadmin'", after: '# user_choice')
+      inject_into_file('Gemfile', "\ngem 'kaminari-i18n'", after: '# user_choice')
       copy_file 'activeadmin.en.yml', 'config/locales/activeadmin.en.yml'
       copy_file 'activeadmin.ru.yml', 'config/locales/activeadmin.ru.yml'
       # it still live https://github.com/Prelang/feedback/issues/14 and this patch helps
@@ -203,6 +204,7 @@ module Onotole
 
     def add_kaminari_gem
       inject_into_file('Gemfile', "\ngem 'kaminari'", after: '# user_choice')
+      inject_into_file('Gemfile', "\ngem 'kaminari-i18n'", after: '# user_choice')
       copy_file 'kaminari.rb', 'config/initializers/kaminari.rb'
       inject_into_file('Gemfile', "\ngem 'bootstrap-kaminari-views'",
                        after: '# user_choice') if user_choose?(:bootstrap3) ||
