@@ -13,7 +13,7 @@ module Onotole
     end
 
     def add_haml_gem
-      inject_into_file('Gemfile', "\ngem 'haml-rails'", after: '# user_choice')
+      inject_into_file('Gemfile', "\ngem 'haml-rails'", after: 'group :assets do')
     end
 
     def add_dotenv_heroku_gem
@@ -23,7 +23,7 @@ module Onotole
     end
 
     def add_slim_gem
-      inject_into_file('Gemfile', "\ngem 'slim-rails'", after: '# user_choice')
+      inject_into_file('Gemfile', "\ngem 'slim-rails'", after: 'group :assets do')
       inject_into_file('Gemfile', "\n  gem 'html2slim'", after: 'group :development do')
     end
 

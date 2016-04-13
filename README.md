@@ -319,6 +319,7 @@ selected for pretty view from the box
 * In `.env` just switch on `#{app_name}_COVERAGE` to true and get your test 
 coverage.
 * Added `kaminari-i18n` installation with `ActiveAdmin` or `kaminari` gem
+* Moved asset gems in assets group in Gemfile
 
 ## Heroku
 

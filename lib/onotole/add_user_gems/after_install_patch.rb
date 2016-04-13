@@ -291,7 +291,7 @@ end
     def after_install_ckeditor
       append_file(AppBuilder.js_file, "\n#= require ckeditor/init")
       append_file('config/initializers/assets.rb',
-         "\nRails.application.config.assets.precompile += %w( ckeditor/* )")
+                  "\nRails.application.config.assets.precompile += %w( ckeditor/* )")
     end
 
     def after_install_image_optim

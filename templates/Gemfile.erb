@@ -2,8 +2,6 @@ source "https://rubygems.org"
 
 ruby "<%= Onotole::RUBY_VERSION %>"
 
-gem "autoprefixer-rails"
-gem "coffee-rails", "~> 4.1.0"
 gem "delayed_job_active_record"
 gem "flutie"
 gem "high_voltage"
@@ -13,15 +11,20 @@ gem "pg"
 gem "puma"
 gem "rack-canonical-host"
 gem "rails", "<%= Onotole::RAILS_VERSION %>"
-gem "sass-rails", "~> 5.0"
 gem "simple_form"
 gem "title"
-gem "uglifier"
 gem "therubyracer"
-gem 'rake', '~> 10.5.0'
+gem 'rake', '~> 11.1.0'
 gem "awesome_print", :require=>"ap"
 gem "dotenv-rails"
 # user_choice
+
+group :assets do
+  gem "sass-rails", "~> 5.0"
+  gem "autoprefixer-rails"
+  gem "coffee-rails", "~> 4.1.0"
+  gem "uglifier"
+end
 
 group :development do
   gem "quiet_assets"
