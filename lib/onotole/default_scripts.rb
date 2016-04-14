@@ -186,6 +186,7 @@ end
     end
 
     def configure_support_path
+      run 'mkdir app/support'
       run 'touch app/support/.keep'
       copy_file 'support.rb', 'config/initializers/support.rb'
 

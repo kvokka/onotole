@@ -420,6 +420,8 @@ will not run
 Please, do not change version or gems for default install.
 Appname `tmp` is preferred for develop. It already added to gitignore.
 
+Keep in mind, that tests will need installed [hub](https://github.com/github/hub)
+
 If you find some misprints fell free to fix them.
 
 Thank you!
