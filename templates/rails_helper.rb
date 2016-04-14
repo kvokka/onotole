@@ -22,3 +22,14 @@ RSpec.configure do |config|
 end
 
 ActiveRecord::Migration.maintain_test_schema!
+
+Rails.logger.level = 4
+
+# Improves performance by forcing the garbage collector to run less often.
+unless ENV['DEFER_GC'] == '0' || ENV['DEFER_GC'] == 'false'
+  require 'support/deferred_garbage_collection'
+  RSpec.configure do |config|
+    config.before(:all) { DeferredGarbageCollection.start }
+    config.after(:all)  { DeferredGarbageCollection.reconsider }
+  end
+end

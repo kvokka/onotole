@@ -28,6 +28,7 @@ end
       remove_file 'spec/rails_helper.rb'
       remove_file 'spec/spec_helper.rb'
       copy_file 'rails_helper.rb', 'spec/rails_helper.rb'
+      copy_file 'deferred_garbage_collection.rb', 'spec/deferred_garbage_collection.rb'
       template 'spec_helper.rb.erb', 'spec/spec_helper.rb'
     end
 

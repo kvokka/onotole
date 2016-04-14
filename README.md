@@ -320,6 +320,8 @@ selected for pretty view from the box
 coverage.
 * Added `kaminari-i18n` installation with `ActiveAdmin` or `kaminari` gem
 * Moved asset gems in assets group in Gemfile
+* Disable logging and deferred garbage collecting gives up 20% test speed 
+improvement
 
 ## Heroku
 
