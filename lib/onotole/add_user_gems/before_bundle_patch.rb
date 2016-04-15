@@ -305,5 +305,9 @@ module Onotole
     def add_newrelic_rpm_gem
       inject_into_file('Gemfile', "\ngem 'newrelic_rpm'", after: '# user_choice')
     end
+
+    def add_active_admin_simple_life_gem
+      inject_into_file('Gemfile', "\ngem 'active_admin_simple_life'", after: '# user_choice')
+    end
   end
 end

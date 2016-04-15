@@ -78,6 +78,9 @@ creating elegant backends for website administration.
  for ActiveAdmin with glyphicons and flattens
  * [active_admin_bootstrap](https://gist.github.com/ball-hayden/2fd4d40b150a39716dec) 
 Very simple ActiveAdmin Bootstrap theme
+ * [active_admin_simple_life](https://github.com/kvokka/active_admin_simple_life)
+ Gem automatize routine with creation simple menus in ActiveAdmin with minimum 
+ code duplication.
 
 #### Pagination
 

@@ -40,13 +40,15 @@ module Onotole
 
     def show_active_admin_plugins_submenu
       return unless user_choose? :activeadmin
-      variants = {            none:                   'None',
-                              active_admin_import:    'The most efficient way to import for ActiveAdmin',
-                              active_admin_theme:     'Theme, flat skin',
-                              active_skin:            'Theme, flat, nice, good maintenance',
-                              flattened_active_admin: 'Theme, bring your Active Admin up-to-date with this customizable add on',
-                              active_admin_bootstrap: 'Theme, simple bootstrap (sass) elements',
-                              face_of_active_admin:   'Theme for ActiveAdmin with glyphicons and flattens' }
+      variants = {            none:                     'None',
+                              active_admin_import:      'The most efficient way to import for ActiveAdmin',
+                              active_admin_theme:       'Theme, flat skin',
+                              active_skin:              'Theme, flat, nice, good maintenance',
+                              flattened_active_admin:   'Theme, bring your Active Admin up-to-date with this customizable add on',
+                              active_admin_bootstrap:   'Theme, simple bootstrap (sass) elements',
+                              face_of_active_admin:     'Theme for ActiveAdmin with glyphicons and flattens',
+                              active_admin_simple_life: 'Automatize routine with creation simple menus in ActiveAdmin with minimum code duplication.'
+                               }
       themes = [:active_admin_theme, :active_skin, :flattened_active_admin]
       multiple_choice('Select activeadmin plug-ins (Themes are SASS or SCSS only).', variants).each do |gem|
         add_to_user_choise gem
