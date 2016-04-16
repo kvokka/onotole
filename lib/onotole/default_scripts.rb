@@ -19,7 +19,10 @@ module Onotole
       config = <<-RUBY
 
   # Enable deflate / gzip compression of controller-generated responses
+  # more info https://robots.thoughtbot.com/content-compression-with-rack-deflater
+  # rack-mini-profiler does not work with this option
   config.middleware.use Rack::Deflater
+
       RUBY
 
       inject_into_file(

@@ -54,7 +54,7 @@ module Onotole
     end
 
     def serve_static_files_line
-      "config.serve_static_files = ENV.fetch('#{app_name.upcase}_RAILS_SERVE_STATIC_FILES',false)\n"
+      "config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?\n"
     end
 
     def add_gems_from_args

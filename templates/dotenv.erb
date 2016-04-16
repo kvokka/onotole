@@ -2,9 +2,7 @@
 <%= "#{app_name.upcase}_ASSET_HOST=localhost:3000" %>
 <%= "#{app_name.upcase}_APPLICATION_HOST=localhost:3000" %>
 <%= "#{app_name.upcase}_PORT=3000" %>
-RACK_ENV=development
 <%= "#{app_name.upcase}_SECRET_KEY_BASE=development_secret" %>
-EXECJS_RUNTIME=Node
 <%= "#{app_name.upcase}_SMTP_ADDRESS=smtp.example.com" %>
 <%= "#{app_name.upcase}_SMTP_DOMAIN=example.com" %>
 <%= "#{app_name.upcase}_SMTP_PORT=587" %>
@@ -12,6 +10,8 @@ EXECJS_RUNTIME=Node
 <%= "#{app_name.upcase}_SMTP_USERNAME=username" %>
 <%= "#{app_name.upcase}_WEB_CONCURRENCY=1" %>
 <%= "#{app_name.upcase}_MAX_THREADS=16" %>
-<%= "#{app_name.upcase}_RAILS_SERVE_STATIC_FILES=true" %>
-<%= "#{app_name.upcase}_COVERAGE=false" %>
-DEFER_GC=1
+<%= "#{app_name.upcase}_COVERAGE=false" %>        # simplecov flag
+RACK_ENV=development
+EXECJS_RUNTIME=Node
+RAILS_SERVE_STATIC_FILES=true
+DEFER_GC=1      # Garbage collector flag. Used in RSpec
