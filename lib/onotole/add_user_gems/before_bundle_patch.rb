@@ -42,11 +42,10 @@ module Onotole
 
   gem 'guard'
   gem 'guard-livereload', '~> 2.4', require: false
-  gem 'guard-puma'
-  gem 'guard-migrate'
+  gem 'guard-puma', require: false
+  gem 'guard-migrate', require: false
   gem 'guard-rspec', require: false
   gem 'guard-bundler', require: false
-  gem 'rb-inotify', github: 'kvokka/rb-inotify'
       TEXT
       inject_into_file('Gemfile', t, after: 'group :development do')
     end
