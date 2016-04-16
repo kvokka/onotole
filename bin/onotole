@@ -21,6 +21,7 @@ DEFAULT_GEMSET = [:slim,
                   :responders, 
                   :annotate,
                   :rack_mini_profiler,
+                  :flamegraph,
                   :overcommit].freeze
 
 if ['-v', '--version'].include? ARGV[0]

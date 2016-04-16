@@ -309,5 +309,9 @@ module Onotole
     def add_active_admin_simple_life_gem
       inject_into_file('Gemfile', "\ngem 'active_admin_simple_life'", after: '# user_choice')
     end
+
+    def add_flamegraph_gem
+      inject_into_file('Gemfile', "\ngem 'flamegraph'", after: 'group :development do')
+    end
   end
 end
