@@ -313,5 +313,9 @@ module Onotole
     def add_flamegraph_gem
       inject_into_file('Gemfile', "\ngem 'flamegraph'", after: 'group :development do')
     end
+
+    def add_stackprof_gem
+      inject_into_file('Gemfile', "\ngem 'stackprof'", after: 'group :development do')
+    end
   end
 end

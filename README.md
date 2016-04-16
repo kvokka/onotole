@@ -135,8 +135,10 @@ it through a dream. http://mailcatcher.me
  * `*`[rack-mini-profiler](https://github.com/MiniProfiler/rack-mini-profiler)
  Middleware that displays speed badge for every html page. Designed to work both
   in production and in development.
- * `*`[flamegraph](https://github.com/SamSaffron/flamegraph) Flamegraph profiling 
+ * [flamegraph](https://github.com/SamSaffron/flamegraph) Flamegraph profiling 
  support (awesome performance graphics)
+ * [stackprof](https://github.com/tmm1/stackprof) A sampling call-stack profiler
+for ruby 2.1+
 
 
 #### Misc

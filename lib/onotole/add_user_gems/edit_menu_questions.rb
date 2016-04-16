@@ -88,7 +88,8 @@ module Onotole
                    image_optim:        'Optimize images (jpeg, png, gif, svg) using external utilities',
                    mailcatcher:        'Catches mail and serves it through a dream. http://mailcatcher.me',
                    rack_mini_profiler: 'Middleware that displays speed badge for every html page.',
-                   flamegraph:         'Rack_mini_profiler awesome graphics generator',
+                   flamegraph:         'Rack_mini_profiler awesome graphics generator. Need stackprof gem',
+                   stackprof:          'A sampling call-stack profiler for ruby 2.1+',
                    meta_request:       'Rails meta panel in chrome console.'\
                    " Very usefull in\n#{' ' * 24}AJAX debugging. Link for chrome"\
                    " add-on in Gemfile.\n#{' ' * 24}Do not delete comments if you need this link"
