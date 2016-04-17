@@ -100,6 +100,14 @@ Bootstrap kaminari plugin
  * [tinymce-rails](https://github.com/spohlenz/tinymce-rails) Integration of 
  TinyMCE with the Rails asset pipeline
 
+ #### Memory DB
+ * [redis](https://github.com/redis/redis-rb) A Ruby client library for Redis.
+ * [redis-rails](https://github.com/redis-store/redis-rails) Provides a full set
+  of stores (Cache, Session, HTTP Cache) for Ruby on Rails
+ * [redis-namespace](https://github.com/resque/redis-namespace) Provides an 
+ interface to a namespaced subset of your redis keyspace (e.g., keys with a 
+ common beginning).
+
 
 #### Developer tools
 
@@ -296,7 +304,15 @@ app on 1 server. Onotole prefix all `env` variables with `#{app_name}` and now
 you will not have any problems with export variables in production. In 
 production environment you can make `.env.production` file and put all consants
 there. Also with this thick you can easy use ENV export tool or just put ENV 
-variables in `.bashrc` without name space conflicts. 
+variables in `.bashrc` without name space conflicts.
+
+##NOSQL Memory based db
+
+Now supported only Redis db, and Onotole do not install or config Redis itself,
+it just setup support gems. For getting access to Redis you can use `$redis` 
+variable, and `$ns_redis` for namespaced access wich is provided by 
+`redis-namespace` gem. Feel free in changing settings in 
+`config/initializers/redis.rb`
 
 ## Other goodies
 

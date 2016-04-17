@@ -111,7 +111,7 @@ end
     def copy_dotfiles
       directory 'dotfiles', '.', force: true
       template 'dotenv.erb', '.env'
-      run 'touch .env.production'
+      template 'dotenv_production.erb', '.env.production'
     end
 
     def setup_spring

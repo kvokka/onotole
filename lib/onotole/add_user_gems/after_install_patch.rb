@@ -3,6 +3,9 @@ module Onotole
   module AfterInstallPatch
     def post_init
       install_queue = [
+        :redis,
+        :redis_rails,
+        :redis_namespace,
         :ckeditor,
         :fotoramajs,
         :underscore_rails,
@@ -311,6 +314,39 @@ DATA
 
       replace_in_file 'config/initializers/active_admin.rb',
                       'ActiveAdmin.setup do |config|', config
+    end
+
+    def after_install_redis
+      config = %q(
+  config.cache_store = :redis_store, "#{ENV['REDIS_PATH']}/cache", { expires_in: 90.minutes }
+)
+      File.open('config/initializers/redis.rb', 'w') { |f| f.write "$redis = Redis.new\n" }
+      %w(development production).each do |env|
+        inject_into_file "config/environments/#{env}.rb", config,
+                         after: "Rails.application.configure do\n"
+      end
+      append_file '.env', 'REDIS_PATH=redis://localhost:6379/0'
+      append_file '.env.production', 'REDIS_PATH=redis://localhost:6379/0'
+
+      rubocop_todo_conf = <<-DATA
+Style/GlobalVars:
+  Exclude:
+    - 'config/initializers/redis.rb'
+DATA
+      File.open('.rubocop_todo.yml', 'a') { |f| f.write rubocop_todo_conf }
+    end
+
+    def after_install_redis_namespace
+      return unless user_choose? :redis
+      append_file 'config/initializers/redis.rb',
+                  br("$ns_redis = Redis::Namespace.new(:#{app_name}, redis: $redis)")
+    end
+
+    def after_install_redis_rails
+      return unless user_choose? :redis
+      append_file 'config/initializers/redis.rb', br(app_name.classify.to_s)
+      append_file 'config/initializers/redis.rb',
+                  %q(::Application.config.session_store :redis_store, servers: "#{ENV['REDIS_PATH']}/session")
     end
   end
 end

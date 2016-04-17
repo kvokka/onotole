@@ -129,6 +129,18 @@ module Onotole
       add_to_user_choise :underscore_rails if user_choose?(:gmaps4rails)
     end
 
+    def choose_cache_storage
+      variants = {            none:            'Default',
+                              redis:           'Redis db ruby library',
+                              redis_rails:     'Provides a full set of stores (Cache, Session, HTTP Cache)',
+                              redis_namespace: 'Provides an interface to a namespaced subset of your redis keyspace'
+                               }
+      multiple_choice('Select cache storage and plug-ins.', variants).each do |gem|
+        add_to_user_choise gem
+      end
+      add_to_user_choise :redis if user_choose?(:redis_rails) || user_choose?(:redis_namespace)
+    end
+
     # template for yes/no question
     #
     # def supeawesome_gem

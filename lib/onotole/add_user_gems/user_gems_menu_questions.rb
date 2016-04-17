@@ -9,6 +9,7 @@ module Onotole
       choose_pagimation
       choose_wysiwyg
       choose_develoder_tools
+      choose_cache_storage
       # Placeholder for other gem additions
       # menu description in add_gems_in_menu.rb
 

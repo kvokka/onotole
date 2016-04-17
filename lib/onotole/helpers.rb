@@ -146,5 +146,9 @@ module Onotole
     def touch(file_name)
       `touch #{file_name}`
     end
+
+    def br(str = nil)
+      str ? "\n" + str : "\n"
+    end
   end
 end

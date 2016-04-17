@@ -316,5 +316,17 @@ module Onotole
     def add_stackprof_gem
       inject_into_file('Gemfile', "\ngem 'stackprof'", after: 'group :development do')
     end
+
+    def add_redis_gem
+      inject_into_file('Gemfile', "\ngem 'redis', '~>3.2'", after: '# user_choice')
+    end
+
+    def add_redis_rails_gem
+      inject_into_file('Gemfile', "\ngem 'redis-rails'", after: '# user_choice')
+    end
+
+    def add_redis_namespace_gem
+      inject_into_file('Gemfile', "\ngem 'redis-namespace'", after: '# user_choice')
+    end
   end
 end
