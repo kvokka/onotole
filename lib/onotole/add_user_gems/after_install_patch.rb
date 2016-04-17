@@ -328,12 +328,11 @@ DATA
       append_file '.env', 'REDIS_PATH=redis://localhost:6379/0'
       append_file '.env.production', 'REDIS_PATH=redis://localhost:6379/0'
 
-      rubocop_todo_conf = <<-DATA
+      rubocop_conf = <<-DATA
 Style/GlobalVars:
-  Exclude:
-    - 'config/initializers/redis.rb'
+  Enabled: false
 DATA
-      File.open('.rubocop_todo.yml', 'a') { |f| f.write rubocop_todo_conf }
+      File.open('.rubocop.yml', 'a') { |f| f.write rubocop_conf } if user_choose? :rubocop
     end
 
     def after_install_redis_namespace
