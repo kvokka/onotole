@@ -114,6 +114,7 @@ module Onotole
       build :raise_on_unpermitted_parameters
       build :provide_setup_script
       build :provide_dev_prime_task
+      build :provide_kill_postgres_connections_task
       build :configure_generators
       build :configure_i18n_for_missing_translations
       build :configure_quiet_assets

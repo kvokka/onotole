@@ -345,6 +345,7 @@ coverage.
 * Moved asset gems in assets group in Gemfile
 * Disable logging and deferred garbage collecting gives up 20% test speed 
 improvement
+* Rake task for killing PostgreSQL conventions `db:kill_postgres_connections`
 
 ## Heroku
 

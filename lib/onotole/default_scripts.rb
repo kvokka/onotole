@@ -204,5 +204,9 @@ end
     def add_dotenv_to_startup
       inject_into_file('config/application.rb', "\nDotenv::Railtie.load\n", after: 'Bundler.require(*Rails.groups)')
     end
+
+    def provide_kill_postgres_connections_task
+      copy_file 'kill_postgress_conections.rake', 'lib/tasks/kill_postgress_conections.rake'
+    end
   end
 end
