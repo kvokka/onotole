@@ -328,6 +328,7 @@ DATA
       append_file '.env', 'REDIS_PATH=redis://localhost:6379/0'
       append_file '.env.production', 'REDIS_PATH=redis://localhost:6379/0'
 
+      copy_file 'redis.rake', 'lib/tasks/redis.rake'
       rubocop_conf = <<-DATA
 Style/GlobalVars:
   Enabled: false
