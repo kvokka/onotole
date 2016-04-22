@@ -5,11 +5,14 @@ become unsupportable in a moment. Easiest way to prevent it: split seeds.
 I provide simple way, you add in `seeds.rb` this snippet of code
 
 ```
+
+Rails.logger = Logger.new STDOUT
 seed_files_list = Dir[File.join(Rails.root, "db", "seeds", "*.rb")]
 seed_files_list.sort.each_with_index do |seed, i|
   load seed
-  puts "Progress #{i + 1}/#{seed_files_list.length}. Seed #{seed.split('/').last.sub(/.rb$/, '')} loaded"
+  Rails.logger.info "Progress #{i + 1}/#{seed_files_list.length}. Seed #{seed.split('/').last.sub(/.rb$/, '')} loaded"
 end
+
 ```
 
 So now you will autoload all files from seeds folder and get pretty notify.
