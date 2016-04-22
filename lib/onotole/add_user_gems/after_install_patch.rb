@@ -289,7 +289,9 @@ end
     end
 
     def after_install_ckeditor
-      append_file(AppBuilder.js_file, "\n#= require ckeditor/init")
+      inject_into_file(AppBuilder.js_file, "\n//= require ckeditor/init",
+                       after: '//= require jquery_ujs')
+
       append_file('config/initializers/assets.rb',
                   "\nRails.application.config.assets.precompile += %w( ckeditor/* )")
     end
