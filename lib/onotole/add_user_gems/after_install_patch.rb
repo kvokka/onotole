@@ -72,7 +72,7 @@ end
     end
 
     def after_install_guard
-      bundle_command 'exec guard init'
+      bundle_command "exec guard init #{quiet_suffix}"
       replace_in_file 'Guardfile',
                       "guard 'puma' do",
                       'guard :puma, port: 3000 do', quiet_err = true
