@@ -8,6 +8,7 @@ module Onotole
       image_optim_check
       rack_cors_check
       ckeditor_check
+      devise_user_check
       say_color BOLDGREEN, "Congratulations! Onotole gives you: 'Intellect+= 1'"
     end
 
@@ -43,6 +44,11 @@ module Onotole
     def ckeditor_check
       return unless user_choose? :ckeditor
       say_color YELLOW, 'Visit ckeditor homepage and install back-end for it.'
+    end
+
+    def devise_user_check
+      return unless AppBuilder.devise_model
+      say_color GREEN, 'Turn on devise auth in application.rb or in your controlled. It is turned off by default'
     end
   end
 end

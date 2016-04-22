@@ -48,7 +48,7 @@ module Onotole
       if AppBuilder.devise_model
         rails_generator "devise #{AppBuilder.devise_model.titleize}"
         inject_into_file('app/controllers/application_controller.rb',
-                         "\nbefore_action :authenticate_#{AppBuilder.devise_model.downcase}!",
+                         "\n# before_action :authenticate_#{AppBuilder.devise_model.downcase}!",
                          after: 'before_action :configure_permitted_parameters, if: :devise_controller?')
       end
       if user_choose?(:bootstrap3)
@@ -97,11 +97,8 @@ end
       AppBuilder.use_asset_pipelline = false
       touch AppBuilder.app_file_scss
       append_file(AppBuilder.app_file_scss,
-                  "\n@import 'bootstrap_variables';
-                   \n@import 'bootstrap-sprockets';
+                  "\n@import 'bootstrap-sprockets';
                   \n@import 'bootstrap';")
-      append_file(AppBuilder.app_file_scss,
-                  "\n@import devise_bootstrap_views") if user_choose? :devise
       inject_into_file(AppBuilder.js_file, "\n//= require bootstrap-sprockets",
                        after: '//= require jquery_ujs')
       copy_file 'bootstrap_flash_helper.rb', 'app/helpers/bootstrap_flash_helper.rb'
@@ -112,9 +109,6 @@ end
       remove_file 'app/views/layouts/application.html.erb'
       rails_generator 'bootstrap:install static'
       rails_generator 'bootstrap:layout'
-      inject_into_file('app/assets/stylesheets/bootstrap_and_overrides.css',
-                       "  =require devise_bootstrap_views\n",
-                       before: '  */') if user_choose? :devise
     end
 
     def after_install_normalize
