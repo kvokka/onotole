@@ -32,7 +32,7 @@ module Onotole
         :guard_rubocop,
         :bootstrap3_sass,
         :bootstrap3,
-        :devise_bootstrap_views,
+        :devise-bootstrap,
         :active_admin_theme,
         :font_awesome_sass,
         :normalize,
@@ -100,6 +100,8 @@ end
                   "\n@import 'bootstrap_variables';
                    \n@import 'bootstrap-sprockets';
                   \n@import 'bootstrap';")
+      append_file(AppBuilder.app_file_scss,
+        "\n@import devise_bootstrap_views") if user_choose? :devise
       inject_into_file(AppBuilder.js_file, "\n//= require bootstrap-sprockets",
                        after: '//= require jquery_ujs')
       copy_file 'bootstrap_flash_helper.rb', 'app/helpers/bootstrap_flash_helper.rb'
@@ -112,7 +114,7 @@ end
       rails_generator 'bootstrap:layout'
       inject_into_file('app/assets/stylesheets/bootstrap_and_overrides.css',
                        "  =require devise_bootstrap_views\n",
-                       before: '  */')
+                       before: '  */') if user_choose? :devise
     end
 
     def after_install_normalize
