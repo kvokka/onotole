@@ -347,6 +347,7 @@ coverage.
 improvement
 * Rake task for killing PostgreSQL conventions `db:kill_postgres_connections`
 * Rake task `redis:flushall` 
+* Made seeds organization for easy splitting data from scratch
 
 ## Heroku
 

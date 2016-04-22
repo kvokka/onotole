@@ -150,5 +150,10 @@ module Onotole
     def br(str = nil)
       str ? "\n" + str : "\n"
     end
+
+    def mkdir_and_touch dir
+      run "mkdir #{dir}"
+      touch "#{dir}/.keep"
+    end
   end
 end

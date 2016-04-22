@@ -189,8 +189,7 @@ end
     end
 
     def configure_support_path
-      run 'mkdir app/support'
-      run 'touch app/support/.keep'
+      mkdir_and_touch "app/support"
       copy_file 'support.rb', 'config/initializers/support.rb'
 
       config = "\n    config.autoload_paths << Rails.root.join('app/support')\n"
@@ -207,6 +206,12 @@ end
 
     def provide_kill_postgres_connections_task
       copy_file 'kill_postgress_conections.rake', 'lib/tasks/kill_postgress_conections.rake'
+    end
+
+    def seeds_organisation
+        remove_file 'db/seeds.rb'
+        copy_file 'seeds.rb','db/seeds.rb'
+        mkdir_and_touch 'db/seeds'
     end
   end
 end

@@ -112,6 +112,7 @@ module Onotole
       build :raise_on_delivery_errors
       build :set_test_delivery_method
       build :raise_on_unpermitted_parameters
+      build :seeds_organisation
       build :provide_setup_script
       build :provide_dev_prime_task
       build :provide_kill_postgres_connections_task
