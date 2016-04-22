@@ -151,7 +151,7 @@ module Onotole
       str ? "\n" + str : "\n"
     end
 
-    def mkdir_and_touch dir
+    def mkdir_and_touch(dir)
       run "mkdir #{dir}"
       touch "#{dir}/.keep"
     end

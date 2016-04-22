@@ -189,7 +189,7 @@ end
     end
 
     def configure_support_path
-      mkdir_and_touch "app/support"
+      mkdir_and_touch 'app/support'
       copy_file 'support.rb', 'config/initializers/support.rb'
 
       config = "\n    config.autoload_paths << Rails.root.join('app/support')\n"
@@ -209,9 +209,9 @@ end
     end
 
     def seeds_organisation
-        remove_file 'db/seeds.rb'
-        copy_file 'seeds.rb','db/seeds.rb'
-        mkdir_and_touch 'db/seeds'
+      remove_file 'db/seeds.rb'
+      copy_file 'seeds.rb', 'db/seeds.rb'
+      mkdir_and_touch 'db/seeds'
     end
   end
 end
