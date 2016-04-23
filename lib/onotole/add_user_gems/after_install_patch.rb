@@ -6,6 +6,7 @@ module Onotole
         :redis,
         :redis_rails,
         :redis_namespace,
+        :carrierwave,
         :ckeditor,
         :fotoramajs,
         :underscore_rails,
@@ -291,9 +292,11 @@ end
     def after_install_ckeditor
       inject_into_file(AppBuilder.js_file, "\n//= require ckeditor/init",
                        after: '//= require jquery_ujs')
-
       append_file('config/initializers/assets.rb',
                   "\nRails.application.config.assets.precompile += %w( ckeditor/* )")
+
+      rails_generator 'ckeditor:install --orm=active_record '\
+                      '--backend=carrierwave' if user_choose? :carrierwave
     end
 
     def after_install_image_optim
@@ -345,6 +348,15 @@ DATA
       append_file 'config/initializers/redis.rb', br(app_name.classify.to_s)
       append_file 'config/initializers/redis.rb',
                   %q(::Application.config.session_store :redis_store, servers: "#{ENV['REDIS_PATH']}/session")
+    end
+
+    def after_install_carrierwave
+      copy_file 'carrierwave.rb', 'config/initializers/carrierwave.rb'
+      return unless AppBuilder.file_storage_name
+      rails_generator "uploader #{AppBuilder.file_storage_name}"
+      uploader_path = "app/uploaders/#{AppBuilder.file_storage_name}_uploader.rb"
+      config = "\n  include CarrierWave::MiniMagick\n"
+      inject_into_class uploader_path, "#{AppBuilder.file_storage_name.classify}Uploader", config
     end
   end
 end

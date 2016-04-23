@@ -43,6 +43,7 @@ module Onotole
 
     def ckeditor_check
       return unless user_choose? :ckeditor
+      return if user_choose?(:carrierwave) && AppBuilder.file_storage_name
       say_color YELLOW, 'Visit ckeditor homepage and install back-end for it.'
     end
 

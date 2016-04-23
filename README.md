@@ -108,6 +108,11 @@ Bootstrap kaminari plugin
  interface to a namespaced subset of your redis keyspace (e.g., keys with a 
  common beginning).
 
+#### File storage
+ * [carrierwave](https://github.com/carrierwaveuploader/carrierwave/tree/0.11-stable)
+Classier solution for file uploads for Rails, Sinatra and other Ruby web 
+frameworks https://github.com/carrierwaveuploader/carrierwave
+
 
 #### Developer tools
 
@@ -348,6 +353,8 @@ improvement
 * Rake task for killing PostgreSQL conventions `db:kill_postgres_connections`
 * Rake task `redis:flushall` 
 * Made seeds organization for easy splitting data from scratch
+* `Carrierwave` may be integrated with `mini_magick` and `ckeditor`, depend on 
+user choice
 
 ## Heroku
 

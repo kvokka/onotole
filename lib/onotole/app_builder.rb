@@ -29,12 +29,14 @@ module Onotole
     @js_file = 'app/assets/javascripts/application.js'
     @active_admin_theme_selected = false
     @quiet = true
+    @file_storage_name = nil
 
     class << self
        attr_accessor :use_asset_pipelline,
                      :devise_model,
                      :user_choice, :app_file_scss,
-                     :app_file_css, :js_file, :quiet, :active_admin_theme_selected
+                     :app_file_css, :js_file, :quiet,
+                     :active_admin_theme_selected, :file_storage_name
     end
 
     def_delegators :heroku_adapter,

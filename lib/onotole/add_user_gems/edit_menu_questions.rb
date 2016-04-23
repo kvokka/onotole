@@ -18,7 +18,7 @@ module Onotole
     end
 
     def choose_authenticate_engine
-      variants = { none: 'None', devise: 'devise', devise_with_model: 'devise vs pre-installed model' }
+      variants = { none: 'None', devise: 'devise 4', devise_with_model: 'devise 4 vs pre-installed model' }
       gem = choice 'Select authenticate engine: ', variants
       if gem == :devise_with_model
         AppBuilder.devise_model = ask_stylish 'Enter devise model name:'
@@ -139,6 +139,18 @@ module Onotole
         add_to_user_choise gem
       end
       add_to_user_choise :redis if user_choose?(:redis_rails) || user_choose?(:redis_namespace)
+    end
+
+    def choose_file_storage
+      variants = { none:                      'None',
+                   carrierwave:               'carrierwave v0.10',
+                   carrierwave_with_uploader: 'carrierwave+mini_magick v0.10 pre-installed uploader' }
+      gem = choice 'Select file storage engine: ', variants
+      if gem == :carrierwave_with_uploader
+        AppBuilder.file_storage_name = ask_stylish('Enter uploader name:').downcase
+        gem = :carrierwave
+      end
+      add_to_user_choise(gem) if gem
     end
 
     # template for yes/no question

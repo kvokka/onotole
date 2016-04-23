@@ -328,5 +328,12 @@ module Onotole
     def add_redis_namespace_gem
       inject_into_file('Gemfile', "\ngem 'redis-namespace'", after: '# user_choice')
     end
+
+    def add_carrierwave_gem
+      inject_into_file('Gemfile', "\ngem 'carrierwave', '~> 0.10.0'", after: '# user_choice')
+      inject_into_file('Gemfile',
+                       "\ngem 'mini_magick', '~> 4.5.0'",
+                       after: '# user_choice') if AppBuilder.file_storage_name
+    end
   end
 end
