@@ -156,8 +156,6 @@ for ruby 2.1+
 
 #### Misc
 
-
-
  * [activerecord_import](https://github.com/zdennis/activerecord-import) 
  Activerecord-import is a library for bulk inserting data using ActiveRecord.
  * `*`[responders](https://github.com/plataformatec/responders) A set of responders
@@ -176,6 +174,9 @@ for ruby 2.1+
  * [rack-cors](https://github.com/cyu/rack-cors) Rack Middleware for handling 
  Cross-Origin Resource Sharing (CORS), which makes cross-origin AJAX possible.
  * [newrelic_rpm](https://github.com/newrelic/rpm) for monitoring performance 
+ * [invisible_captcha](https://github.com/markets/invisible_captcha) Unobtrusive
+  and flexible spam protection for RoR apps
+
 
 ##### XLS & PDF
 

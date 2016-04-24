@@ -121,7 +121,8 @@ module Onotole
                    geocoder:             'Complete Ruby geocoding solution. http://www.rubygeocoder.com',
                    gmaps4rails:          'Enables easy Google map + overlays creation. http://apneadiving.github.io/',
                    rack_cors:            'Rack Middleware for handling Cross-Origin Resource Sharing (CORS).',
-                   newrelic_rpm:         'New Relic RPM Ruby Agent http://www.newrelic.com'
+                   newrelic_rpm:         'New Relic RPM Ruby Agent http://www.newrelic.com',
+                   invisible_captcha:    'Unobtrusive and flexible spam protection for RoR apps'
                     }
       multiple_choice('Write numbers of all preferred gems.', variants).each do |gem|
         add_to_user_choise gem

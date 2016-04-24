@@ -335,5 +335,9 @@ module Onotole
                        "\ngem 'mini_magick', '~> 4.5.0'",
                        after: '# user_choice') if AppBuilder.file_storage_name
     end
+
+    def add_invisible_captcha_gem
+      inject_into_file('Gemfile', "\ngem 'invisible_captcha'", after: '# user_choice')
+    end
   end
 end
