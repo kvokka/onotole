@@ -2,44 +2,34 @@
 module Onotole
   module AfterInstallPatch
     def post_init
-      install_queue = [
-        :redis,
-        :redis_rails,
-        :redis_namespace,
-        :carrierwave,
-        :ckeditor,
-        :fotoramajs,
-        :underscore_rails,
-        :gmaps4rails,
-        :mailcatcher,
-        :rack_cors,
-        :image_optim,
-        :devise,
-        :validates_timeliness,
-        :paper_trail,
-        :responders,
-        :typus,
-        :annotate,
-        :overcommit,
-        :activeadmin,
-        :active_admin_theme,
-        :acive_skin,
-        :flattened_active_admin,
-        :face_of_active_admin,
-        :active_admin_bootstrap,
-        :active_admin_simple_life,
-        :rails_admin,
-        :guard,
-        :guard_rubocop,
-        :bootstrap3_sass,
-        :bootstrap3,
-        :devise_bootstrap_views,
-        :active_admin_theme,
-        :font_awesome_sass,
-        :normalize,
-        :tinymce,
-        :rubocop,
-        :create_github_repo]
+      install_queue = [:redis, :redis_rails, :redis_namespace,
+                       :carrierwave,
+                       :sitemap_generator,
+                       :ckeditor,
+                       :fotoramajs,
+                       :underscore_rails,
+                       :gmaps4rails,
+                       :mailcatcher,
+                       :rack_cors,
+                       :image_optim,
+                       :devise,
+                       :validates_timeliness,
+                       :paper_trail,
+                       :responders,
+                       :typus,
+                       :annotate,
+                       :overcommit,
+                       :activeadmin, :active_admin_theme, :acive_skin, :flattened_active_admin,
+                       :face_of_active_admin, :active_admin_bootstrap, :active_admin_simple_life,
+                       :rails_admin,
+                       :guard, :guard_rubocop,
+                       :bootstrap3_sass, :bootstrap3, :devise_bootstrap_views,
+                       :active_admin_theme,
+                       :font_awesome_sass,
+                       :normalize,
+                       :tinymce,
+                       :rubocop,
+                       :create_github_repo]
       install_queue.each { |g| send "after_install_#{g}" if user_choose? g }
       delete_comments
     end
@@ -357,6 +347,10 @@ DATA
       uploader_path = "app/uploaders/#{AppBuilder.file_storage_name}_uploader.rb"
       config = "\n  include CarrierWave::MiniMagick\n"
       inject_into_class uploader_path, "#{AppBuilder.file_storage_name.classify}Uploader", config
+    end
+
+    def after_install_sitemap_generator
+      bundle_command 'exec sitemap:install'
     end
   end
 end

@@ -153,7 +153,6 @@ module Onotole
       - '**/*.rb'
       - '**/Gemfile'
       - '**/Rakefile'
-
       OVER
       append_file '.overcommit.yml', rubocop_overcommit if user_choose?(:rubocop)
     end
@@ -338,6 +337,10 @@ module Onotole
 
     def add_invisible_captcha_gem
       inject_into_file('Gemfile', "\ngem 'invisible_captcha'", after: '# user_choice')
+    end
+
+    def add_sitemap_generator_gem
+      inject_into_file('Gemfile', "\ngem 'sitemap_generator', :require => false", after: 'group :development do')
     end
   end
 end

@@ -122,7 +122,8 @@ module Onotole
                    gmaps4rails:          'Enables easy Google map + overlays creation. http://apneadiving.github.io/',
                    rack_cors:            'Rack Middleware for handling Cross-Origin Resource Sharing (CORS).',
                    newrelic_rpm:         'New Relic RPM Ruby Agent http://www.newrelic.com',
-                   invisible_captcha:    'Unobtrusive and flexible spam protection for RoR apps'
+                   invisible_captcha:    'Unobtrusive and flexible spam protection for RoR apps',
+                   sitemap_generator:    'SitemapGenerator is the easiest way to generate Sitemaps in Ruby.'
                     }
       multiple_choice('Write numbers of all preferred gems.', variants).each do |gem|
         add_to_user_choise gem
