@@ -164,6 +164,13 @@ module Onotole
     #           gem_description)) unless options[gem_name]
     # end
 
+    # TODO: move all this to other module
+    def users_abstract_model_wrapper_choice
+      variants = { none: 'No', abstract_model_wrapper: 'Yes' }
+      sel = choice 'Create abstract model wrapper for all models? ', variants
+      add_to_user_choise(sel) unless sel == :none
+    end
+
     def users_init_commit_choice
       variants = { none: 'No', gitcommit: 'Yes' }
       sel = choice 'Make init commit in the end? ', variants

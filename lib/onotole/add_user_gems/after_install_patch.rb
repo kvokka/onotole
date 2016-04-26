@@ -29,6 +29,7 @@ module Onotole
                        :normalize,
                        :tinymce,
                        :rubocop,
+                       :abstract_model_wrapper,
                        :create_github_repo]
       install_queue.each { |g| send "after_install_#{g}" if user_choose? g }
       delete_comments
@@ -351,6 +352,19 @@ DATA
 
     def after_install_sitemap_generator
       bundle_command 'exec sitemap:install'
+    end
+
+    def after_install_abstract_model_wrapper
+      path = 'lib/rails/generators/active_record/model'
+      run "mkdir -p #{path}"
+      copy_file 'model_generator.rb', "#{path}/model_generator.rb"
+      File.open('app/models/abstract_model.rb', 'w') do |f|
+        f.puts <<-ABSTRACT
+class AbstractModel < ActiveRecord::Base
+  self.abstract_class = true
+end
+ABSTRACT
+      end
     end
   end
 end

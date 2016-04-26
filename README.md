@@ -356,6 +356,7 @@ improvement
 * Made seeds organization for easy splitting data from scratch
 * `Carrierwave` may be integrated with `mini_magick` and `ckeditor`, depend on 
 user choice
+* Ability to use `AbstractModel` for easy code extension
 
 ## Heroku
 
