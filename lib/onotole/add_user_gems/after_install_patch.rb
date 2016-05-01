@@ -6,6 +6,7 @@ module Onotole
                        :carrierwave,
                        :sitemap_generator,
                        :ckeditor,
+                       :materialize_sass,
                        :fotoramajs,
                        :underscore_rails,
                        :gmaps4rails,
@@ -365,6 +366,15 @@ class AbstractModel < ActiveRecord::Base
 end
 ABSTRACT
       end
+    end
+
+    def after_install_materialize_sass
+      setup_stylesheets
+      AppBuilder.use_asset_pipelline = false
+      touch AppBuilder.app_file_scss
+      append_file(AppBuilder.app_file_scss, "\n@import 'materialize';")
+      inject_into_file(AppBuilder.js_file, "\n//= require materialize-sprockets",
+                       after: '//= require jquery_ujs')
     end
   end
 end

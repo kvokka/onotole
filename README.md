@@ -37,6 +37,8 @@ using it with already started projects.
  * [bootstrap3](https://github.com/seyhunak/twitter-bootstrap-rails) Bootstrap
  with asset pipeline support
  * [bootstrap3_sass](https://github.com/twbs/bootstrap-sass) Bootstrap sass
+ * [materialize](https://github.com/mkhairi/materialize-sass) Materialize Sass 
+ version for Rails Asset Pipeline http://materializecss.com/
 
 #### Template engines
 

@@ -342,5 +342,9 @@ module Onotole
     def add_sitemap_generator_gem
       inject_into_file('Gemfile', "\ngem 'sitemap_generator', :require => false", after: 'group :development do')
     end
+
+    def add_materialize_sass_gem
+      inject_into_file('Gemfile', "\ngem 'materialize-sass'", after: '# user_choice')
+    end
   end
 end

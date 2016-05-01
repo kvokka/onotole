@@ -3,9 +3,10 @@ module Onotole
   module EditMenuQuestions
     def choose_frontend
       # do not forget add in def configure_simple_form new frameworks
-      variants = { none:            'No front-end framework',
-                   bootstrap3_sass: 'Twitter bootstrap v.3 sass',
-                   bootstrap3:      'Twitter bootstrap v.3 asset pipeline'
+      variants = { none:             'No front-end framework',
+                   bootstrap3_sass:  'Twitter bootstrap v.3 sass',
+                   bootstrap3:       'Twitter bootstrap v.3 asset pipeline',
+                   materialize_sass: 'Materialize Sass version for Rails Asset Pipeline (http://materializecss.com)'
                     }
       gem = choice 'Select front-end framework: ', variants
       add_to_user_choise(gem) if gem
