@@ -359,6 +359,7 @@ improvement
 * `Carrierwave` may be integrated with `mini_magick` and `ckeditor`, depend on 
 user choice
 * Ability to use `AbstractModel` for easy code extension
+* Custom FormBuilder initial setup
 
 ## Heroku
 

@@ -213,5 +213,20 @@ end
       copy_file 'seeds.rb', 'db/seeds.rb'
       mkdir_and_touch 'db/seeds'
     end
+
+    def add_custom_formbuilder
+      config = <<-DATA
+
+    config.after_initialize do
+      ActionView::Base.default_form_builder = FormBuilderExtension
+    end
+
+      DATA
+      inject_into_class 'config/application.rb', 'Application', config
+      File.open('app/helpers/form_builder_extension.rb', 'w') do |f|
+        f.write 'class FormBuilderExtension < ActionView::Helpers::FormBuilder'
+        f.write "\nend"
+      end
+    end
   end
 end

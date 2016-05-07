@@ -181,6 +181,7 @@ module Onotole
       build :apply_vendorjs_folder
       build :add_vendor_css_path
       build :add_fonts_autoload
+      build :add_custom_formbuilder
     end
 
     # def setup_stylesheets
