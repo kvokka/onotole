@@ -1,3 +1,5 @@
+## Make RSpec faster
+
 There are 2 tricky methods to speed up your tests in Onotole. It made up to 25%
 boost. At first you need to disable logging in tests (usually you do not read 
 it). [see](http://blog.plataformatec.com.br/2011/12/three-tips-to-improve-the-performance-of-your-test-suite/)

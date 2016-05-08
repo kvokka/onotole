@@ -1,3 +1,5 @@
+## Seed your seeds
+
 In some projects I've got a lot of data, which need to be loaded in db and Rails
 provide simple tool for it: `seeds.rb`. But it can come ugly and hard 
 supportable it few days and you may do simple 1000 strings of code, which will

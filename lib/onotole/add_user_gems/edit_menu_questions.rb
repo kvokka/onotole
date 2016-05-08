@@ -73,27 +73,28 @@ module Onotole
     end
 
     def choose_develoder_tools
-      variants = { none:               'None',
-                   faker:              'Gem for generate fake data in testing',
-                   rubocop:            'Code inspector and code formatting tool',
-                   rubycritic:         'A Ruby code quality reporter',
-                   guard:              'Guard (with RSpec, livereload, rails, migrate, bundler)',
-                   guard_rubocop:      'Auto-declare code miss in guard',
-                   bundler_audit:      'Extra possibilities for gems version control',
-                   airbrake:           'Airbrake error logging',
-                   annotate:           'Annotate Rails classes with schema and routes info',
-                   overcommit:         'A fully configurable and extendable Git hook manager',
-                   railroady:          'Model and controller UML class diagram generator',
-                   hirbunicode:        'Hirb unicode support',
-                   dotenv_heroku:      'dotenv-heroku support',
-                   image_optim:        'Optimize images (jpeg, png, gif, svg) using external utilities',
-                   mailcatcher:        'Catches mail and serves it through a dream. http://mailcatcher.me',
-                   rack_mini_profiler: 'Middleware that displays speed badge for every html page.',
-                   flamegraph:         'Rack_mini_profiler awesome graphics generator. Need stackprof gem',
-                   stackprof:          'A sampling call-stack profiler for ruby 2.1+',
-                   meta_request:       'Rails meta panel in chrome console.'\
+      variants = { none:                 'None',
+                   faker:                'Gem for generate fake data in testing',
+                   rubocop:              'Code inspector and code formatting tool',
+                   rubycritic:           'A Ruby code quality reporter',
+                   guard:                'Guard (with RSpec, livereload, rails, migrate, bundler)',
+                   guard_rubocop:        'Auto-declare code miss in guard',
+                   bundler_audit:        'Extra possibilities for gems version control',
+                   airbrake:             'Airbrake error logging',
+                   annotate:             'Annotate Rails classes with schema and routes info',
+                   overcommit:           'A fully configurable and extendable Git hook manager',
+                   railroady:            'Model and controller UML class diagram generator',
+                   hirbunicode:          'Hirb unicode support',
+                   dotenv_heroku:        'dotenv-heroku support',
+                   image_optim:          'Optimize images (jpeg, png, gif, svg) using external utilities',
+                   mailcatcher:          'Catches mail and serves it through a dream. http://mailcatcher.me',
+                   rack_mini_profiler:   'Middleware that displays speed badge for every html page.',
+                   flamegraph:           'Rack_mini_profiler awesome graphics generator. Need stackprof gem',
+                   stackprof:            'A sampling call-stack profiler for ruby 2.1+',
+                   meta_request:         'Rails meta panel in chrome console.'\
                    " Very usefull in\n#{' ' * 24}AJAX debugging. Link for chrome"\
-                   " add-on in Gemfile.\n#{' ' * 24}Do not delete comments if you need this link"
+                   " add-on in Gemfile.\n#{' ' * 24}Do not delete comments if you need this link",
+                   active_record_doctor: 'Active Record Doctor helps to index unindexed foreign keys'
                     }
       multiple_choice('Write numbers of all preferred gems.', variants).each do |gem|
         add_to_user_choise gem

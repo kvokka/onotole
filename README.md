@@ -154,6 +154,8 @@ it through a dream. http://mailcatcher.me
  support (awesome performance graphics)
  * [stackprof](https://github.com/tmm1/stackprof) A sampling call-stack profiler
 for ruby 2.1+
+ * [active_record_doctor](https://github.com/gregnavis/active_record_doctor) 
+ Active Record Doctor helps to index unindexed foreign keys 
 
 
 #### Misc

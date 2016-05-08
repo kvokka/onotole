@@ -283,8 +283,8 @@ module Onotole
     end
 
     def add_image_optim_gem
-      inject_into_file('Gemfile', "\ngem 'image_optim_pack'", after: 'group :development do')
-      inject_into_file('Gemfile', "\ngem 'image_optim'", after: 'group :development do')
+      inject_into_file('Gemfile', "\n  gem 'image_optim_pack'", after: 'group :development do')
+      inject_into_file('Gemfile', "\n  gem 'image_optim'", after: 'group :development do')
     end
 
     def add_mailcatcher_gem
@@ -309,11 +309,11 @@ module Onotole
     end
 
     def add_flamegraph_gem
-      inject_into_file('Gemfile', "\ngem 'flamegraph'", after: 'group :development do')
+      inject_into_file('Gemfile', "\n  gem 'flamegraph'", after: 'group :development do')
     end
 
     def add_stackprof_gem
-      inject_into_file('Gemfile', "\ngem 'stackprof'", after: 'group :development do')
+      inject_into_file('Gemfile', "\n  gem 'stackprof'", after: 'group :development do')
     end
 
     def add_redis_gem
@@ -340,11 +340,15 @@ module Onotole
     end
 
     def add_sitemap_generator_gem
-      inject_into_file('Gemfile', "\ngem 'sitemap_generator', :require => false", after: 'group :development do')
+      inject_into_file('Gemfile', "\n  gem 'sitemap_generator', :require => false", after: 'group :development do')
     end
 
     def add_materialize_sass_gem
       inject_into_file('Gemfile', "\ngem 'materialize-sass'", after: '# user_choice')
+    end
+
+    def add_active_record_doctor_gem
+      inject_into_file('Gemfile', "\n  gem 'active_record_doctor'", after: 'group :development do')
     end
   end
 end
