@@ -6,8 +6,7 @@ module Onotole
       variants = { none:             'No front-end framework',
                    bootstrap3_sass:  'Twitter bootstrap v.3 sass',
                    bootstrap3:       'Twitter bootstrap v.3 asset pipeline',
-                   materialize_sass: 'Materialize Sass version for Rails Asset Pipeline (http://materializecss.com)'
-                    }
+                   materialize_sass: 'Materialize Sass version for Rails Asset Pipeline (http://materializecss.com)' }
       gem = choice 'Select front-end framework: ', variants
       add_to_user_choise(gem) if gem
     end
@@ -48,8 +47,7 @@ module Onotole
                               flattened_active_admin:   'Theme, bring your Active Admin up-to-date with this customizable add on',
                               active_admin_bootstrap:   'Theme, simple bootstrap (sass) elements',
                               face_of_active_admin:     'Theme for ActiveAdmin with glyphicons and flattens',
-                              active_admin_simple_life: 'Automatize routine with creation simple menus in ActiveAdmin with minimum code duplication.'
-                               }
+                              active_admin_simple_life: 'Automatize routine with creation simple menus in ActiveAdmin with minimum code duplication.' }
       themes = [:active_admin_theme, :active_skin, :flattened_active_admin]
       multiple_choice('Select activeadmin plug-ins (Themes are SASS or SCSS only).', variants).each do |gem|
         add_to_user_choise gem
@@ -94,8 +92,7 @@ module Onotole
                    meta_request:         'Rails meta panel in chrome console.'\
                    " Very usefull in\n#{' ' * 24}AJAX debugging. Link for chrome"\
                    " add-on in Gemfile.\n#{' ' * 24}Do not delete comments if you need this link",
-                   active_record_doctor: 'Active Record Doctor helps to index unindexed foreign keys'
-                    }
+                   active_record_doctor: 'Active Record Doctor helps to index unindexed foreign keys' }
       multiple_choice('Write numbers of all preferred gems.', variants).each do |gem|
         add_to_user_choise gem
       end
@@ -125,8 +122,8 @@ module Onotole
                    rack_cors:            'Rack Middleware for handling Cross-Origin Resource Sharing (CORS).',
                    newrelic_rpm:         'New Relic RPM Ruby Agent http://www.newrelic.com',
                    invisible_captcha:    'Unobtrusive and flexible spam protection for RoR apps',
-                   sitemap_generator:    'SitemapGenerator is the easiest way to generate Sitemaps in Ruby.'
-                    }
+                   sitemap_generator:    'SitemapGenerator is the easiest way to generate Sitemaps in Ruby.',
+                   therubyracer:         'JS code execution in Ruby' }
       multiple_choice('Write numbers of all preferred gems.', variants).each do |gem|
         add_to_user_choise gem
       end
@@ -137,8 +134,7 @@ module Onotole
       variants = {            none:            'Default',
                               redis:           'Redis db ruby library',
                               redis_rails:     'Provides a full set of stores (Cache, Session, HTTP Cache)',
-                              redis_namespace: 'Provides an interface to a namespaced subset of your redis keyspace'
-                               }
+                              redis_namespace: 'Provides an interface to a namespaced subset of your redis keyspace' }
       multiple_choice('Select cache storage and plug-ins.', variants).each do |gem|
         add_to_user_choise gem
       end

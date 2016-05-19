@@ -77,7 +77,8 @@ RSpec.describe 'Suspend a new project with default configuration' do
 
   it 'ensures newrelic.yml reads NewRelic license from env' do
     expect(newrelic_file).to match(
-      /license_key: "<%= ENV\["NEW_RELIC_LICENSE_KEY"\] %>"/)
+      /license_key: "<%= ENV\["NEW_RELIC_LICENSE_KEY"\] %>"/
+    )
   end
 
   it 'records pageviews through Segment if ENV variable set' do
@@ -89,7 +90,8 @@ RSpec.describe 'Suspend a new project with default configuration' do
 
   it 'raises on unpermitted parameters in all environments' do
     expect(application_rb).to match(
-      /^\s+config.action_controller.action_on_unpermitted_parameters = :raise/)
+      /^\s+config.action_controller.action_on_unpermitted_parameters = :raise/
+    )
   end
 
   it 'adds explicit quiet_assets configuration' do
@@ -100,7 +102,8 @@ RSpec.describe 'Suspend a new project with default configuration' do
     %w(development test).each do |environment|
       environment_file = IO.read("#{project_path}/config/environments/#{environment}.rb")
       expect(environment_file).to match(
-        /^ +config.action_view.raise_on_missing_translations = true$/)
+        /^ +config.action_view.raise_on_missing_translations = true$/
+      )
     end
   end
 
@@ -131,9 +134,11 @@ RSpec.describe 'Suspend a new project with default configuration' do
 
   it 'configs active job queue adapter' do
     expect(application_rb).to match(
-      /^ +config.active_job.queue_adapter = :delayed_job$/)
+      /^ +config.active_job.queue_adapter = :delayed_job$/
+    )
     expect(test_rb).to match(
-      /^ +config.active_job.queue_adapter = :inline$/)
+      /^ +config.active_job.queue_adapter = :inline$/
+    )
   end
 
   it 'configs bullet gem in development' do

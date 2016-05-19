@@ -350,5 +350,9 @@ module Onotole
     def add_active_record_doctor_gem
       inject_into_file('Gemfile', "\n  gem 'active_record_doctor'", after: 'group :development do')
     end
+
+    def add_therubyracer_gem
+      inject_into_file('Gemfile', "\n  gem 'therubyracer'", after: '# user_choice')
+    end
   end
 end

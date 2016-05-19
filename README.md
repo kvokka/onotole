@@ -180,7 +180,8 @@ for ruby 2.1+
  * [newrelic_rpm](https://github.com/newrelic/rpm) for monitoring performance 
  * [invisible_captcha](https://github.com/markets/invisible_captcha) Unobtrusive
   and flexible spam protection for RoR apps
-
+ * [therubyracer](https://github.com/cowboyd/therubyracer) Embed the V8 
+ Javascript Interpreter into Ruby
 
 ##### XLS & PDF
 

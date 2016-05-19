@@ -8,11 +8,10 @@ module Onotole
        'spec/helpers',
        'spec/support/matchers',
        'spec/support/mixins',
-       'spec/support/shared_examples'
-].each do |dir|
-  run "mkdir #{dir}"
-  run "touch #{dir}/.keep"
-end
+       'spec/support/shared_examples'].each do |dir|
+        run "mkdir #{dir}"
+        run "touch #{dir}/.keep"
+      end
       rails_generator 'rspec:install'
     end
 
