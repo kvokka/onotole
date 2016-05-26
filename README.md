@@ -252,8 +252,6 @@ generated projectname/Gemfile. This gem will be installed anyway.
 * [Autoprefixer Rails](https://github.com/ai/autoprefixer-rails) for CSS vendor prefixes
 * [Delayed Job](https://github.com/collectiveidea/delayed_job) for background
   processing
-* [Flutie](https://github.com/thoughtbot/flutie) for `page_title` and `body_class` view
-  helpers
 * [High Voltage](https://github.com/thoughtbot/high_voltage) for static pages
 * [jQuery Rails](https://github.com/rails/jquery-rails) for jQuery
 * [Normalize](https://necolas.github.io/normalize.css/) for resetting browser styles
