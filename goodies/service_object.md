@@ -29,7 +29,7 @@ end
 Now we have no problems with instances, but we still have `Module` methods, which
 are unused in this approach. So, we can dig dipper and inherit from Object
 ```
-class << Foo ||= Object.new
+class << FOO ||= Object.new
   def call
     puts 42
   end
@@ -39,6 +39,9 @@ So we have no unused behavior and get cleaner code. Just new `Object` with pack
 of singleton methods, and because it have class name, we use `||=` for preventing 
 multiple assigns, which will boost our code. Perfect!
 
-Of course the is some feature on this approach. If you change `Foo#call` method 
-later, and then `require` again file with initial code of `Foo` it will not 
+Of course the is some feature on this approach. If you change `FOO#call` method 
+later, and then `require` again file with initial code of `FOO` it will not 
 restore method to initial state. But it is weeery unusual.
+
+You may call it `Foo`, of course, but you will avoid the convention in this 
+case.
