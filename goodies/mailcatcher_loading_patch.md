@@ -1,6 +1,6 @@
 ### Mailcatcher on load error
 
-I got in love in `Mailcather` project, but there is one dizzy feature in it- if 
+I've got in love in `Mailcather` project, but there is one dizzy feature in it- if 
 in your controller must be sent some mail and `Mailcatcher` daemon is not running
 you will have an error (and it is oblivious). The is a sample code
 
