@@ -27,6 +27,12 @@ module Onotole
       add_to_user_choise(gem) if gem
     end
 
+    def choose_authorization_engine
+      variants = { none: 'None', pundit: 'Pundit' }
+      gem = choice 'Select authorization engine: ', variants
+      add_to_user_choise(gem) if gem
+    end
+
     def choose_cms_engine
       variants = { none:        'None',
                    activeadmin: 'Activeadmin CMS (if devise selected Admin model will create automatic)',

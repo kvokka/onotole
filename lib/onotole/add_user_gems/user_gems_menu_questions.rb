@@ -6,6 +6,7 @@ module Onotole
       choose_template_engine
       choose_frontend
       choose_authenticate_engine
+      choose_authorization_engine
       choose_pagimation
       choose_wysiwyg
       choose_develoder_tools

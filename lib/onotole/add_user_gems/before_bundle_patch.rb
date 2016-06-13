@@ -354,5 +354,9 @@ module Onotole
     def add_therubyracer_gem
       inject_into_file('Gemfile', "\n  gem 'therubyracer'", after: '# user_choice')
     end
+
+    def add_pundit_gem
+      inject_into_file('Gemfile', "\n  gem 'pundit'", after: '# user_choice')
+    end
   end
 end

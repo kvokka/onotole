@@ -23,6 +23,7 @@ module Onotole
                        :activeadmin, :active_admin_theme, :acive_skin, :flattened_active_admin,
                        :face_of_active_admin, :active_admin_bootstrap, :active_admin_simple_life,
                        :rails_admin,
+                       :pundit,
                        :guard, :guard_rubocop,
                        :bootstrap3_sass, :bootstrap3, :devise_bootstrap_views,
                        :active_admin_theme,
@@ -365,6 +366,22 @@ class AbstractModel < ActiveRecord::Base
   self.abstract_class = true
 end
 ABSTRACT
+      end
+    end
+
+    def after_install_pundit
+      rails_generator 'pundit:install'
+      if user_choose? :activeadmin
+        initializer_path = 'config/initializers/active_admin.rb'
+        config = %(
+  config.authentication_method = :authenticate_admin_user!
+  config.authorization_adapter = ActiveAdmin::PunditAdapter
+  config.pundit_default_policy = "ApplicationPolicy"
+        )
+        inject_into_file initializer_path, config, after: 'ActiveAdmin.setup do |config|'
+        mkdir_and_touch 'app/policies/active_admin'
+        copy_file 'pundit/active_admin/comment_policy.rb', 'app/policies/active_admin/comment_policy.rb'
+        copy_file 'pundit/active_admin/page_policy.rb', 'app/policies/active_admin/page_policy.rb'
       end
     end
 
