@@ -21,7 +21,7 @@ module Onotole
                        :annotate,
                        :overcommit,
                        :activeadmin, :active_admin_theme, :acive_skin, :flattened_active_admin,
-                       :face_of_active_admin, :active_admin_bootstrap, :active_admin_simple_life,
+                       :face_of_active_admin, :active_admin_bootstrap, 
                        :rails_admin,
                        :pundit,
                        :guard, :guard_rubocop,
@@ -296,18 +296,6 @@ end
       File.open('config/initializers/image_optim.rb', 'w') do |f|
         f.write 'Rails.application.config.assets.image_optim = {svgo:  false, pngout:  false}'
       end
-    end
-
-    def after_install_active_admin_simple_life
-      config = <<-DATA
-include ActiveAdminSimpleLife
-ActiveAdmin.setup do |config|
-  include ActiveAdminSimpleLife::SimpleElements
-
-DATA
-
-      replace_in_file 'config/initializers/active_admin.rb',
-                      'ActiveAdmin.setup do |config|', config
     end
 
     def after_install_redis
