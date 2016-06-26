@@ -95,6 +95,7 @@ module Onotole
                    rack_mini_profiler:   'Middleware that displays speed badge for every html page.',
                    flamegraph:           'Rack_mini_profiler awesome graphics generator. Need stackprof gem',
                    stackprof:            'A sampling call-stack profiler for ruby 2.1+',
+                   git_up:               'git-up(1) -- fetch and rebase all locally-tracked remote branches',
                    meta_request:         'Rails meta panel in chrome console.'\
                    " Very usefull in\n#{' ' * 24}AJAX debugging. Link for chrome"\
                    " add-on in Gemfile.\n#{' ' * 24}Do not delete comments if you need this link",

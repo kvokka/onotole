@@ -156,6 +156,8 @@ it through a dream. http://mailcatcher.me
 for ruby 2.1+
  * [active_record_doctor](https://github.com/gregnavis/active_record_doctor) 
  Active Record Doctor helps to index unindexed foreign keys 
+ * [git_up](https://github.com/aanand/git-up) Fetch and rebase all locally-tracked 
+ remote branches
 
 
 #### Misc

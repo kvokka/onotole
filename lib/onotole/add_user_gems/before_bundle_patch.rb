@@ -358,5 +358,9 @@ module Onotole
     def add_pundit_gem
       inject_into_file('Gemfile', "\n  gem 'pundit'", after: '# user_choice')
     end
+
+    def add_git_up_gem
+      inject_into_file('Gemfile', "\n  gem 'git-up'", after: 'group :development do')
+    end
   end
 end
