@@ -2,7 +2,7 @@
 
 # Onotole
 
-New Rails project wizard. Onotole will help!
+New Rails project wizard. Onotole will help! This branch is for Rails 4.2.x
 
 [![Onotole](http://i.imgur.com/8VsFFvy.jpg?1)](https://www.youtube.com/watch?v=wAuqhLpV2DY)
 
