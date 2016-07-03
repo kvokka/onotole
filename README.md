@@ -1,15 +1,8 @@
 [![Code Climate](https://codeclimate.com/github/kvokka/onotole/badges/gpa.svg)](https://codeclimate.com/github/kvokka/onotole)
 
-# Onotole
+# Onotole & Rails 5
 
 New Rails project wizard. Onotole will help!
-
-At this monent, i found unworking this gems:
- * ActiveAdmin
- * WillPaginane
-
-I hope Rails 5 support willl be added there soon, or you may easyly find monkey patches for fixes.
-Feel free to edit this list.
 
 [![Onotole](http://i.imgur.com/8VsFFvy.jpg?1)](https://www.youtube.com/watch?v=wAuqhLpV2DY)
 
@@ -23,7 +16,7 @@ implemented function of user choice gems installation with all their settings,
 so you can use fully working application with everything needed installed and
 configured from the box. Cut `Bitters` as default choice.
 
-As default uses the latest Ruby version and Rails '~> 4.2.0' 
+As default uses the latest Ruby version and Rails '~> 5.0.0' 
 
 This user gem pack is available for custom installation (you will only choose 
 what you need) all of this will be available in the customization menu with `-c` 
@@ -36,6 +29,14 @@ with any gem option.
 I begin collecting some [goodies](https://github.com/kvokka/onotole/goodies) 
 where some patches and tweaks will be placed in, for easier getting into and
 using it with already started projects.
+
+At this monent, I found unworking this gems:
+ * ActiveAdmin
+ * WillPaginane
+
+I hope Rails 5 support willl be added there soon, or you may easyly find monkey patches for fixes.
+Feel free to edit this list.
+
 
 ### Flexible gem group
 
