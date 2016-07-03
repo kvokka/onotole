@@ -17,7 +17,6 @@ module Onotole
 
       choose_undroup_gems
       ask_cleanup_commens
-      users_abstract_model_wrapper_choice
       users_init_commit_choice
       add_github_repo_creation_choice
       setup_default_gems

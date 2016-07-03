@@ -5,27 +5,27 @@ ruby "<%= Onotole::RUBY_VERSION %>"
 gem "delayed_job_active_record"
 gem "high_voltage"
 gem "jquery-rails"
-gem 'normalize-rails', '~> 3.0.0'
+gem 'normalize-rails'
 gem "pg"
 gem "puma"
 gem "rack-canonical-host"
 gem "rails", "<%= Onotole::RAILS_VERSION %>"
 gem "simple_form"
 gem "title"
-gem 'rake', '~> 11.1.0'
+gem 'rake', '~> 11.2.0'
 gem "awesome_print", :require=>"ap"
 gem "dotenv-rails"
 # user_choice
 
 group :assets do
-  gem "sass-rails", "~> 5.0"
+  gem "sass-rails"
   gem "autoprefixer-rails"
-  gem "coffee-rails", "~> 4.1.0"
+  gem "coffee-rails"
   gem "uglifier"
 end
 
 group :development do
-  gem "quiet_assets"
+  # gem "quiet_assets"
   gem "spring"
   gem "spring-commands-rspec"
   gem "web-console"
@@ -44,7 +44,7 @@ end
 group :development, :test do
   gem "factory_girl_rails"
   gem "bundler-audit", require: false
-  gem "rspec-rails", "~> 3.4.0"
+  gem "rspec-rails"
 end
 
 group :test do

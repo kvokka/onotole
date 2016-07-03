@@ -4,6 +4,13 @@
 
 New Rails project wizard. Onotole will help!
 
+At this monent, i found unworking this gems:
+ * ActiveAdmin
+ * WillPaginane
+
+I hope Rails 5 support willl be added there soon, or you may easyly find monkey patches for fixes.
+Feel free to edit this list.
+
 [![Onotole](http://i.imgur.com/8VsFFvy.jpg?1)](https://www.youtube.com/watch?v=wAuqhLpV2DY)
 
 Read more [ENG](https://en.wikipedia.org/wiki/Anatoly_Wasserman) | 

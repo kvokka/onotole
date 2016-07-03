@@ -173,7 +173,6 @@ module Onotole
       build :configure_action_mailer
       build :configure_active_job
       build :configure_time_formats
-      build :disable_xml_params
       build :fix_i18n_deprecation_warning
       build :setup_default_rake_task
       build :configure_puma
@@ -182,6 +181,7 @@ module Onotole
       build :add_vendor_css_path
       build :add_fonts_autoload
       build :add_custom_formbuilder
+      build :copy_application_record
     end
 
     # def setup_stylesheets

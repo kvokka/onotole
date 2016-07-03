@@ -139,11 +139,6 @@ end
                       "Rails.application.routes.draw do\nend"
     end
 
-    def disable_xml_params
-      copy_file 'disable_xml_params.rb',
-                'config/initializers/disable_xml_params.rb'
-    end
-
     def setup_default_rake_task
       append_file 'Rakefile' do
         <<-EOS
@@ -227,6 +222,10 @@ end
         f.write 'class FormBuilderExtension < ActionView::Helpers::FormBuilder'
         f.write "\nend"
       end
+    end
+
+    def copy_application_record
+      copy_file 'application_record.rb', 'app/models/application_record.rb'
     end
   end
 end

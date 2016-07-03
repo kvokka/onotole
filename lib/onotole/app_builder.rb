@@ -95,6 +95,7 @@ module Onotole
     end
 
     def configure_puma
+      remove_file 'config/puma.rb'
       template 'puma.rb.erb', 'config/puma.rb'
     end
 
