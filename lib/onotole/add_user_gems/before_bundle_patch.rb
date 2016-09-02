@@ -142,7 +142,7 @@ module Onotole
       copy_file 'onotole_overcommit.yml', '.overcommit.yml'
       rubocop_overcommit = <<-OVER
   RuboCop:
-    enabled: ture
+    enabled: true
     description: 'Analyzing with RuboCop'
     required_executable: 'rubocop'
     flags: ['--format=emacs', '--force-exclusion', '--display-cop-names']

@@ -225,7 +225,7 @@ end
     end
 
     def copy_application_record
-      copy_file 'application_record.rb', 'app/models/application_record.rb'
+      copy_file 'application_record.rb', 'app/models/application_record.rb', force: true
     end
   end
 end

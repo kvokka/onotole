@@ -64,7 +64,7 @@ PreCommit:
     required_executable: 'grep'
     flags: ['-IHn', "^<<<<<<<[ \t]"]
   RuboCop:
-    enabled: ture
+    enabled: true
     description: 'Analyzing with RuboCop'
     required_executable: 'rubocop'
     flags: ['--format=emacs', '--force-exclusion', '--display-cop-names']
